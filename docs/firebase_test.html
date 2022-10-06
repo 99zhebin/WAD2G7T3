@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,45 +8,49 @@
     <title>Document</title>
 </head>
 <body>
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "firebase/app";
-        import { getAnalytics } from "firebase/analytics";
-        import { getDatabase } from "firebase/database";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script> 
+<!-- This is the API from Firebase Realtime Database -->
+<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script> 
 
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        const firebaseConfig = {
-        apiKey: "AIzaSyAWvVP_h1HKDOSqjp9BFZ1ttifg_UhC0eQ",
-        authDomain: "is216-webapp.firebaseapp.com",
-        projectId: "is216-webapp",
-        storageBucket: "is216-webapp.appspot.com",
-        messagingSenderId: "113592009297",
-        appId: "1:113592009297:web:fd8286678c0c18abc3ee70",
-        measurementId: "G-NZ5HG4ZZ8K",
-        databaseURL: "https://console.firebase.google.com/u/2/project/is216-webapp/database/is216-webapp-default-rtdb/data/~2F"
-        };
+<button onclick="testDisplay()"></button>
 
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-        const database = getDatabase(app);
+<script>
+  // Your web app's Firebase configuration
+  // You can find yours at Firebase -> Project Overview -> Project Settings
+  // -> SDK setup and configuration -> CDN
+  const firebaseConfig = {
+  apiKey: "AIzaSyAWvVP_h1HKDOSqjp9BFZ1ttifg_UhC0eQ",
+  authDomain: "is216-webapp.firebaseapp.com",
+  databaseURL: "https://is216-webapp-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "is216-webapp",
+  storageBucket: "is216-webapp.appspot.com",
+  messagingSenderId: "113592009297",
+  appId: "1:113592009297:web:fd8286678c0c18abc3ee70"
+};
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
 
-        function writeUserDataWithCompletion(userId, name, email) {
-            firebase.database().ref('users/' + userId).set({
-            username: name, email: email
-            }, function(error) {
-            if (error) {
-                alert("Error!") //if error happens
-            }
-            else {
-                alert("Success!") //if no error
-            }
-            });
-            }
+function testDisplay(userId, name, email) {
+    firebase.database().ref('users/' + userId).set({
+    username: name, email: email
+    }, function(error) {
+    if (error) {
+        alert("Error!") //if error happens
+    }
+    else {
+        alert("Success!") //if no error
+    }
+    });
+    }
 
+    var ref = firebase.database().ref();
+
+    ref.on("value", function(snapshot) {
+    console.log(snapshot.val());
+    }, function (error) {
+    console.log("Error: " + error.code);
+    });
     </script>
 </body>
 </html>
