@@ -1,0 +1,25 @@
+{
+  "name": "wad2g7t3",
+  "version": "1.0.0",
+  "description": "Group Project - Animal Adoption Site",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/99zhebin/WAD2G7T3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/99zhebin/WAD2G7T3/issues"
+  },
+  "homepage": "https://github.com/99zhebin/WAD2G7T3#readme",
+  "dependencies": {
+    "firebase": "^9.10.0"
+  }
+}
