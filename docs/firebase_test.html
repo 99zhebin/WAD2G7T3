@@ -32,6 +32,20 @@
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
         const database = getDatabase(app);
+
+        function writeUserDataWithCompletion(userId, name, email) {
+            firebase.database().ref('users/' + userId).set({
+            username: name, email: email
+            }, function(error) {
+            if (error) {
+                alert("Error!") //if error happens
+            }
+            else {
+                alert("Success!") //if no error
+            }
+            });
+            }
+
     </script>
 </body>
 </html>
