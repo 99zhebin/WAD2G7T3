@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- follow the steps from https://firebase.google.com/docs/auth/web/firebaseui -->
+    <!-- the following should be in the head tag -->        
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 </head>
 <body>
 <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -13,8 +17,14 @@
 <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script> 
 <!-- API for Firebase Storage -->
 <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script> 
+<!-- API for Firebase Authentication-->
+<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
 
-<button onclick="getUserDetails(0)">Testing</button>
+<h1>Welcome to My Awesome App</h1>
+<div id="firebaseui-auth-container"></div>
+<div id="loader">Loading...</div>
+
+<button onclick="getUserDetails('Lim Zhe Bin')">Testing</button>
 <input type="file" id="photo">
 <button onclick="uploadImage()">Upload Trial</button>
 </br><hr></br>
@@ -57,60 +67,113 @@
       alert("Image upload successful")
     })
   }
+  // Initialize the FirebaseUI Widget using Firebase.
+  var ui = new firebaseui.auth.AuthUI(firebase.auth());
+  // choose Google Authentication
+  ui.start('#firebaseui-auth-container', {
+  signInOptions: [
+    // List of OAuth providers supported.
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    //firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+    //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+    //firebase.auth.GithubAuthProvider.PROVIDER_ID
+  ],
+  // Other config options...
+  });
 
-  function getUserDetails(userId) {
-    var user = firebase.database().ref('adoption/' + userId);
+  var uiConfig = {
+  callbacks: {
+    signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+      // User successfully signed in.
+      // Return type determines whether we continue the redirect automatically
+      // or whether we leave that to developer to handle.
+      return true;
+    },
+    uiShown: function() {
+      // The widget is rendered.
+      // Hide the loader.
+      document.getElementById('loader').style.display = 'none';
+    }
+  },
+  // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+  signInFlow: 'popup',
+  signInSuccessUrl: '<url-to-redirect-to-on-success>',
+  signInOptions: [
+    // Leave the lines as is for the providers you want to offer your users.
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    //firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+    //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+    //firebase.auth.GithubAuthProvider.PROVIDER_ID,
+    //firebase.auth.EmailAuthProvider.PROVIDER_ID,
+    //firebase.auth.PhoneAuthProvider.PROVIDER_ID
+  ],
+  // Terms of service url.
+  tosUrl: '<your-tos-url>',
+  // Privacy policy url.
+  privacyPolicyUrl: '<your-privacy-policy-url>'
+};
+
+// The start method will wait until the DOM is loaded.
+ui.start('#firebaseui-auth-container', uiConfig);
+
+  function getUserDetails(username) {
+    tableText = ""
+    var user = firebase.database().ref('adoption').orderByChild('username').equalTo(username);
     user.once('value').then((snapshot) => {
     if(snapshot.exists()) {
       console.log("Found")
       console.log(snapshot.val())
-      username = snapshot.val().username
-      animalname = snapshot.val().animalname
-      species = snapshot.val().species
-      age = snapshot.val().age
-      description = snapshot.val().description
-      email = snapshot.val().email
-      phone = snapshot.val().phone
-      address = snapshot.val().address
-      image = snapshot.val().image
-      tableText = `
-        <tr>
-          <th>Username</th>
-          <th>${username}</th>
-        </tr>
-        <tr>
-          <th>Pet Name</th>
-          <th>${animalname}</th>
-        </tr>
-        <tr>
-          <th>Species</th>
-          <th>${species}</th>
-        </tr>
-        <tr>
-          <th>Age</th>
-          <th>${age}</th>
-        </tr>
-        <tr>
-          <th>Description</th>
-          <th>${description}</th>
-        </tr>
-        <tr>
-          <th>Email</th>
-          <th>${email}</th>
-        </tr>
-        <tr>
-          <th>Phone Number</th>
-          <th>${phone}</th>
-        </tr>
-        <tr>
-          <th>Address</th>
-          <th>${address}</th>
-        </tr>
-        <tr>
-          <th>Image</th>
-          <th><img src="${image}"></th>
-        </tr>
-      `
+      for (index of snapshot.val()){
+        console.log(index)
+        username = index.username
+        animalname = index.animalname
+        species = index.species
+        age = index.age
+        description = index.description
+        email = index.email
+        phone = index.phone
+        address = index.address
+        image = index.image
+        tableText += `
+          <tr>
+            <th>Username</th>
+            <th>${username}</th>
+          </tr>
+          <tr>
+            <th>Pet Name</th>
+            <th>${animalname}</th>
+          </tr>
+          <tr>
+            <th>Species</th>
+            <th>${species}</th>
+          </tr>
+          <tr>
+            <th>Age</th>
+            <th>${age}</th>
+          </tr>
+          <tr>
+            <th>Description</th>
+            <th>${description}</th>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <th>${email}</th>
+          </tr>
+          <tr>
+            <th>Phone Number</th>
+            <th>${phone}</th>
+          </tr>
+          <tr>
+            <th>Address</th>
+            <th>${address}</th>
+          </tr>
+          <tr>
+            <th>Image</th>
+            <th><img src="${image}"></th>
+          </tr>
+        `
+        }
+      
       document.getElementById("details").innerHTML = tableText
 
     }
