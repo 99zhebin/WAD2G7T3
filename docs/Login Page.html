@@ -22,8 +22,9 @@
 
 <form>
     Email: <input type="text" id="email" name="email"><br><br>
-    Password: <input type="text" id="password" name="password">
+    Password: <input type="text" id="password" name="password"><br><br>
 </form>
+<button onclick="login()">Submit</button>
 
 <script>
     // Your web app's Firebase configuration
@@ -41,21 +42,23 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
+function login(){
+    console.log("Hi")
     email = document.getElementById("email").value
     password = document.getElementById("password").value
-
-    const auth = getAuth();
-        signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-        // Signed in 
-        const user = userCredential.user;
-        alert("Welcome " + user)
-    })
-    .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        alert(errorCode + ": " + errorMessage)
-    });
-
+    console.log(email + ", " + password)
+    firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            alert("Welcome " + user.email)
+            window.location.href="firebase_test.html"
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            alert(errorCode + ": " + errorMessage)
+        });
+    }
 </script>
 </body>
