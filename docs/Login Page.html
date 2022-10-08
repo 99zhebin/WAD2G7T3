@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- follow the steps from https://firebase.google.com/docs/auth/web/firebaseui -->
+    <!-- the following should be in the head tag -->        
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+</head>
+<body>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script> 
+<!-- This is the API from Firebase Realtime Database -->
+<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script> 
+<!-- API for Firebase Storage -->
+<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script> 
+<!-- API for Firebase Authentication-->
+<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+
+<form>
+    Email: <input type="text" id="email" name="email"><br><br>
+    Password: <input type="text" id="password" name="password">
+</form>
+
+<script>
+    // Your web app's Firebase configuration
+    // You can find yours at Firebase -> Project Overview -> Project Settings
+    // -> SDK setup and configuration -> CDN
+    const firebaseConfig = {
+    apiKey: "AIzaSyAWvVP_h1HKDOSqjp9BFZ1ttifg_UhC0eQ",
+    authDomain: "is216-webapp.firebaseapp.com",
+    databaseURL: "https://is216-webapp-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "is216-webapp",
+    storageBucket: "is216-webapp.appspot.com",
+    messagingSenderId: "113592009297",
+    appId: "1:113592009297:web:fd8286678c0c18abc3ee70"
+  };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    email = document.getElementById("email").value
+    password = document.getElementById("password").value
+
+    const auth = getAuth();
+        signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        alert("Welcome " + user)
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorCode + ": " + errorMessage)
+    });
+
+</script>
+</body>
