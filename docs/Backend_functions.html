@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+<!-- Initialise Firebase (Put in body in the front of every page which requires firebase access) ------------------------------------------------->
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script> 
+<!-- This is the API from Firebase Realtime Database -->
+<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script> 
+<!-- API for Firebase Storage -->
+<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script> 
+<!-- API for Firebase Authentication-->
+<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // You can find yours at Firebase -> Project Overview -> Project Settings
+  // -> SDK setup and configuration -> CDN
+  const firebaseConfig = {
+  apiKey: "AIzaSyAWvVP_h1HKDOSqjp9BFZ1ttifg_UhC0eQ",
+  authDomain: "is216-webapp.firebaseapp.com",
+  databaseURL: "https://is216-webapp-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "is216-webapp",
+  storageBucket: "is216-webapp.appspot.com",
+  messagingSenderId: "113592009297",
+  appId: "1:113592009297:web:fd8286678c0c18abc3ee70"
+};
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+
+  // ---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+  // login user ----------------------------------------------------------------------------------------------------------------------------------
+
+  function login(){
+    email = document.getElementById("email").value
+    password = document.getElementById("password").value
+    console.log(email + ", " + password)
+    firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            alert("Welcome " + user.email)
+            window.location.href="firebase_test.html"       // redirect link when they login successfully
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            alert(errorCode + ": " + errorMessage)
+        });
+    }
+
+  // ---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+  // Check if user is logged in ------------------------------------------------------------------------------------------------------------------
+
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      alert(user.email + "logged in");
+      // ...
+    } else {
+      // User is signed out
+      // ...
+      alert("not logged in")
+    }
+  });
+
+  // ---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+  // get image from image uploader script at bottom of this document and upload to image bucket, store link in database --------------------------
+
+  function uploadImage(){
+    const ref = firebase.storage().ref()
+
+    const file = document.querySelector("#photo").files[0]  // put id of <input type="file"> in querySelector
+
+    const name = new Date() + '-' + file.name
+
+    const task = ref.child(name).put(file)
+
+    task
+    .then(snapshot => snapshot.ref.getDownloadURL())
+    .then(url =>{
+      console.log(url)
+      alert("Image upload successful")
+    })
+  }
+  
+  // ---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+  // Get posts by username -----------------------------------------------------------------------------------------------------------------------
+
+  function getUserDetails(username) {  // username of poster, change to whatever identifier we use in the end
+    tableText = ""
+    var user = firebase.database().ref('adoption').orderByChild('username').equalTo(username); // orderByChild = object key, equalTo = object value
+    user.once('value').then((snapshot) => {
+    if(snapshot.exists()) {
+      console.log("Found")
+      console.log(snapshot.val())
+      for (index of snapshot.val()){
+        console.log(index)
+        username = index.username           // Take relevant info from realtime database using object keys
+        animalname = index.animalname
+        species = index.species
+        age = index.age
+        description = index.description
+        email = index.email
+        phone = index.phone
+        address = index.address
+        image = index.image                  // Edit below to load whatever into HTML dom. Prob have to change to Vue later since we need a framework
+        tableText += `                      
+          <tr>
+            <th>Username</th>
+            <th>${username}</th>
+          </tr>
+          <tr>
+            <th>Pet Name</th>
+            <th>${animalname}</th>
+          </tr>
+          <tr>
+            <th>Species</th>
+            <th>${species}</th>
+          </tr>
+          <tr>
+            <th>Age</th>
+            <th>${age}</th>
+          </tr>
+          <tr>
+            <th>Description</th>
+            <th>${description}</th>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <th>${email}</th>
+          </tr>
+          <tr>
+            <th>Phone Number</th>
+            <th>${phone}</th>
+          </tr>
+          <tr>
+            <th>Address</th>
+            <th>${address}</th>
+          </tr>
+          <tr>
+            <th>Image</th>
+            <th><img src="${image}"></th>
+          </tr>
+        `
+        }
+      
+      document.getElementById("details").innerHTML = tableText
+
+    }
+    else {
+      console.log("Not Found")
+    }
+    });
+    }
+
+
+    // -------------------------------------------------------------------------------------------------------------------------------------------
+
+
+    
+    // Get all adoption posts --------------------------------------------------------------------------------------------------------------------
+
+    function loadDisplay() {
+          console.log("--- loadDisplay() start ---")
+          var petArray = firebase.database().ref('adoption').orderByChild("timestamp") // Order by post time (ascending)
+          var pets = []
+          var content = ""
+          petArray.once('value').then((snapshot) => {
+          if(snapshot.exists()) {
+              console.log("Found")
+              console.log(snapshot.val())
+              pets = snapshot.val()
+              for (pet of pets){
+                  let image = pet.image                    // Get required details
+                  let petName = pet.animalname
+                  let species = pet.species
+                  let age = pet.age                        // DOM manipulation below
+                  content += `
+                  <div class="col-lg-3 col-md-4 col-sm-6 my-3">
+                      <div class="card" style="width: 18rem;">
+                          <img src="${image}" class="card-img-top" alt="...">
+                          <div class="card-body">
+                              <h3 class="card-title">${petName}</h3>
+                              <h5 class="card-title">${species}</h5>
+                              <p class="card-text">Age: ${age}</a><br><br>
+                              <a href="#" class="btn btn-primary">Details</a>
+                          </div>
+                      </div>
+                  </div>
+                  `   
+              }
+              document.getElementById("pets").innerHTML = content
+          }
+          else {
+              console.log("Not Found")
+          }
+          });
+      }
+
+    // -------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+    // Filter Adoption posts----------------------------------------------------------------------------------------------------------------------
+
+    function filter(){
+        var petArray = firebase.database().ref('adoption').orderByChild("timestamp")
+        var pets = []
+        var content = ""
+        var speciesFilter = document.getElementById("species").options[document.getElementById("species").selectedIndex].text // Edit according to where your selection is from
+        console.log(speciesFilter)
+        petArray.once('value').then((snapshot) => {
+        if(snapshot.exists()) {
+            console.log("Found")
+            console.log(snapshot.val())
+            pets = snapshot.val()
+            for (pet of pets){
+                let image = pet.image
+                let petName = pet.animalname
+                let species = pet.species
+                console.log(species)
+                let age = pet.age
+                if (species == speciesFilter){        // current crude solution, might find a better way later. Add more filters accordingly
+                    content += `
+                    <div class="col-lg-3 col-md-4 col-sm-6 my-3">
+                        <div class="card" style="width: 18rem;">
+                            <img src="${image}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h3 class="card-title">${petName}</h3>
+                                <h5 class="card-title">${species}</h5>
+                                <p class="card-text">Age: ${age}</a><br><br>
+                                <a href="#" class="btn btn-primary">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    `   
+                }
+            }
+            document.getElementById("pets").innerHTML = content
+        }
+        else {
+            console.log("Not Found")
+        }
+        });
+    }
+
+    // -------------------------------------------------------------------------------------------------------------------------------------------
+
+    </script>
+
+
+  <!-- Image Uploader -->
+
+  <h1>Welcome to My Awesome App</h1>
+  <div id="firebaseui-auth-container"></div>
+  <div id="loader">Loading...</div>
+
+  <input type="file" id="photo">
+  <button onclick="uploadImage()">Upload Trial</button>
+  </br><hr></br>
+  <table border="1">
+    <tbody id="details">
+
+    </tbody>
+  </table>
+</body>
+</html>

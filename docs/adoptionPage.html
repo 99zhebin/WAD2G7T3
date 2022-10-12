@@ -14,9 +14,14 @@
            background-color: #99C298;
        }
 
+       nav{
+           position:sticky;
+           top:0px;
+       }
+
    </style>
 </head>
-<body>
+<body onload="loadDisplay()">
    <!-- The core Firebase JS SDK is always required and must be listed first -->
    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script> 
    <!-- This is the API from Firebase Realtime Database -->
@@ -25,6 +30,54 @@
    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script> 
    <!-- API for Firebase Authentication-->
    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+
+   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+       <div class="container-fluid">
+       <a class="navbar-brand">Pet Baguette</a>
+       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+       </button>
+       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+           <div class="navbar-nav">
+           <a class="nav-link active" aria-current="page" href="#">Home</a>
+           <a class="nav-link disabled" href="#">Adoptions</a>
+           <a class="nav-link active" href="#">Events</a>
+           <a class="nav-link active" href="#" style="justify-content:right;">Sign In</a>
+           </div>
+       </div>
+       </div>
+   </nav>
+
+   <div id="filter" class="row my-2">
+       <div class="col-1">
+           Species:<select class="form-select" aria-label="Default select example" id="species">
+               <option>Dog</option>
+               <option>Cat</option>
+               <option>Rabbit</option>
+           </select>
+       </div>
+       <div class="col-1">
+           Space:<select class="form-select" aria-label="Default select example" id="age">
+               <option>dog</option>
+               <option>cat</option>
+               <option>rabbit</option>
+           </select>
+       </div>
+       <div class="col-1">
+           Age:<select class="form-select" aria-label="Default select example" id="space">
+               <option>dog</option>
+               <option>cat</option>
+               <option>rabbit</option>
+           </select>
+       </div>
+       <div class="col-1">
+           <button onclick="filter()">Filter</button>
+       </div>
+   </div>
+
+   <div class="row" id="pets" style="display:flex;justify-content: center;margin:auto;align-items: center;">
+
+   </div>
 
    <script>
        // Your web app's Firebase configuration
@@ -42,43 +95,87 @@
        // Initialize Firebase
        firebase.initializeApp(firebaseConfig);
 
-       var petArray = firebase.database().ref('adoption')
-       var pets = []
-       var content = ""
-       petArray.once('value').then((snapshot) => {
-       if(snapshot.exists()) {
-           console.log("Found")
-           console.log(snapshot.val())
-           pets = snapshot.val()
-           for (pet of pets){
-               let image = pet.image
-               let petName = pet.animalname
-               let description = pet.description
-               content += `
-               <div class="col-lg-3 col-md-4 col-sm-6 my-3">
-                   <div class="card" style="width: 18rem;">
-                       <img src="${image}" class="card-img-top" alt="...">
-                       <div class="card-body">
-                           <h5 class="card-title">${petName}</h5>
-                           <p class="card-text">${description}</a><br><br>
-                           <a href="#" class="btn btn-primary">Details</a>
+       function loadDisplay() {
+           console.log("--- loadDisplay() start ---")
+           var petArray = firebase.database().ref('adoption').orderByChild("timestamp")
+           var pets = []
+           var content = ""
+           petArray.once('value').then((snapshot) => {
+           if(snapshot.exists()) {
+               console.log("Found")
+               console.log(snapshot.val())
+               pets = snapshot.val()
+               for (pet of pets){
+                   let image = pet.image
+                   let petName = pet.animalname
+                   let species = pet.species
+                   let age = pet.age
+                   content += `
+                   <div class="col-lg-3 col-md-4 col-sm-6 my-3">
+                       <div class="card" style="width: 18rem;">
+                           <img src="${image}" class="card-img-top" alt="...">
+                           <div class="card-body">
+                               <h3 class="card-title">${petName}</h3>
+                               <h5 class="card-title">${species}</h5>
+                               <p class="card-text">Age: ${age}</a><br><br>
+                               <a href="#" class="btn btn-primary">Details</a>
+                           </div>
                        </div>
                    </div>
-               </div>
-               `   
+                   `   
+               }
+               document.getElementById("pets").innerHTML = content
            }
-           document.getElementById("pets").innerHTML = content
+           else {
+               console.log("Not Found")
+           }
+           });
        }
-       else {
-           console.log("Not Found")
+
+       function filter(){
+           var petArray = firebase.database().ref('adoption').orderByChild("timestamp")
+           var pets = []
+           var content = ""
+           var speciesFilter = document.getElementById("species").options[document.getElementById("species").selectedIndex].text
+           console.log(speciesFilter)
+           petArray.once('value').then((snapshot) => {
+           if(snapshot.exists()) {
+               console.log("Found")
+               console.log(snapshot.val())
+               pets = snapshot.val()
+               for (pet of pets){
+                   let image = pet.image
+                   let petName = pet.animalname
+                   let species = pet.species
+                   console.log(species)
+                   let age = pet.age
+                   if (species == speciesFilter){
+                       content += `
+                       <div class="col-lg-3 col-md-4 col-sm-6 my-3">
+                           <div class="card" style="width: 18rem;">
+                               <img src="${image}" class="card-img-top" alt="...">
+                               <div class="card-body">
+                                   <h3 class="card-title">${petName}</h3>
+                                   <h5 class="card-title">${species}</h5>
+                                   <p class="card-text">Age: ${age}</a><br><br>
+                                   <a href="#" class="btn btn-primary">Details</a>
+                               </div>
+                           </div>
+                       </div>
+                       `   
+                   }
+               }
+               document.getElementById("pets").innerHTML = content
+           }
+           else {
+               console.log("Not Found")
+           }
+           });
        }
-       });
+
+       
 
    </script>
-
-   <div class="row" id="pets" style="display:flex;justify-content: center;margin:auto;align-items: center;">
-
-   </div>
 
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
