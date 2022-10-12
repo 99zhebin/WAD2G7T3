@@ -1,3 +1,8 @@
+*{
+    margin:0;
+    padding: 0;
+}
+
 body{
     /* margin:20px 30px; */
     background-color: #99C298;
@@ -9,3 +14,9 @@ body{
     font-family: Helvetica;
     font-weight: 700;
 } */
+
+#intro-pic{
+    background-color: grey;
+    height: 100%;
+    width: 70%;
+}
