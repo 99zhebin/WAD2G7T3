@@ -15,8 +15,21 @@ body{
     font-weight: 700;
 } */
 
+.overlay{
+     
+}
+
 #intro-pic{
-    background-color: #609678;
-    height: 100%;
-    width: 70%;
+    /* margin:20px 30px; */
+    /* background-color: #99C298;
+    background-size: responsive;
+    background-repeat: no-repeat;
+    background-image: url(./img/placeholder.jpg);
+    height: 70vh;
+    max-width: 85%; */
+}
+
+.wrapper{
+    background-color: rgb(128, 128, 128);
+    /* opacity: 0.3; */
 }
