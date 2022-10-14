@@ -4,11 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- follow the steps from https://firebase.google.com/docs/auth/web/firebaseui -->
-    <!-- the following should be in the head tag -->        
-    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+    <title>Login</title>
 </head>
 <body>
 <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -24,7 +20,7 @@
     Email: <input type="text" id="email" name="email"><br><br>
     Password: <input type="text" id="password" name="password"><br><br>
 </form>
-<button onclick="login()">Submit</button>
+<button onclick="login(url)">Submit</button>
 
 <script>
     // Your web app's Firebase configuration
@@ -42,7 +38,12 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
-function login(){
+    var url = window.location.search;
+    url = url.replace("?page=", '');
+    console.log(url)
+    url += ".html"
+
+function login(url){
     console.log("Hi")
     email = document.getElementById("email").value
     password = document.getElementById("password").value
@@ -52,7 +53,7 @@ function login(){
             // Signed in 
             const user = userCredential.user;
             alert("Welcome " + user.email)
-            window.location.href="firebase_test.html"
+            window.location.href=url
         })
         .catch((error) => {
             const errorCode = error.code;
