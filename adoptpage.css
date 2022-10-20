@@ -3,15 +3,14 @@
 /* The grid: Four equal columns that floats next to each other */
 #opics {
     float: left;
-    width: 7%;
     margin-top: 10px;
 }
 
 /* Style the images inside the grid */
 #opics img {
 opacity: 0.8;
-cursor: pointer;
 max-width: 100%;
+cursor: pointer;
 }
 
 #opics img:hover {
@@ -29,10 +28,6 @@ clear: both;
 .container {
 position: relative;
 width: 100%;
-}
-
-#opics img{
-max-width: 100%;
 }
 
 #expandedImg {
