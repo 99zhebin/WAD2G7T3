@@ -12,6 +12,9 @@
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <!-- Vue.js -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
     <!-- Axios -->
     <script src="https://unpkg.com/axios/dist/axios.js"></script>
 
@@ -36,7 +39,7 @@
         }
     </script>
 </head>
-<body onload="getPet()">
+<body onload="loadDisplay()">
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script> 
@@ -105,37 +108,38 @@
 
     <!--Pet Picture-->
     <!-- The expanding image container -->
-    <div class="container" style="margin-top:100px; margin-left: 100px;">
+    <div class="container" id="content" style="margin-top:100px; margin-left: 100px;">
         <div class="row" >
             <div class="col-4">
                 <!-- Expanded image -->
-                <img src="test1.jpg" id="expandedImg" style="width:100%" >
+                <img v-bind:src="pet.image" id="expandedImg" style="width:100%" >
             </div>
 
             <div class="col-2"></div>
 
             <div class="col-5">
                 <!--Name of Pet-->
-                Name:<div class="container" id="petname"></div>
+                Name:<div class="container" id="petname">{{pet.animalname}}</div>
 
                 <!--Pet Description-->
-                Description:<div class="container" id="petdesc"></div>&nbsp
+                Description:<div class="container" id="petdesc">{{pet.description}}</div>&nbsp
 
                 <!--Pet Health Needs-->
-                Special Health Needs: <div class="container" id="pethealth"></div>&nbsp
+                Special Health Needs: <div class="container" id="pethealth" v-if="pet.health != ''">{{pet.health}}</div>
+                <div class="container" id="pethealth" v-else>No Issues!</div>&nbsp
 
                 <!--div for HDB Status and Vax Status-->
                 <div class="input-group mb-3" style="background-color: lightgrey; border-radius: 10px">
                     <div class="input-group-text" style="background-color: lightgrey;">
                         <!--Vax Status, checked and disabled-->
                         Vaccination Status:
-                        <input  class="form-check-input mt-0" id="vaccination" type="checkbox" value="" aria-label="Checkbox for following text input" disabled>
+                        <input  class="form-check-input mt-0" id="vaccination" type="checkbox" value="" v-bind:checked="vaccination" aria-label="Checkbox for following text input" disabled>
 
                         &nbsp&nbsp
 
                         <!--HDB Status, checked and disabled-->
                         HDB Eligibility:
-                        <input class="form-check-input mt-0" id="hdb" type="checkbox" value="" aria-label="Checkbox for following text input" disabled>
+                        <input class="form-check-input mt-0" id="hdb" type="checkbox" value="" v-bind:checked="hdb" aria-label="Checkbox for following text input" disabled>
                     </div>
                 </div>
                 <!--Buttons-->
