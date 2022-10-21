@@ -15,6 +15,9 @@
  
      <!-- Axios -->
      <script src="https://unpkg.com/axios/dist/axios.js"></script>
+
+     <!-- Vue.js -->
+     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
  
      <!-- style sheet -->
      <link rel="stylesheet" href="format.css">
@@ -91,38 +94,71 @@
  
      <!-- Adoption Filters -->
  
-     <div class="content">
+     <div id="content">
         <div id="filter" class="row my-2">
             <div class="col-xl-2 col-lg-4 col-md-6 col-sm-8">
-                Species:<select class="form-select" aria-label="Default select example" id="species">
+                Species:<select class="form-select" aria-label="Default select example" id="species" v-model="speciesFilter">
                     <option>Dog</option>
                     <option>Cat</option>
                     <option>Rabbit</option>
                 </select>
             </div>
             <div class="col-xl-2 col-lg-4 col-md-6 col-sm-8">
-                Space:<select class="form-select" aria-label="Default select example" id="age">
-                    <option>dog</option>
-                    <option>cat</option>
-                    <option>rabbit</option>
-                </select>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="hdb" id="hdb" v-model="hdbFilter">
+                    <label class="form-check-label" for="hdb">
+                      HDB Approved
+                    </label>
+                </div>
             </div>
             <div class="col-xl-2 col-lg-4 col-md-6 col-sm-8">
-                Age:<select class="form-select" aria-label="Default select example" id="space">
-                    <option>dog</option>
-                    <option>cat</option>
-                    <option>rabbit</option>
-                </select>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="vacinnation" id="vaccination" v-model="vaccinationFilter">
+                    <label class="form-check-label" for="vaccination">
+                      Vaccinated
+                    </label>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-4 col-md-6 col-sm-8">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="health" id="health" v-model="healthFilter">
+                    <label class="form-check-label" for="health">
+                      No Health Issues
+                    </label>
+                </div>
             </div>
             <div class="col-1 justify-content-left align-self-center my-2">
-                <button class="btn btn-secondary" onclick="filter()">Filter</button>
+                <button class="btn btn-secondary" v-on:click="filter()">Filter</button>
             </div>
         </div>
-        
+
         <!-- Adoption Display -->
 
-        <div class="row d-flex align-items-center" id="pets">
-
+        <div class="row d-flex justify-content-center align-items-center" id="pets">
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 my-3" v-if="(filtered.length != 0) && (filtered != 'not found')" v-for="pet of filtered">
+                <div class="card" style="width: 18rem;">
+                    <img v-bind:src="pet.image" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h3 class="card-title">{{pet.animalname}}</h3>
+                        <h5 class="card-title">{{pet.species}}</h5>
+                        <p class="card-text">Age: {{pet.age}}</a><br><br>
+                        <a v-bind:href="url(pet.email,pet.animalname)" class="btn btn-primary">Details</a>
+                    </div>
+                </div>
+            </div>
+            <h1 style='text-align:center;margin: 80px 0px' v-else-if="filtered == 'not found'">No Matches Found</h1>
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 my-3" v-else-if="pets.length != 0" v-for="pet of pets">
+                <div class="card" style="width: 18rem;">
+                    <img v-bind:src="pet.image" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h3 class="card-title">{{pet.animalname}}</h3>
+                        <h5 class="card-title">{{pet.species}}</h5>
+                        <p class="card-text">Age: {{pet.age}}</a><br><br>
+                        <a v-bind:href="url(pet.email,pet.animalname)" class="btn btn-primary">Details</a>
+                    </div>
+                </div>
+            </div>
+            <h1 style='text-align:center;margin: 80px 0px' v-else>No Matches Found</h1>
         </div>
  
  
