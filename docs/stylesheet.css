@@ -16,8 +16,7 @@ body{
 } */
 
 #homepage{
-    margin:20px 30px;
-
+    max-width: 100%;
 }
 
 #intro-pic{
