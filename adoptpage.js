@@ -29,7 +29,7 @@ function loadDisplay() {
       // User is signed out
       // ...
       let query = window.location.search
-      let url = "Login.html?page=Adopt_page.html" + query
+      let url = "Login.html?page=adoptpage.html" + query
       console.log(url)
       document.getElementById("login").innerText = "Log In"
       document.getElementById("login").setAttribute("href", url)
@@ -43,7 +43,7 @@ function logout() {
         alert("Signed out")
         let query = window.location.search
         console.log(query)
-        let url = "Adopt_page.html" + query
+        let url = "adoptpage.html" + query
         window.location.href=url
         }).catch((error) => {
         // An error happened.
@@ -68,7 +68,7 @@ const app = Vue.createApp({
     methods: {
 
         url(email,petName){
-            let url = "Adopt_page.html?name=" + email + "-" + petName
+            let url = "adoptpage.html?name=" + email + "-" + petName
             return url
         },
 
