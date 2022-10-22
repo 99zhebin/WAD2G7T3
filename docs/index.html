@@ -9,29 +9,52 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="stylesheet.css">
+    
+        <link rel="stylesheet" href="stylesheet.css">
 
 </head>
 
 <body>
 
-    <div class="container-fluid bg-secondary rounded-3 mx-auto" style="--bs-bg-opacity: .5; width: fit-content;">
-        <h1 class="text-center">Welcome to Pet Baguette</h1>
-    </div>
+    <!-- nav bar -->
 
-    <div class="text-center overlay">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate minima vero similique officiis eum nostrum
-        veniam iusto ex voluptatem iste fugit fuga eligendi eius exercitationem, rerum quos vel quas odio!
-    </div>
+    <nav class="navbar sticky-top navbar-light">
+        <div class="container-fluid">
 
-    <div class="container-fluid text-center">
-        <img src="./img/placeholder.jpg" class="img-fluid" alt="placeholder">
-    </div>
+            <!-- Website Name -->
+            <a class="navbar-brand" href="#"><i class='fas'>&#xf1b0;</i> PET BAGUETTE</a>
 
-    <div class="row mt-3">
-        <a class="btn btn-primary col" href="#" role="button" style="min-width: 150px;">Call to Action</a>
-        <a class="btn btn-primary col" href="#" role="button" style="min-width: 150px;">Call to Action</a>
-    </div>
+            <!-- Menu Icon -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- NavBar Items -->
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav" id="navbar">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active disabled" href="Adoption_page.html">Adoptions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="eventHome.html">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="login" href="#"></a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- Landing Page/Home Page -->
+
+    <!-- change font to navbar font -->
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
