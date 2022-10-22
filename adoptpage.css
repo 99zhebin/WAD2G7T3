@@ -1,18 +1,18 @@
     /* bryan's stuff */
 
-    /* The grid: Four equal columns that floats next to each other */
-    #opics {
-        float: left;
-        width: 7%;
-        margin-top: 10px;
-    }
+/* The grid: Four equal columns that floats next to each other */
+#opics {
+    float: left;
+    width: 7%;
+    margin-top: 10px;
+}
 
-    /* Style the images inside the grid */
-    #opics img {
-    opacity: 0.8;
-    cursor: pointer;
-    max-width: 100%;
-    }
+/* Style the images inside the grid */
+#opics img {
+opacity: 0.8;
+cursor: pointer;
+max-width: 100%;
+}
 
     #opics img:hover {
     opacity: 1;
@@ -31,13 +31,13 @@
     width: 100%;
     }
 
-    #opics img{
-    max-width: 100%;
-    }
+#opics img{
+max-width: 100%;
+}
 
-    #expandedImg {
-        border-radius: 35px;
-    }
+#expandedImg {
+    border-radius: 35px;
+}
 
     #petname {
         height: 50px;
@@ -64,6 +64,6 @@
 
     }
 
-    #PetPageButtons {
-        text-align: end;
-    }
+#PetPageButtons {
+    text-align: end;
+}
