@@ -1,0 +1,208 @@
+ 
+ <!doctype html>
+ <html lang="en">
+ <head>
+     <!-- Required meta tags -->
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+     <!-- Bootstrap CSS -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+ 
+     <!-- Awesome Font -->
+     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
+     <!-- Axios -->
+     <script src="https://unpkg.com/axios/dist/axios.js"></script>
+
+     <!-- Vue.js -->
+     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+ 
+     <!-- style sheet -->
+     <link rel="stylesheet" href="format.css">
+ 
+     <title>Adoption Listings</title>
+ 
+ </head>
+ <body onload="loadDisplay()">
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script> 
+    <!-- This is the API from Firebase Realtime Database -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script> 
+    <!-- API for Firebase Storage -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script> 
+    <!-- API for Firebase Authentication-->
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+ 
+     <!-- nav bar -->
+ 
+     <nav class="navbar sticky-top navbar-light">
+         <div class="container-fluid">
+ 
+             <!-- Website Name -->
+             <a class="navbar-brand"  href="#"><i class='fas'>&#xf1b0;</i>  PET BAGUETTE</a>
+ 
+             <!-- Menu Icon -->
+             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+             </button>
+             
+             <!-- NavBar Items -->
+             <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                 <ul class="navbar-nav" id="navbar">
+                     <li class="nav-item">
+                         <a class="nav-link" aria-current="page" href="#">Home</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link active disabled" href="Adoption_page.html">Adoptions</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="eventHome.html">Events</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" id="login" href="#"></a>
+                     </li>
+                 </ul>
+             </div>
+
+             
+ 
+         </div>
+     </nav>
+
+     <!-- Modal -->
+     <div class="modal fade" id="logout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="LogoutTitle">Logout?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you wish to logout?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="logout()">Log Out</button>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+     <!-- Adoption Filters -->
+ 
+     <div id="content">
+        <div id="filter" class="row my-2">
+            <div class="col-xl-2 col-lg-4 col-md-6 col-sm-8">
+                Species:<select class="form-select" aria-label="Default select example" id="species" v-model="speciesFilter">
+                    <option>Dog</option>
+                    <option>Cat</option>
+                    <option>Rabbit</option>
+                </select>
+            </div>
+            <div class="col-xl-2 col-lg-4 col-md-6 col-sm-8">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="hdb" id="hdb" v-model="hdbFilter">
+                    <label class="form-check-label" for="hdb">
+                      HDB Approved
+                    </label>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-4 col-md-6 col-sm-8">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="vacinnation" id="vaccination" v-model="vaccinationFilter">
+                    <label class="form-check-label" for="vaccination">
+                      Vaccinated
+                    </label>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-4 col-md-6 col-sm-8">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="health" id="health" v-model="healthFilter">
+                    <label class="form-check-label" for="health">
+                      No Health Issues
+                    </label>
+                </div>
+            </div>
+            <div class="col-1 justify-content-left align-self-center my-2">
+                <button class="btn btn-secondary" v-on:click="filter()">Filter</button>
+            </div>
+        </div>
+
+        <!-- Adoption Display -->
+
+        <div class="row d-flex justify-content-center align-items-center" id="pets">
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 my-3" v-if="(filtered.length != 0) && (filtered != 'not found')" v-for="pet of filtered">
+                <div class="card" style="width: 18rem;">
+                    <img v-bind:src="pet.image" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h3 class="card-title">{{pet.animalname}}</h3>
+                        <h5 class="card-title">{{pet.species}}</h5>
+                        <p class="card-text">Age: {{pet.age}}</a><br><br>
+                        <a v-bind:href="url(pet.email,pet.animalname)" class="btn btn-primary">Details</a>
+                    </div>
+                </div>
+            </div>
+            <h1 style='text-align:center;margin: 80px 0px' v-else-if="filtered == 'not found'">No Matches Found</h1>
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 my-3" v-else-if="pets.length != 0" v-for="pet of pets">
+                <div class="card" style="width: 18rem;">
+                    <img v-bind:src="pet.image" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h3 class="card-title">{{pet.animalname}}</h3>
+                        <h5 class="card-title">{{pet.species}}</h5>
+                        <p class="card-text">Age: {{pet.age}}</a><br><br>
+                        <a v-bind:href="url(pet.email,pet.animalname)" class="btn btn-primary">Details</a>
+                    </div>
+                </div>
+            </div>
+            <h1 style='text-align:center;margin: 80px 0px' v-else>No Matches Found</h1>
+        </div>
+ 
+ 
+     <!-- bottom info -->
+     <div class="bottomInfo">
+         <div class="row">
+ 
+             <!-- social media -->
+             <div class="col social">
+                 <p>CONTACT US</p>
+                 <span class="fa-stack fa-lg">
+                     <i class="fa fa-circle fa-stack-2x icon-background"></i>
+                     <i class="fa fa-facebook-f fa-stack-1x"></i>
+                 </span>   
+                 <span class="fa-stack fa-lg">
+                     <i class="fa fa-circle fa-stack-2x icon-background"></i>
+                     <i class="fa fa-instagram fa-stack-1x"></i>
+                 </span>   
+                 <span class="fa-stack fa-lg">
+                     <i class="fa fa-circle fa-stack-2x icon-background"></i>
+                     <i class="fa fa-envelope fa-stack-1x"></i>
+                 </span>
+             </div>
+ 
+             <!-- Subscribe Newsletter -->
+             <div class="col">
+                 <p>SUBSCRIBE TO OUR NEWSLETTER</p>
+                 <h8>Join our mailing to receive news about PET BAGUETTE!</h8>
+                 <form>
+                     <input type="text" placeholder="Email Address">
+                     <button class="submitEmail">Subscribe</button>
+                 </form>
+             </div>
+         </div>
+         
+     <!-- copyright -->
+     <div class="row copyright">
+         <h8>&copy; 2022 PET BAGUETTE</h8>
+     </div>
+ 
+     </div>
+     <!-- Javascript functions -->
+     <script src="Adoption_page.js"></script>
+     <!-- Bootstrap Bundle with Popper -->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+ </body>
+ </html>
