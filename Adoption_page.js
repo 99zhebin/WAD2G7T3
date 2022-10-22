@@ -27,7 +27,7 @@ function loadDisplay() {
         } else {
           // User is signed out
           // ...
-          let url = "Login.html?page=Adoption_page"
+          let url = "Login.html?page=Adoption_page.html"
           document.getElementById("login").innerText = "Log In"
           document.getElementById("login").setAttribute("href", url)
         }
