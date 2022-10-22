@@ -8,6 +8,8 @@ const firebaseConfig = {
     appId: "1:113592009297:web:fd8286678c0c18abc3ee70"
     };
 
+firebase.initializeApp(firebaseConfig);
+
 function loadDisplay() {
     console.log("--- loadDisplay() start ---")
     console.log("--- logInCheck() Start  ---")
@@ -93,7 +95,6 @@ const app = Vue.createApp({
 
     mounted() {
         console.log("--- Initialise Firebase ---")
-        firebase.initializeApp(firebaseConfig);
         let petArray = firebase.database().ref('adoption').orderByChild("timestamp")
         petArray.once('value').then((snapshot) => {
         if(snapshot.exists()) {
