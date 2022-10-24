@@ -130,7 +130,7 @@
 
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 my-3" v-for="event of events">
                 <div class="card" style="width: 18rem;">
-                    <img v-bind:src="event.pictures" class="card-img-top" alt="...">
+                    <img v-bind:src="event.pictures[0]" class="card-img-top" alt="...">
                     <h5 class="card-title">{{event.name}}</h5>
                     <h6 class="card-title">{{event.category}}</h6>
                     <button class="eventInfo" v-on:click="url(event.email,event.name)">LEARN MORE</button>

@@ -53,6 +53,8 @@ const app = Vue.createApp({
         return{
             event: [],
 
+            images: [],
+
             email:"",
 
             eventName:"",
@@ -96,6 +98,7 @@ const app = Vue.createApp({
                 if (events.email == this.email && events.name == this.eventName){
                     this.event = events
                     this.address = events.address
+                    this.images = events.pictures
                 }
             }
             this.api = "https://developers.onemap.sg/commonapi/search?searchVal=" + this.address + "&returnGeom=Y&getAddrDetails=Y&pageNum=1"

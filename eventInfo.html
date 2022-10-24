@@ -118,28 +118,13 @@
                 <div class="row">
                     <div class="col">
                         <!-- Expanded image -->
-                        <img v-bind:src="event.pictures" id="expandedImg" style="width:100%" >
+                        <img v-bind:src="images[0]" id="expandedImg" style="width:100%;height:100%" >
                     </div>
                 </div>
             
                 <div class="row">
-                    <div class="col-2" id="opics">
-                        <img src="event.jpg" onclick="myFunction(this);">
-                    </div>
-                    <div class="col-2" id="opics">
-                        <img src="event.jpg" onclick="myFunction(this);">
-                    </div>
-                    <div class="col-2" id="opics">
-                        <img src="event.jpg" onclick="myFunction(this);">
-                    </div>
-                    <div class="col-2" id="opics">
-                        <img src="event.jpg" onclick="myFunction(this);">
-                    </div>
-                    <div class="col-2" id="opics">
-                        <img src="event.jpg" onclick="myFunction(this);">
-                    </div>
-                    <div class="col-2" id="opics">
-                        <img src="event.jpg" onclick="myFunction(this);">
+                    <div class="col-2" id="opics" v-for="image of images">
+                        <img v-bind:src="image" style="width:100%;height:100%" onclick="myFunction(this);">
                     </div>
                 </div>
 

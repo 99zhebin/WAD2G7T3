@@ -88,7 +88,7 @@ const app = Vue.createApp({
         },
 
         url(email,petName){
-            let url = "Adopt_page.html?name=" + email + "-" + petName
+            let url = "adoptpage.html?name=" + email + "-" + petName
             return url
         },
     },
