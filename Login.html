@@ -11,9 +11,11 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <title>Login</title>
 
+    <link rel="stylesheet" href="loginpage.css">
+
     <style>
         body {
-            padding: 0px 30px
+            padding: 0px 30px;
         }
     </style>
 </head>
@@ -30,28 +32,29 @@
 <div class="row justify-content-center">
     <a class="navbar-brand"  href="#"><i class='fa'>&#xf1b0;</i>  PET BAGUETTE</a>
 </div>
-
-<div class="row justify-content-center">
-    <h1>Log In</h1>
-</div>
-
-<div class="row justify-content-center" id="content">
-    <div class="col-10 col-sm-8 col-md-6 col-lg-4">
-        <div class="input-group input-group-lg mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-lg">Email</span>
-            <input type="text" id="email" v-model="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+<hr>
+<div class="row justify-content-center" id="content" style="background-image: url('logingbg2.jpg'); height: 90vh; width: 100%; background-size:cover; ">
+    <div class="col-sm-8 col-md-6 col-lg-4 main" style="margin-top: 15%;">
+        <div style="text-align: center; margin-top: 40px;"><span class="sign">Sign in</span></div>
+        <div class="input-group input-group-lg mb-3" style="text-align: center;">
+            <input type="text" id="email" v-model="email" class="un" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Email">
         </div>
         <span id="emailError" v-if="emailError != ''">{{emailError}}</span>
         
         <div class="input-group input-group-lg mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-lg">Password</span>
-            <input type="password" id="password" v-model="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+            <input type="password" id="password" v-model="password" class="pass" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Password">
         </div>
         <span id="passwordError" v-if="passwordError != ''">{{passwordError}}</span>
 
-        <button class="btn btn-dark" v-on:click="login()" v-bind:disabled="inputCheck()">Submit</button>
-        <button class="btn btn-dark" v-on:click="signup()">Sign Up</button>
-        <button class="btn btn-dark" v-on:click="back()">Back</button>
+        <div style="text-align: center;">
+            <button class="btn btn-dark submit" v-on:click="login()" v-bind:disabled="inputCheck()">Sign In</button>
+        </div>
+
+        <div style="position: relative;">
+            <button class="btn btn-dark signup" v-on:click="signup()">Sign Up</button>
+            <button class="btn btn-dark back" v-on:click="back()">Back</button>
+        </div>
+
     </div> 
 </div>
 
