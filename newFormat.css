@@ -63,16 +63,13 @@ hr{
 .icon-background {
     color:lavender;
 }
-.submitEmail{
-    background-color:lemonchiffon;
-    border:1px solid goldenrod;
-    border-radius: 10px;
-    text-align: middle;
-    vertical-align: middle;
-    padding: 10px;
-    font-weight: bold;
-    margin-top: 20px;
-}
 .copyright{
     padding-top:30px;
 }
+
+/* buttons */
+.button{
+    border:2px solid black;
+    font-size: 15px;
+}
+
