@@ -15,8 +15,8 @@
     <script src="https://unpkg.com/axios/dist/axios.js"></script>
 
     <!-- style sheet -->
-    <link rel="stylesheet" href="newFormat.css">
-    <link rel="stylesheet" href="newHomePage.css">
+    <link rel="stylesheet" href="../newFormat.css">
+    <link rel="stylesheet" href="newProfile.css">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat' >
 
 </head>
@@ -65,7 +65,125 @@
 
     <!-- content -->
 
+    <div class="content">
 
+        <div class="row">
+        
+            <div class="col-lg-6 col-xl-6 box">
+                <div class="profile">
+                    <!-- profile pic -->
+                    <div class="row" style="align-item:center;">
+                        <img class="profilePic" src="images/profilePic.jpg">
+                    </div>
+
+                    <!-- name -->
+                    <div class="row" >
+                        <p style="font-size:25px;text-align: center;">Name</p>
+                    </div>
+
+                    <!-- details -->
+                    <div class="row">
+                        <table class="details">
+                            <tr>
+                                <td><i class="fa fa-user"></i></td>
+                                <td>Username</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-envelope"></i></td>
+                                <td>Email Address</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-map-marker"></i></td>
+                                <td>Region (eg. northeast)</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- make these 2 tgt equals to height of the details (see tele for inspo pic) -->
+            <!-- bio -->
+            <div class="col-lg-6 col-xl-6" style="padding:0">
+                <div class="row box" >
+                    <div class="profile">
+                        <p style="font-size:25px;text-align: center;">Bio</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum tempora impedit, eius culpa molestias nulla labore sit vel adipisci magnam quae quo.</p>
+                    </div>
+                </div>
+            
+            <!-- favourite pets -->
+                <div class="row box">
+                    <div class="profile">
+                        <p style="font-size:25px;text-align: center;">Favourite Pet(s)</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum tempora impedit, eius culpa molestias nulla labore sit vel adipisci magnam quae quo.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- edit button -->
+        <div class="row">
+            <div style="text-align: center; padding-bottom:20px;">
+                <a href="" class="btn button">EDIT PROFILE</a>
+            </div>
+        </div>
+
+        <!-- posts -->
+        <div class="row">
+            <p style="font-size:25px;text-align: center;">Posts</p>
+
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-12" v-for="instance of filtered">
+                    <a :href="url(instance.email,instance.name)" style="text-decoration:none;color: black;">
+                        <div class="card">
+                            <img :src="instance.pictures[0]" class="card-img-top">
+                            <div class="card-body p-0">
+                                <h8 class="card-title" >{{instance.name}}</h8>
+                                <p class="card-text" >{{instance.address}} - {{instance.time}}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-12" v-for="instance of filtered">
+                    <a :href="url(instance.email,instance.name)" style="text-decoration:none;color: black;">
+                        <div class="card">
+                            <img :src="instance.pictures[0]" class="card-img-top">
+                            <div class="card-body p-0">
+                                <h8 class="card-title" >{{instance.name}}</h8>
+                                <p class="card-text" >{{instance.address}} - {{instance.time}}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-12" v-for="instance of filtered">
+                    <a :href="url(instance.email,instance.name)" style="text-decoration:none;color: black;">
+                        <div class="card">
+                            <img :src="instance.pictures[0]" class="card-img-top">
+                            <div class="card-body p-0">
+                                <h8 class="card-title" >{{instance.name}}</h8>
+                                <p class="card-text" >{{instance.address}} - {{instance.time}}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-12" v-for="instance of filtered">
+                    <a :href="url(instance.email,instance.name)" style="text-decoration:none;color: black;">
+                        <div class="card">
+                            <img :src="instance.pictures[0]" class="card-img-top">
+                            <div class="card-body p-0">
+                                <h8 class="card-title" >{{instance.name}}</h8>
+                                <p class="card-text" >{{instance.address}} - {{instance.time}}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <!-- bottom info -->
@@ -96,7 +214,7 @@
                 <p>SUBSCRIBE TO OUR NEWSLETTER</p>
                 <form>
                     <input type="text" placeholder="Email Address"><br>
-                    <a href="" class="btn homeBtn" style="margin-top:15px;">SUBMIT</a>
+                    <a href="" class="btn button" style="margin-top:15px;">SUBMIT</a>
                 </form>
             </div>
         </div>
