@@ -14,8 +14,9 @@
     <!-- Axios -->
     <script src="https://unpkg.com/axios/dist/axios.js"></script>
 
-    <!-- Vue.js -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- heart button -->
+    <link rel="stylesheet" type="text/css" href="https://demo.plantpot.works/assets/css/normalize.css">
+    <link rel="stylesheet" href="https://use.typekit.net/opg3wle.css">
 
     <!-- style sheet -->
     <link rel="stylesheet" href="../newFormat.css">
@@ -26,107 +27,80 @@
 
 <!-- maybe make a icon to show those that alr show interest -->
 
-<body onload="loadDisplay()">
-
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script> 
-    <!-- This is the API from Firebase Realtime Database -->
-    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script> 
-    <!-- API for Firebase Storage -->
-    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script> 
-    <!-- API for Firebase Authentication-->
-    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
-
+<body>
     <!-- nav bar -->
 
     <nav class="navbar sticky-top navbar-light">
 
-        <!-- Website Name -->
-        <a class="navbar-brand "  href="/homepage/newHomepage.html">
-            <div class="row" style="margin:0;">
-                <div class="col">
-                    <iframe src="https://embed.lottiefiles.com/animation/43901" style="width:50px;height:50px;"></iframe>
-                </div>
-                <div class="col my-auto">
-                    <h8>PET BAGUETTE</h8>
-                </div>
-            </div>
-        </a>
+            <!-- Website Name -->
+            <a class="navbar-brand "  href="../homepage/newHomepage.html">
+                    <div class="row" style="margin:0;">
+                        <div class="col">
+                            <iframe src="https://embed.lottiefiles.com/animation/43901" style="height: 50px; width: 50px;"></iframe>
+                        </div>
+                        <div class="col my-auto">
+                            <h8>PET BAGUETTE</h8>
+                        </div>
 
-        <!-- Menu Icon -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        <!-- NavBar Items -->
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav" id="navbar">
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/homepage/newHomepage.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">Adoptions</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled">Events</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="login" href="#">Log In</a>
-                </li>
-            </ul>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Menu Icon -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- NavBar Items -->
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav" id="navbar">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="../homepage/newHomepage.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../adoptionHome/adoptionHome.html">Adoptions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../eventHome/newEventHome.html">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="login" href="3">Log In</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
-
-    <!-- Modal -->
-    <div class="modal fade" id="logout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="LogoutTitle">Logout?</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you wish to logout?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="logout()">Log Out</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <hr>
 
     <!-- filter bar -->
     <!-- problem: selected dont apply to others -->
     <!-- put nav bar stuff in? -->
-    <div class="filterBar" id="content">
+    <div class="filterBar">
         <div class="row">
 
             <div class="col filterItem">
-                <a v-bind:class="{ active: emergencyFilter }" id="Emergency" v-on:click="filter(emergency)" href="#">
+                <a class="active" href="#">
                     <img class="filterIcon" src="filterIcons/siren.png"><br>
                     <h8>Emergency</h8>
                 </a>
             </div>
 
             <div class="col filterItem">
-                    <a v-bind:class="{ active: driveFilter }" id="Adoption Drive" v-on:click="filter(drive)" href="#">
+                    <a href="#">
                         <img class="filterIcon" src="filterIcons/house.png"><br>
                         <h8>Drives</h8>
                     </a>
             </div>
 
             <div class="col filterItem">
-                <a v-bind:class="{ active: fundFilter }" id="Fundraising" v-on:click="filter(fund)" href="#">
+                <a href="#">
                     <img class="filterIcon" src="filterIcons/donate.png"><br>
                     <h8>Fundraising</h8>
                 </a>
             </div>
 
             <div class="col filterItem">
-                <a v-bind:class="{ active: volunteerFilter }" id="Volunteering" v-on:click="filter(volunteer)" href="#">
+                <a href="#">
                     <img class="filterIcon" src="filterIcons/volunteer.png"><br>
                     <h8>Volunteering</h8>
                 </a>
@@ -136,48 +110,125 @@
     </div>
 
     <!-- events -->
-    <!-- use a card but how to do the alignment like airbnb -->
-    <!-- insert bootstrap -->
     <div class="row">
-        <div class="col event">
-            <img class="eventImage" src="images/event1.png"><br><br>
-            <div class="row">
-
-                <div class="col">
-                    <h8>Event Name</h8><br>
-                    <h8 style="font-weight:lighter;">Location</br>Date, Time</h8>
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <a>
+                <div class="card">
+                    <img src="images/event1.png" class="card-img-top">
+                    <div class="card-body p-0">
+                        <h8 class="card-title" >Event Name</h8>
+                        <p class="card-text" >Location<br>Date,Time</p>
+                    </div>
                 </div>
+            </a>
+        </div>
 
-                <div class="col">
-                    insert heart like button
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <a>
+                <div class="card">
+                    <img src="images/event2.jpg" class="card-img-top">
+                    <div class="card-body p-0">
+                        <h8 class="card-title" >Event Name</h8>
+                        <p class="card-text" >Location<br>Date,Time</p>
+                    </div>
                 </div>
-
-            </div>
-            
+            </a>
         </div>
 
-        <div class="col event">
-            <img class="eventImage" src="images/event2.jpg"><br><br>
-            <h8>Event Name</h8><br>
-            <h8 style="font-weight:lighter;">Location</br>Date, Time</h8>
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <a>
+                <div class="card">
+                    <img src="images/event1.png" class="card-img-top">
+                    <div class="card-body p-0">
+                        <h8 class="card-title" >Event Name</h8>
+                        <p class="card-text" >Location<br>Date,Time</p>
+                    </div>
+                </div>
+            </a>
         </div>
 
-        <div class="col event">
-            <img class="eventImage" src="images/event1.png"><br><br>
-            <h8>Event Name</h8><br>
-            <h8 style="font-weight:lighter;">Location</br>Date, Time</h8>
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <a>
+                <div class="card">
+                    <img src="images/event2.jpg" class="card-img-top">
+                    <div class="card-body p-0">
+                        <h8 class="card-title" >Event Name</h8>
+                        <p class="card-text" >Location<br>Date,Time</p>
+                    </div>
+                </div>
+            </a>
         </div>
 
-        <div class="col event">
-            <img class="eventImage" src="images/event2.jpg"><br><br>
-            <h8>Event Name</h8><br>
-            <h8 style="font-weight:lighter;">Location</br>Date, Time</h8>
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <a>
+                <div class="card">
+                    <img src="images/event1.png" class="card-img-top">
+                    <div class="card-body p-0">
+                        <h8 class="card-title" >Event Name</h8>
+                        <p class="card-text" >Location<br>Date,Time</p>
+                    </div>
+                </div>
+            </a>
         </div>
 
-        <div class="col event">
-            <img class="eventImage" src="images/event1.png"><br><br>
-            <h8>Event Name</h8><br>
-            <h8 style="font-weight:lighter;">Location</br>Date, Time</h8>
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <a>
+                <div class="card">
+                    <img src="images/event2.jpg" class="card-img-top">
+                    <div class="card-body p-0">
+                        <h8 class="card-title" >Event Name</h8>
+                        <p class="card-text" >Location<br>Date,Time</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <a>
+                <div class="card">
+                    <img src="images/event1.png" class="card-img-top">
+                    <div class="card-body p-0">
+                        <h8 class="card-title" >Event Name</h8>
+                        <p class="card-text" >Location<br>Date,Time</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <a>
+                <div class="card">
+                    <img src="images/event2.jpg" class="card-img-top">
+                    <div class="card-body p-0">
+                        <h8 class="card-title" >Event Name</h8>
+                        <p class="card-text" >Location<br>Date,Time</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <a>
+                <div class="card">
+                    <img src="images/event1.png" class="card-img-top">
+                    <div class="card-body p-0">
+                        <h8 class="card-title" >Event Name</h8>
+                        <p class="card-text" >Location<br>Date,Time</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <a>
+                <div class="card">
+                    <img src="images/event2.jpg" class="card-img-top">
+                    <div class="card-body p-0">
+                        <h8 class="card-title" >Event Name</h8>
+                        <p class="card-text" >Location<br>Date,Time</p>
+                    </div>
+                </div>
+            </a>
         </div>
 
     </div>
@@ -209,10 +260,9 @@
             <!-- make the form look less weird on com big screen? -->
             <div class="col">
                 <p>SUBSCRIBE TO OUR NEWSLETTER</p>
-                <h8>Join our mailing to receive <br> news about PET BAGUETTE!</h8>
                 <form>
-                    <input type="text" placeholder="Email Address"> <br>
-                    <button class="submitEmail">Subscribe</button>
+                    <input type="text" placeholder="Email Address"><br>
+                    <a href="" class="btn button" style="margin-top:15px;">SUBMIT</a>
                 </form>
             </div>
         </div>
@@ -226,8 +276,6 @@
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
-    <!-- Javascript functions -->
-    <script src="newEventHome.js"></script>
     
     <script>
         
@@ -235,4 +283,3 @@
 
 </body>
 </html>
-
