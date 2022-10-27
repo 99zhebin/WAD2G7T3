@@ -27,7 +27,7 @@
     <nav class="navbar sticky-top navbar-light">
 
         <!-- Website Name -->
-        <a class="navbar-brand "  href="#">
+        <a class="navbar-brand "  href="../homepage/newHomepage.html">
             <div class="row" style="margin:0;">
                 <div class="col">
                     <iframe src="https://embed.lottiefiles.com/animation/43901" style="width:50px;height:50px;"></iframe>
@@ -134,53 +134,111 @@
             <p style="font-size:25px;text-align: center;">Posts</p>
 
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-12" v-for="instance of filtered">
-                    <a :href="url(instance.email,instance.name)" style="text-decoration:none;color: black;">
+
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <a>
                         <div class="card">
-                            <img :src="instance.pictures[0]" class="card-img-top">
+                            <img src="images/event1.png" class="card-img-top">
                             <div class="card-body p-0">
-                                <h8 class="card-title" >{{instance.name}}</h8>
-                                <p class="card-text" >{{instance.address}} - {{instance.time}}</p>
+                                <h8 class="card-title" >Event Name</h8>
+                                <p class="card-text" >Location<br>Date,Time</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+        
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <a>
+                        <div class="card">
+                            <img src="images/event2.jpg" class="card-img-top">
+                            <div class="card-body p-0">
+                                <h8 class="card-title" >Event Name</h8>
+                                <p class="card-text" >Location<br>Date,Time</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <a>
+                        <div class="card">
+                            <img src="images/event1.png" class="card-img-top">
+                            <div class="card-body p-0">
+                                <h8 class="card-title" >Event Name</h8>
+                                <p class="card-text" >Location<br>Date,Time</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+        
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <a>
+                        <div class="card">
+                            <img src="images/event2.jpg" class="card-img-top">
+                            <div class="card-body p-0">
+                                <h8 class="card-title" >Event Name</h8>
+                                <p class="card-text" >Location<br>Date,Time</p>
                             </div>
                         </div>
                     </a>
                 </div>
 
-                <div class="col-lg-3 col-md-6 col-sm-12" v-for="instance of filtered">
-                    <a :href="url(instance.email,instance.name)" style="text-decoration:none;color: black;">
+            </div>
+        </div>
+
+        <!-- liked posts -->
+        <div class="row">
+            <p style="font-size:25px;text-align: center;">Liked Posts</p>
+
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <a>
                         <div class="card">
-                            <img :src="instance.pictures[0]" class="card-img-top">
+                            <img src="images/event1.png" class="card-img-top">
                             <div class="card-body p-0">
-                                <h8 class="card-title" >{{instance.name}}</h8>
-                                <p class="card-text" >{{instance.address}} - {{instance.time}}</p>
+                                <h8 class="card-title" >Event Name</h8>
+                                <p class="card-text" >Location<br>Date,Time</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+        
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <a>
+                        <div class="card">
+                            <img src="images/event2.jpg" class="card-img-top">
+                            <div class="card-body p-0">
+                                <h8 class="card-title" >Event Name</h8>
+                                <p class="card-text" >Location<br>Date,Time</p>
                             </div>
                         </div>
                     </a>
                 </div>
 
-                <div class="col-lg-3 col-md-6 col-sm-12" v-for="instance of filtered">
-                    <a :href="url(instance.email,instance.name)" style="text-decoration:none;color: black;">
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <a>
                         <div class="card">
-                            <img :src="instance.pictures[0]" class="card-img-top">
+                            <img src="images/event1.png" class="card-img-top">
                             <div class="card-body p-0">
-                                <h8 class="card-title" >{{instance.name}}</h8>
-                                <p class="card-text" >{{instance.address}} - {{instance.time}}</p>
+                                <h8 class="card-title" >Event Name</h8>
+                                <p class="card-text" >Location<br>Date,Time</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+        
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <a>
+                        <div class="card">
+                            <img src="images/event2.jpg" class="card-img-top">
+                            <div class="card-body p-0">
+                                <h8 class="card-title" >Event Name</h8>
+                                <p class="card-text" >Location<br>Date,Time</p>
                             </div>
                         </div>
                     </a>
                 </div>
 
-                <div class="col-lg-3 col-md-6 col-sm-12" v-for="instance of filtered">
-                    <a :href="url(instance.email,instance.name)" style="text-decoration:none;color: black;">
-                        <div class="card">
-                            <img :src="instance.pictures[0]" class="card-img-top">
-                            <div class="card-body p-0">
-                                <h8 class="card-title" >{{instance.name}}</h8>
-                                <p class="card-text" >{{instance.address}} - {{instance.time}}</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
             </div>
         </div>
     </div>
