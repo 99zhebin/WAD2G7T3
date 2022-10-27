@@ -36,7 +36,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script> 
     <!-- API for Firebase Authentication-->
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
-    
+
     <!-- nav bar -->
 
     <nav class="navbar sticky-top navbar-light">
@@ -105,34 +105,30 @@
         <div class="row">
 
             <div class="col filterItem">
-                <a class="active" id="Emergency" v-on:click="filter(emergency)" href="#">
+                <a v-bind:class="{ active: emergencyFilter }" id="Emergency" v-on:click="filter(emergency)" href="#">
                     <img class="filterIcon" src="filterIcons/siren.png"><br>
                     <h8>Emergency</h8>
-                    <hr v-if="emergencyFilter">
                 </a>
             </div>
 
             <div class="col filterItem">
-                    <a id="Adoption Drive" v-on:click="filter(drive)" href="#">
+                    <a v-bind:class="{ active: driveFilter }" id="Adoption Drive" v-on:click="filter(drive)" href="#">
                         <img class="filterIcon" src="filterIcons/house.png"><br>
                         <h8>Adoption Drive</h8>
-                        <hr v-if="driveFilter">
                     </a>
             </div>
 
             <div class="col filterItem">
-                <a id="Fundraising" v-on:click="filter(fund)" href="#">
+                <a v-bind:class="{ active: fundFilter }" id="Fundraising" v-on:click="filter(fund)" href="#">
                     <img class="filterIcon" src="filterIcons/donate.png"><br>
                     <h8>Fundraising</h8>
-                    <hr v-if="fundFilter">
                 </a>
             </div>
 
             <div class="col filterItem">
-                <a id="Volunteering" v-on:click="filter(volunteer)" href="#">
+                <a v-bind:class="{ active: volunteerFilter }" id="Volunteering" v-on:click="filter(volunteer)" href="#">
                     <img class="filterIcon" src="filterIcons/volunteer.png"><br>
                     <h8>Volunteering</h8>
-                    <hr v-if="volunteerFilter">
                 </a>
             </div>
 
