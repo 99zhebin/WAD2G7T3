@@ -1,0 +1,43 @@
+h4{
+    padding:10px 0px;
+}
+.username{
+    color:black;
+    text-decoration: none;
+}
+
+/* The grid: Four equal columns that floats next to each other */
+#opics {
+    float: left;
+    margin-top: 10px;
+}
+
+/* Style the images inside the grid */
+#opics img {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+#opics img:hover {
+    opacity: 1;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* The expanding image container (positioning is needed to position the close button and the text) */
+#opics img{
+    max-width: 100%;
+}
+
+#expandedImg {
+    border-radius: 35px;
+}
+/* location api */
+#locationAPI{
+    width:100%;
+}

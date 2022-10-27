@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Awesome Font -->
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Axios -->
+    <script src="https://unpkg.com/axios/dist/axios.js"></script>
+
+    <!-- style sheet -->
+    <link rel="stylesheet" href="../newFormat.css">
+    <link rel="stylesheet" href="newEventInfo.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat' >
+
+</head>
+
+<body>
+    <!-- nav bar -->
+
+    <nav class="navbar sticky-top navbar-light">
+
+        <!-- Website Name -->
+        <a class="navbar-brand "  href="../homepage/newHomepage.html">
+            <div class="row" style="margin:0;">
+                <div class="col">
+                    <iframe src="https://embed.lottiefiles.com/animation/43901" style="width:50px;height:50px;"></iframe>
+                </div>
+                <div class="col my-auto">
+                    <h8>PET BAGUETTE</h8>
+                </div>
+            </div>
+        </a>
+
+        <!-- Menu Icon -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <!-- NavBar Items -->
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav" id="navbar">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="../homepage/newHomepage.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../adoptionHome/adoptionHome.html">Adoptions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../eventHome/newEventHome.html">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="login" href="#">Log In</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <hr>
+
+    <!-- content -->
+    
+    <div class="content">
+        <!-- Event Title -->
+        <div class="row">
+            <h2>Event Name</h2>
+        </div>
+
+        <!-- User who posted -->
+        <div class= "row">
+            <h8>
+                <i class="fa fa-user"></i> &nbsp
+                <a class="username" href="../profile/newProfile.html">Username</a>
+            </h8>
+        </div>
+
+        <div class="row" >
+            <div class="col-sm-12 col-lg-6">
+
+                <!-- Pictures -->
+                <!-- pic sizes so weird cos their size diff -->
+                <div class="row">
+                    <div class="col">
+                        <!-- Expanded image -->
+                        <img src="images/event1.jpg" id="expandedImg" style="width:100%" >
+                    </div>
+                </div>
+            
+                <div class="row">
+                    <div class="col-2" id="opics">
+                        <img src="images/event1.jpg" onclick="myFunction(this);">
+                    </div>
+                    <div class="col-2" id="opics">
+                        <img src="images/event2.jpg" onclick="myFunction(this);">
+                    </div>
+                    <div class="col-2" id="opics">
+                        <img src="images/event3.jpg" onclick="myFunction(this);">
+                    </div>
+                    <div class="col-2" id="opics">
+                        <img src="images/event1.jpg" onclick="myFunction(this);">
+                    </div>
+                    <div class="col-2" id="opics">
+                        <img src="images/event2.jpg" onclick="myFunction(this);">
+                    </div>
+                    <div class="col-2" id="opics">
+                        <img src="images/event3.jpg" onclick="myFunction(this);">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-sm-12 col-lg-6 col-xl-6">
+
+                <!-- Description -->
+                <h4 style="padding-top:30px;">Event Description</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, tempore maiores quam, unde ex expedita reiciendis aliquam tenetur ut fugiat dolor quidem odit maxime tempora modi molestias possimus odio vitae!</p>
+                
+                <!-- details -->
+                <h4>Event Details</h4>
+                <!-- date -->
+                <p>
+                    <i class="fa fa-calendar"></i> &emsp;
+                    Date
+                </p>
+                <!-- time -->
+                <p>
+                    <i class="fa fa-clock"></i> &emsp;
+                    Time
+                </p>
+                <!-- location -->
+                <p>
+                    <i class="fa fa-map-marker"></i> &emsp;
+                    Location
+                </p>
+
+                <!-- link to event website-->
+                <button class="btn button" href="#">LEARN MORE</button>
+            </div>
+        </div>
+
+        <!-- location api -->
+        <!-- the map size abit weird -->
+        <div class="row">
+            <h4>Where you'll be</h4>
+            <iframe id="locationAPI" src="" scrolling="no" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+        </div>
+        
+    </div>
+
+    <!-- bottom info -->
+    <hr>
+    <div class="bottomInfo">
+        <div class="row">
+
+            <!-- social media -->
+            <div class="col social">
+                <p>CONTACT US</p>
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x icon-background"></i>
+                    <i class="fa fa-facebook-f fa-stack-1x"></i>
+                </span>   
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x icon-background"></i>
+                    <i class="fa fa-instagram fa-stack-1x"></i>
+                </span>   
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x icon-background"></i>
+                    <i class="fa fa-envelope fa-stack-1x"></i>
+                </span>
+            </div>
+
+            <!-- Subscribe Newsletter -->
+            <!-- make the form look less weird on com big screen? -->
+            <div class="col">
+                <p>SUBSCRIBE TO OUR NEWSLETTER</p>
+                <form>
+                    <input type="text" placeholder="Email Address"><br>
+                    <a href="" class="btn button" style="margin-top:15px;">SUBMIT</a>
+                </form>
+            </div>
+        </div>
+        
+        <!-- copyright -->
+        <div class="row copyright">
+            <h8>&copy; 2022 PET BAGUETTE</h8>
+        </div>
+    </div>
+
+    
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
+
+    <script>
+        // images
+        function myFunction(imgs) {
+            // Get the expanded image
+            var expandImg = document.getElementById("expandedImg");
+            // Get the image text
+            var imgText = document.getElementById("imgtext");
+            // Use the same src in the expanded image as the image being clicked on from the grid
+            expandImg.src = imgs.src;
+            // Use the value of the alt attribute of the clickable image as text inside the expanded image
+            imgText.innerHTML = imgs.alt;
+            // Show the container element (hidden with CSS)
+            expandImg.parentElement.style.display = "block";
+        }
+
+        // location api
+        // convert address to latitude and longitude
+        function addressToLatLong(){
+            var eventAddress = "SMU";
+            $.ajax({
+            url: `https://developers.onemap.sg/commonapi/search?searchVal=${eventAddress}&returnGeom=Y&getAddrDetails=Y&pageNum=1`,
+            success: function(locationDetails){
+                var latitude = locationDetails["results"][0]["LATITUDE"];
+                var longitude = locationDetails["results"][0]["LONGITUDE"];
+                var apiLink = `https://www.onemap.gov.sg/minimap/mm.html?mapStyle=Default&zoomLevel=17&latLng=${latitude},${longitude}`;
+                document.getElementById("locationAPI").src = apiLink;
+            }});
+
+        }
+        // insert the latitude and longitude into onemap link
+        addressToLatLong();
+    </script>
+</body>
+</html>
