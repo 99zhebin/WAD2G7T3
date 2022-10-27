@@ -1,4 +1,13 @@
 /* moving dog */
+
+html,
+body {
+
+    max-width: 100%;
+    overflow-x: hidden;
+
+}
+
 #move {
     animation-duration: 4s;
     animation-name: slidein;
@@ -19,16 +28,18 @@
 }
 
 /* nav cards */
-.card{
-    border:0;
+.card {
+    border: 0;
     align-items: center;
-    padding:0 30px;
+    padding: 0 30px;
 }
-.card-title{
+
+.card-title {
     font-family: 'Montserrat' !important;
-    font-weight:bold;
+    font-weight: bold;
     font-size: 20px;
 }
-.card-text{
-    font-weight:normal;
+
+.card-text {
+    font-weight: normal;
 }
