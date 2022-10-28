@@ -24,12 +24,16 @@
     font-family: 'Montserrat';
     font-weight: normal; 
     font-size: 15px;
+    color:black;
+    text-decoration: none;
 }
 
 .card-title {
     font-family: 'Montserrat';
     font-weight: bold; 
     font-size: 15px;
+    color:black;
+    text-decoration: none;
 }
 
 .card {
