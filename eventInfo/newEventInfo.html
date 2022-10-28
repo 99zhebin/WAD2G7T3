@@ -11,6 +11,9 @@
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <!-- Vue.js -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
     <!-- Axios -->
     <script src="https://unpkg.com/axios/dist/axios.js"></script>
 
@@ -21,7 +24,17 @@
 
 </head>
 
-<body>
+<body onload="loadDisplay()">
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script> 
+    <!-- This is the API from Firebase Realtime Database -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script> 
+    <!-- API for Firebase Storage -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script> 
+    <!-- API for Firebase Authentication-->
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+
     <!-- nav bar -->
 
     <nav class="navbar sticky-top navbar-light">
@@ -61,21 +74,41 @@
             </ul>
         </div>
     </nav>
+
+    <!-- Modal -->
+    <div class="modal fade" id="logout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="LogoutTitle">Logout?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you wish to logout?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="logout()">Log Out</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <hr>
 
     <!-- content -->
     
-    <div class="content">
+    <div class="content" id="content">
         <!-- Event Title -->
         <div class="row">
-            <h2>Event Name</h2>
+            <h2>{{events.name}}</h2>
         </div>
 
         <!-- User who posted -->
         <div class= "row">
             <h8>
                 <i class="fa fa-user"></i> &nbsp
-                <a class="username" href="../profile/newProfile.html">Username</a>
+                <a class="username" v-bind:href="url(events.email)">{{events.email}}</a>
             </h8>
         </div>
 
@@ -87,15 +120,15 @@
                 <div class="row">
                     <div class="col">
                         <!-- Expanded image -->
-                        <img src="images/event1.jpg" id="expandedImg" style="width:100%" >
+                        <img :src="events.pictures[0]" id="expandedImg" style="width:100%" >
                     </div>
                 </div>
             
                 <div class="row">
-                    <div class="col-2" id="opics">
-                        <img src="images/event1.jpg" onclick="myFunction(this);">
+                    <div class="col-2" id="opics" v-for="image of events.pictures">
+                        <img :src="image" onclick="myFunction(this);">
                     </div>
-                    <div class="col-2" id="opics">
+                    <!-- <div class="col-2" id="opics">
                         <img src="images/event2.jpg" onclick="myFunction(this);">
                     </div>
                     <div class="col-2" id="opics">
@@ -109,7 +142,7 @@
                     </div>
                     <div class="col-2" id="opics">
                         <img src="images/event3.jpg" onclick="myFunction(this);">
-                    </div>
+                    </div> -->
                 </div>
 
             </div>
@@ -118,24 +151,24 @@
 
                 <!-- Description -->
                 <h4 style="padding-top:30px;">Event Description</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, tempore maiores quam, unde ex expedita reiciendis aliquam tenetur ut fugiat dolor quidem odit maxime tempora modi molestias possimus odio vitae!</p>
+                <p>{{events.description}}</p>
                 
                 <!-- details -->
                 <h4>Event Details</h4>
                 <!-- date -->
                 <p>
                     <i class="fa fa-calendar"></i> &emsp;
-                    Date
+                    {{events.date}}
                 </p>
                 <!-- time -->
                 <p>
                     <i class="fa fa-clock"></i> &emsp;
-                    Time
+                    {{events.time}}
                 </p>
                 <!-- location -->
                 <p>
                     <i class="fa fa-map-marker"></i> &emsp;
-                    Location
+                    {{events.address}}
                 </p>
 
                 <!-- link to event website-->
@@ -211,22 +244,22 @@
             expandImg.parentElement.style.display = "block";
         }
 
-        // location api
-        // convert address to latitude and longitude
-        function addressToLatLong(){
-            var eventAddress = "SMU";
-            $.ajax({
-            url: `https://developers.onemap.sg/commonapi/search?searchVal=${eventAddress}&returnGeom=Y&getAddrDetails=Y&pageNum=1`,
-            success: function(locationDetails){
-                var latitude = locationDetails["results"][0]["LATITUDE"];
-                var longitude = locationDetails["results"][0]["LONGITUDE"];
-                var apiLink = `https://www.onemap.gov.sg/minimap/mm.html?mapStyle=Default&zoomLevel=17&latLng=${latitude},${longitude}`;
-                document.getElementById("locationAPI").src = apiLink;
-            }});
+        // // location api
+        // // convert address to latitude and longitude
+        // function addressToLatLong(){
+        //     var eventAddress = "SMU";
+        //     $.ajax({
+        //     url: `https://developers.onemap.sg/commonapi/search?searchVal=${eventAddress}&returnGeom=Y&getAddrDetails=Y&pageNum=1`,
+        //     success: function(locationDetails){
+        //         var latitude = locationDetails["results"][0]["LATITUDE"];
+        //         var longitude = locationDetails["results"][0]["LONGITUDE"];
+        //         var apiLink = `https://www.onemap.gov.sg/minimap/mm.html?mapStyle=Default&zoomLevel=17&latLng=${latitude},${longitude}`;
+        //         document.getElementById("locationAPI").src = apiLink;
+        //     }});
 
-        }
-        // insert the latitude and longitude into onemap link
-        addressToLatLong();
+        // }
+        // // insert the latitude and longitude into onemap link
+        // addressToLatLong();
     </script>
 </body>
 </html>
