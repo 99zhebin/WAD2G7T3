@@ -102,7 +102,7 @@ const app = Vue.createApp({
         },
 
         url(email,eventName){
-            let url = "eventInfo.html?name=" + email + "-" + eventName
+            let url = "../eventInfo/newEventInfo.html?name=" + email + "-" + eventName
             return url
         },
 
