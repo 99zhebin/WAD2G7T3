@@ -1,7 +1,10 @@
 .profile{
     background-color:bisque;
     border-radius:15px;
-    padding:30px;
+}
+.profileright {
+    background-color:transparent;
+    height: 100%;
 }
 .profilePic{
     border-radius:50%;
@@ -11,12 +14,6 @@
 .name{
     text-align:center; 
     font-size:25px;
-}
-.details{
-    border:0;
-}
-.details td{
-    padding:10px;
 }
 
 /* posts */
@@ -40,4 +37,5 @@
 .card-img-top {
     border-radius: 25px;
     padding-bottom: 20px;
+    height: 300px;
 }
