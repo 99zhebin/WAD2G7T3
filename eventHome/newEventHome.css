@@ -40,5 +40,6 @@
 .card-img-top {
     border-radius: 25px;
     padding-bottom: 20px;
+    aspect-ratio : 1 / 1;
 }
 
