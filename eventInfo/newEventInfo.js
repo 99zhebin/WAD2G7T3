@@ -17,7 +17,7 @@ function loadDisplay() {
         if (user) {
           // User is signed in, see docs for a list of available properties
           // https://firebase.google.com/docs/reference/js/firebase.User
-          let url = "profile.html?email=" + user.email
+          let url = "../profile/newProfile.html?email=" + user.email
           document.getElementById("login").innerText = user.email
           document.getElementById("login").setAttribute("href", url)
           let ul = document.getElementById("navbar")
@@ -29,7 +29,7 @@ function loadDisplay() {
           // User is signed out
           // ...
           let query = window.location.search
-          let url = "Login.html?page=newEventInfo.html" + query 
+          let url = "../login/newLogin.html?page=newEventInfo.html" + query 
           document.getElementById("login").innerText = "Log In"
           document.getElementById("login").setAttribute("href", url)
         }
