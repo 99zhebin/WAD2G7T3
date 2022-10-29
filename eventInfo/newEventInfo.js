@@ -74,7 +74,7 @@ const app = Vue.createApp({
     },
 
     methods: {
-        url(email,eventName){
+        url(email){
             let url = "../profile/newProfile.html?email=" + email
             return url
         },
