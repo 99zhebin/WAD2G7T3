@@ -91,12 +91,15 @@
                     <div class="input-field mx-auto">
                         <input type="text" id="email" v-model="email" placeholder="Enter your Email">
                         <label for="email"></label><br>
+                        <span v-if="emailError != ''" style="text-align:center">{{emailError}}<br></span>
                     </div>
 
                     <div class="input-field">
                         <input type="password" id="password" v-model="password" placeholder="Enter your Password">
                         <label for="password"></label><br>
+                        <span v-if="passwordError != ''" style="text-align:center">{{passwordError}}<br></span>
                     </div>
+
                     <div class="forgotPassword d-flex justify-content-end pe-3" >
                         <a href="" v-on:click="reset()">
                             Forgot Password?
