@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@vuefire/vuefire@0.0.9/dist/vuefire.min.js">
+    
+    <!-- Vue.js -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Sign Up</title>
+
+    <!-- style sheet -->
+    <link rel="stylesheet" href="../newFormat.css">
+    <link rel="stylesheet" href="newLogin.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat' >
+</head>
+<body>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script> 
+    <!-- This is the API from Firebase Realtime Database -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script> 
+    <!-- API for Firebase Storage -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script> 
+    <!-- API for Firebase Authentication-->
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+
+    <!-- nav bar -->
+
+    <nav class="navbar sticky-top navbar-light">
+
+        <!-- Website Name -->
+        <a class="navbar-brand "  href="../homepage/newHomepage.html">
+                <div class="row" style="margin:0;">
+                    <div class="col">
+                        <iframe src="https://embed.lottiefiles.com/animation/43901" style="height: 50px; width: 50px;"></iframe>
+                    </div>
+                    <div class="col my-auto">
+                        <h8>PET BAGUETTE</h8>
+                    </div>
+
+                </div>
+            </div>
+        </a>
+
+        <!-- Menu Icon -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <!-- NavBar Items -->
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav" id="navbar">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="../homepage/newHomepage.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../adoptionHome/newAdoptionHome.html">Adoptions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../eventHome/newEventHome.html">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="login" href="3">Log In</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+    <hr>
+
+    <div class="content">
+        <div class="row">
+            <div class="col-12 col-md-6 ">
+                <div class="pb-1">
+                    <img class="w-100" src="images/login.png" alt="Pet Image">
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 d-flex justify-content-center align-items-center p-3">
+                <div>
+                    <h1 class="m-2 p-3 text-center">
+                        Log In
+                    </h1>
+
+                    <div class="input-field mx-auto">
+                        <input type="text" id="email" placeholder="Enter your Email">
+                        <label for="email"></label><br>
+                    </div>
+
+                    <div class="input-field">
+                        <input type="text" id="password" placeholder="Enter your Password">
+                        <label for="password"></label><br>
+                    </div>
+                    <div class="forgotPassword d-flex justify-content-end pe-3" >
+                        <a href="">
+                            Forgot Password?
+                        </a>
+                    </div>
+
+                    <div style="text-align: center">
+                        <a href="" class="btn button" style="margin:20px;">LOG IN</a>
+                    </div>
+
+                    <div class="createAccount">
+                        Don't have an account? 
+                        <a href="newSignUp.html" class="login">
+                            Sign Up
+                        </a>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- bottom info -->
+    <hr>
+    <div class="bottomInfo">
+        <div class="row">
+
+            <!-- social media -->
+            <div class="col social">
+                <p>CONTACT US</p>
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x icon-background"></i>
+                    <i class="fa fa-facebook-f fa-stack-1x"></i>
+                </span>   
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x icon-background"></i>
+                    <i class="fa fa-instagram fa-stack-1x"></i>
+                </span>   
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x icon-background"></i>
+                    <i class="fa fa-envelope fa-stack-1x"></i>
+                </span>
+            </div>
+
+            <!-- Subscribe Newsletter -->
+            <!-- make the form look less weird on com big screen? -->
+            <div class="col">
+                <p>SUBSCRIBE TO OUR NEWSLETTER</p>
+                <form>
+                    <input type="text" placeholder="Email Address"><br>
+                    <a href="" class="btn button" style="margin-top:15px;">SUBMIT</a>
+                </form>
+            </div>
+        </div>
+        
+        <!-- copyright -->
+        <div class="row copyright">
+            <h8>&copy; 2022 PET BAGUETTE</h8>
+        </div>
+    </div>
+
+
+
+    <!-- Javascript functions -->
+    <script src="sign_up.js"></script>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+</body>
+</html>
