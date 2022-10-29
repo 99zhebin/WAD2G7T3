@@ -63,6 +63,20 @@ const firebaseConfig = {
                 else {
                     return true
                 }
+            },
+
+            reset(){
+                firebase.auth().sendPasswordResetEmail(this.email)
+                    .then(() => {
+                        // Password reset email sent!
+                        // ..
+                        alert("Email has been sent to " + this.email)
+                    })
+                    .catch((error) => {
+                        var errorCode = error.code;
+                        var errorMessage = error.message;
+                        alert(errorCode + " : " + errorMessage)
+                    });
             }
         },
     
