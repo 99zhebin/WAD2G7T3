@@ -28,7 +28,7 @@ function loadDisplay() {
         } else {
           // User is signed out
           // ...
-          let url = "../login/newLogin.html?page=newEventHome.html"
+          let url = "../login/newLogin.html?page=../eventHome/newEventHome.html"
           document.getElementById("login").innerText = "Log In"
           document.getElementById("login").setAttribute("href", url)
         }

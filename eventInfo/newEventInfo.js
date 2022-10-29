@@ -29,7 +29,7 @@ function loadDisplay() {
           // User is signed out
           // ...
           let query = window.location.search
-          let url = "../login/newLogin.html?page=newEventInfo.html" + query 
+          let url = "../login/newLogin.html?page=../eventInfo/newEventInfo.html" + query 
           document.getElementById("login").innerText = "Log In"
           document.getElementById("login").setAttribute("href", url)
         }

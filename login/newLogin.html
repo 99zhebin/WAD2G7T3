@@ -12,7 +12,7 @@
     
     <!-- Vue.js -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <title>Sign Up</title>
+    <title>Login</title>
 
     <!-- style sheet -->
     <link rel="stylesheet" href="../newFormat.css">
@@ -74,7 +74,7 @@
     </nav>
     <hr>
 
-    <div class="content">
+    <div class="content" id="content">
         <div class="row">
             <div class="col-12 col-md-6 ">
                 <div class="pb-1">
@@ -89,12 +89,12 @@
                     </h1>
 
                     <div class="input-field mx-auto">
-                        <input type="text" id="email" placeholder="Enter your Email">
+                        <input type="text" id="email" v-model="email" placeholder="Enter your Email">
                         <label for="email"></label><br>
                     </div>
 
                     <div class="input-field">
-                        <input type="text" id="password" placeholder="Enter your Password">
+                        <input type="password" id="password" v-model="password" placeholder="Enter your Password">
                         <label for="password"></label><br>
                     </div>
                     <div class="forgotPassword d-flex justify-content-end pe-3" >
@@ -104,7 +104,7 @@
                     </div>
 
                     <div style="text-align: center">
-                        <a href="" class="btn button" style="margin:20px;">LOG IN</a>
+                        <a class="btn button" style="margin:20px;" v-on:click="login()">LOG IN</a>
                     </div>
 
                     <div class="createAccount">
@@ -161,7 +161,7 @@
 
 
     <!-- Javascript functions -->
-    <script src="sign_up.js"></script>
+    <script src="newLogin.js"></script>
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
