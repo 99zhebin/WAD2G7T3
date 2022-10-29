@@ -44,10 +44,28 @@ const firebaseConfig = {
                 firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
                     .then((userCredential) => {
                         // Signed in 
+                        var image = "../profile/images/profilePic.jpg"
+                        var name = ""
+                        var email = this.email
+                        var username = ""
+                        var region = ""
+                        var bio = ""
+                        var favourites = ""
                         const user = userCredential.user;
+                        console.log(email)
+                        firebase.database().ref('profile/' + email).set({
+                            username: name,
+                            email: email
+                          }, function(error) {
+                            if (error) {
+                              document.getElementById("status").innerText = "User Registration Failed!";
+                            } else {
+                              document.getElementById("status").innerText = "User Registration Done!";
+                            }
+                          });
                         alert("Welcome " + user.email)
                         this.url = "../profile/newProfileEdit.html?user=" + this.email 
-                        window.location.href=this.url
+                        // window.location.href=this.url
                     })
                     .catch((error) => {
                         const errorCode = error.code;
