@@ -38,3 +38,22 @@
     padding-bottom: 20px;
     aspect-ratio: 1/1;
 }
+
+/* forms */
+.input-field input{
+    background-color: rgb(241, 241, 241);
+    margin: 10px;
+    padding: 10px;
+    border-width: 0px;
+    border-radius: 15px;
+    width: 250px;
+}
+
+.input-field textarea{
+    background-color: rgb(241, 241, 241);
+    margin: 10px;
+    padding: 10px;
+    border-width: 0px;
+    width: 90%;
+
+}
