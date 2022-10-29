@@ -107,7 +107,7 @@
                     </div>
 
                     <div style="text-align: center">
-                        <a class="btn button" style="margin:20px;" v-on:click="login()">LOG IN</a>
+                        <a class="btn button" style="margin:20px;" v-bind:disabled="inputCheck()" v-on:click="login()">LOG IN</a>
                     </div>
 
                     <div class="createAccount">
