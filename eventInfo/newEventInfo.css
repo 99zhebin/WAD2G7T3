@@ -16,6 +16,7 @@ h4{
 #opics img {
     opacity: 0.8;
     cursor: pointer;
+    height: 100%;
 }
 
 #opics img:hover {
@@ -36,6 +37,7 @@ h4{
 
 #expandedImg {
     border-radius: 35px;
+    height: 100%;
 }
 /* location api */
 #locationAPI{
