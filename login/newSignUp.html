@@ -95,18 +95,21 @@
                         <input type="text" id="email" v-model="email" placeholder="Enter your Email">
                         <label for="email"></label>
                         <br>
+                        <span v-if="emailError != ''" style="text-align:center">{{emailError}}<br></span>
                     </div>
 
                     <div class="input-field">
                         <input type="text" id="password" v-model="password" placeholder="Enter your Password">
                         <label for="password"></label>
                         <br>
+                        <span v-if="passwordError != ''" style="text-align:center">{{passwordError}}<br></span>
                     </div>
 
                     <div class="input-field">
                         <input type="text" id="confirmPassword" v-model="password2" placeholder="Enter your Password Again">
                         <label for="confirmPassword"></label>
                         <br>
+                        <span v-if="confirmError != ''" style="text-align:center">{{confirmError}}<br></span>
                     </div>
 
                     <div style="text-align: center">
