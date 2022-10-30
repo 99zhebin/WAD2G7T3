@@ -17,6 +17,8 @@ h4{
     opacity: 0.8;
     cursor: pointer;
     height: 100%;
+    aspect-ratio: 1/1;
+    max-width: 100%;
 }
 
 #opics img:hover {
@@ -28,11 +30,6 @@ h4{
     content: "";
     display: table;
     clear: both;
-}
-
-/* The expanding image container (positioning is needed to position the close button and the text) */
-#opics img{
-    max-width: 100%;
 }
 
 #expandedImg {
