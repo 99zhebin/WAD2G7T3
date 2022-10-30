@@ -1,0 +1,18 @@
+.container{
+    width:350px;
+}
+.eventDetails{
+    margin:0px;
+
+}
+.input-field{
+    text-align:center;
+
+}
+.input-field input{
+    background-color: rgb(241, 241, 241);
+    padding: 10px;
+    border-width: 0px;
+    border-radius: 15px;
+    width: 200px;
+}
