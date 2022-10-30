@@ -80,42 +80,44 @@
         </div>
 
         <div class="row" >
-            <div class="col-sm-12 col-lg-6">
+            <div class="col-sm-12 col-lg-6 col-xl-5">
 
                 <!-- Pictures -->
                 <!-- pic sizes so weird cos their size diff -->
-                <div class="row" style="aspect-ratio:1/1;">
-                    <div class="col" >
+                <div class="row" style="aspect-ratio:1.25/1;">
+                    <div class="col" style="padding:0 2%;">
                         <!-- Expanded image -->
                         <img src="images/event1.jpg" id="expandedImg" style="width:100%" >
                     </div>
                 </div>
             
                 <div class="row">
-                    <div class="col-3" id="opics">
+                    <div class="col-2" id="opics">
                         <img src="images/event1.jpg" onclick="myFunction(this);">
                     </div>
-                    <div class="col-3" id="opics">
+                    <div class="col-2" id="opics">
                         <img src="images/event2.jpg" onclick="myFunction(this);">
                     </div>
-                    <div class="col-3" id="opics">
+                    <div class="col-2" id="opics">
                         <img src="images/event3.jpg" onclick="myFunction(this);">
                     </div>
-                    <div class="col-3" id="opics">
+                    <div class="col-2" id="opics">
                         <img src="images/event1.jpg" onclick="myFunction(this);">
+                    </div>
+                    <div class="col-2" id="opics">
+                        <img src="images/event2.jpg" onclick="myFunction(this);">
+                    </div>
+                    <div class="col-2" id="opics">
+                        <img src="images/event3.jpg" onclick="myFunction(this);">
                     </div>
                 </div>
 
             </div>
 
-            <div class="col-sm-12 col-lg-6 col-xl-6" >
-
-                <!-- Description -->
-                <h4 style="">Event Description</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, tempore maiores quam, unde ex expedita reiciendis aliquam tenetur ut fugiat dolor quidem odit maxime tempora modi molestias possimus odio vitae!</p>
+            <div class="col-sm-12 col-lg-6 col-xl-7" >
                 
                 <!-- details -->
-                <h4>Event Details</h4>
+                <h4 style="padding-top:20px;">Event Details</h4>
                 <!-- date -->
                 <p>
                     <i class="fa fa-calendar"></i> &emsp;
@@ -132,21 +134,24 @@
                     Location
                 </p>
 
+                <!-- Description -->
+                <h4 style="padding-top:20px;">Event Description</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, tempore maiores quam, unde ex expedita reiciendis aliquam tenetur ut fugiat dolor quidem odit maxime tempora modi molestias possimus odio vitae!</p>
+
                 <!-- link to event website-->
                 <button class="btn button" href="#">LEARN MORE</button>
             </div>
-        </div>
 
-        <!-- location api -->
-        <!-- the map size abit weird -->
-        <div class="row">
-            <h4>Where you'll be</h4>
-        </div>
-        <div class="row" style="height: 400px;">
-            <iframe id="locationAPI" src="" scrolling="no" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+            <!-- location api -->
+            <!-- the map size abit weird -->
+            <div class="row" style="padding:0;">
+                <h4>Where you'll be</h4>
+            </div>
+            <div class="row" style="height: 400px;padding:0;margin:0;">
+                <iframe id="locationAPI" src="" scrolling="no" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+            </div>
         </div>
     </div>
-
 
     <!-- bottom info -->
     <hr>
