@@ -80,9 +80,13 @@ const app = Vue.createApp({
       var user = firebase.database().ref('profile/' + this.key);
       user.once('value').then((snapshot) => {
         if(snapshot.exists()) {
-            console.log(snapshot)
-          this.profile = snapshot
-          console.log(this.profile)
+          this.profile = snapshot.val()
+          this.email = this.profile.email
+          this.name = this.profile.name
+          this.username = this.profile.username
+          this.region = this.profile.region
+          this.bio = this.profile.bio
+          this.pets = this.profile.pets
         }
         else {
           firebase.database().ref('profile/' + this.key).set({
@@ -97,8 +101,13 @@ const app = Vue.createApp({
             var user = firebase.database().ref('profile/' + this.key);
             user.once('value').then((snapshot) => {
                 if(snapshot.exists()) {
-                this.profile = snapshot
-                console.log(this.profile.bio)
+                this.profile = snapshot.val()
+                this.email = this.profile.email
+                this.name = this.profile.name
+                this.username = this.profile.username
+                this.region = this.profile.region
+                this.bio = this.profile.bio
+                this.pets = this.profile.pets
             }
         })
         }
