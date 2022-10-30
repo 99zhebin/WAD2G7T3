@@ -65,7 +65,14 @@ const app = Vue.createApp({
   },
 
   methods: {
-
+    update() {
+        var user = firebase.database().ref('profile/' + this.key)
+        user.child('name').set(this.name)
+        user.child('username').set(this.username)
+        user.child('region').set(this.region)
+        user.child('bio').set(this.bio)
+        user.child('pets').set(this.pets)
+    }
   },
 
   mounted() {
