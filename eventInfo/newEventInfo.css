@@ -9,9 +9,12 @@ h4{
 /* The grid: Four equal columns that floats next to each other */
 #opics {
     float: left;
-    margin-top: 10px;
-}
 
+}
+/* padding for small images */
+.col-2{
+    padding:0 2%;
+}
 /* Style the images inside the grid */
 #opics img {
     opacity: 0.8;
@@ -19,6 +22,7 @@ h4{
     height: 100%;
     aspect-ratio: 1/1;
     max-width: 100%;
+    border-radius: 15%;
 }
 
 #opics img:hover {
@@ -33,7 +37,7 @@ h4{
 }
 
 #expandedImg {
-    border-radius: 35px;
+    border-radius: 20px;
     height: 100%;
 }
 /* location api */
