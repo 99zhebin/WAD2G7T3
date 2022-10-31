@@ -14,6 +14,9 @@
     <!-- Axios -->
     <script src="https://unpkg.com/axios/dist/axios.js"></script>
 
+    <!-- Vue.js -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
     <!-- style sheet -->
     <link rel="stylesheet" href="../newFormat.css">
     <link rel="stylesheet" href="newEventInfo.css">
@@ -21,19 +24,29 @@
 
 </head>
 
-<body>
+<body onload="loadDisplay()">
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script> 
+    <!-- This is the API from Firebase Realtime Database -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script> 
+    <!-- API for Firebase Storage -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script> 
+    <!-- API for Firebase Authentication-->
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
     <!-- nav bar -->
 
     <nav class="navbar sticky-top navbar-light">
 
         <!-- Website Name -->
         <a class="navbar-brand "  href="../homepage/newHomepage.html">
-            <div class="row" style="margin:0;">
-                <div class="col">
-                    <iframe src="https://embed.lottiefiles.com/animation/43901" style="width:50px;height:50px;"></iframe>
-                </div>
-                <div class="col my-auto">
-                    <h8>PET BAGUETTE</h8>
+                <div class="row" style="margin:0;">
+                    <div class="col">
+                        <iframe src="https://embed.lottiefiles.com/animation/43901" style="height: 50px; width: 50px;"></iframe>
+                    </div>
+                    <div class="col my-auto">
+                        <h8>PET BAGUETTE</h8>
+                    </div>
+
                 </div>
             </div>
         </a>
@@ -50,32 +63,52 @@
                     <a class="nav-link" aria-current="page" href="../homepage/newHomepage.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../adoptionHome/adoptionHome.html">Adoptions</a>
+                    <a class="nav-link" href="../adoptionHome/newAdoptionHome.html">Adoptions</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../eventHome/newEventHome.html">Events</a>
+                    <a class="nav-link disabled" href="../eventHome/newEventHome.html">Events</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="login" href="#">Log In</a>
+                    <a class="nav-link" id="login" href="3">Log In</a>
                 </li>
             </ul>
         </div>
-    </nav>
+    </div>
+</nav>
+
+<!-- Modal -->
+<div class="modal fade" id="logout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="LogoutTitle">Logout?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you wish to logout?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="logout()">Log Out</button>
+            </div>
+        </div>
+    </div>
+</div>
     <hr>
 
     <!-- content -->
     
-    <div class="content">
+    <div class="content" id="content">
         <!-- Event Title -->
         <div class="row">
-            <h2>Event Name</h2>
+            <h2>{{eventName}}</h2>
         </div>
 
         <!-- User who posted -->
         <div class= "row">
             <h8>
                 <i class="fa fa-user"></i> &nbsp
-                <a class="username" href="../profile/newProfile.html">Username</a>
+                <a class="username" v-bind:href="url()">{{username}}</a>
             </h8>
         </div>
 
@@ -87,15 +120,15 @@
                 <div class="row" style="aspect-ratio:1.25/1;">
                     <div class="col" style="padding:0 2%;">
                         <!-- Expanded image -->
-                        <img src="images/event1.jpg" id="expandedImg" style="width:100%" >
+                        <img v-bind:src="images[0]" id="expandedImg" style="width:100%" >
                     </div>
                 </div>
             
                 <div class="row">
-                    <div class="col-2" id="opics">
-                        <img src="images/event1.jpg" onclick="myFunction(this);">
+                    <div class="col-2" id="opics" v-for="image of images">
+                        <img v-bind:src="image" onclick="myFunction(this);">
                     </div>
-                    <div class="col-2" id="opics">
+                    <!-- <div class="col-2" id="opics">
                         <img src="images/event2.jpg" onclick="myFunction(this);">
                     </div>
                     <div class="col-2" id="opics">
@@ -109,7 +142,7 @@
                     </div>
                     <div class="col-2" id="opics">
                         <img src="images/event3.jpg" onclick="myFunction(this);">
-                    </div>
+                    </div> -->
                 </div>
 
             </div>
@@ -121,12 +154,12 @@
                 <!-- date -->
                 <p>
                     <i class="fa fa-calendar"></i> &emsp;
-                    Date
+                    {{event.date}}
                 </p>
                 <!-- time -->
                 <p>
                     <i class="fa fa-clock"></i> &emsp;
-                    Time
+                    {{event.time}}
                 </p>
                 <!-- location -->
                 <p>
@@ -136,10 +169,10 @@
 
                 <!-- Description -->
                 <h4 style="padding-top:20px;">Event Description</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, tempore maiores quam, unde ex expedita reiciendis aliquam tenetur ut fugiat dolor quidem odit maxime tempora modi molestias possimus odio vitae!</p>
+                <p>{{event.description}}</p>
 
                 <!-- link to event website-->
-                <button class="btn button" href="#">LEARN MORE</button>
+                <button class="btn button" v-bind:href="event.url">LEARN MORE</button>
             </div>
 
             <!-- location api -->
@@ -148,7 +181,7 @@
                 <h4>Where you'll be</h4>
             </div>
             <div class="row" style="height: 400px;padding:0;margin:0;">
-                <iframe id="locationAPI" src="" scrolling="no" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+                <iframe id="locationAPI" v-bind:src="apiLink" scrolling="no" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
             </div>
         </div>
     </div>
@@ -214,20 +247,23 @@
 
         // location api
         // convert address to latitude and longitude
-        function addressToLatLong(){
-            var eventAddress = "SMU";
-            $.ajax({
-            url: `https://developers.onemap.sg/commonapi/search?searchVal=${eventAddress}&returnGeom=Y&getAddrDetails=Y&pageNum=1`,
-            success: function(locationDetails){
-                var latitude = locationDetails["results"][0]["LATITUDE"];
-                var longitude = locationDetails["results"][0]["LONGITUDE"];
-                var apiLink = `https://www.onemap.gov.sg/minimap/mm.html?mapStyle=Default&zoomLevel=17&latLng=${latitude},${longitude}`;
-                document.getElementById("locationAPI").src = apiLink;
-            }});
+        // function addressToLatLong(){
+        //     var eventAddress = "SMU";
+        //     $.ajax({
+        //     url: `https://developers.onemap.sg/commonapi/search?searchVal=${eventAddress}&returnGeom=Y&getAddrDetails=Y&pageNum=1`,
+        //     success: function(locationDetails){
+        //         var latitude = locationDetails["results"][0]["LATITUDE"];
+        //         var longitude = locationDetails["results"][0]["LONGITUDE"];
+        //         var apiLink = `https://www.onemap.gov.sg/minimap/mm.html?mapStyle=Default&zoomLevel=17&latLng=${latitude},${longitude}`;
+        //         document.getElementById("locationAPI").src = apiLink;
+        //     }});
 
-        }
-        // insert the latitude and longitude into onemap link
-        addressToLatLong();
+        // }
+        // // insert the latitude and longitude into onemap link
+        // addressToLatLong();
     </script>
+
+    <!-- Javascript functions -->
+    <script src="newEventInfo.js"></script>
 </body>
 </html>

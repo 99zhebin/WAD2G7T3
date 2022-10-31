@@ -70,12 +70,14 @@ const app = Vue.createApp({
             latitude: "",
 
             longitude: "",
+
+            username: ""
         }
     },
 
     methods: {
-        url(email){
-            let url = "../profile/newProfile.html?email=" + email
+        url(){
+            let url = "../profile/newProfilePublic.html?email=" + this.email
             return url
         },
         
