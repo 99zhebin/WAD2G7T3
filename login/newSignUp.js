@@ -47,7 +47,7 @@ const firebaseConfig = {
                         // Signed in 
                         const user = userCredential.user;
                         alert("Welcome " + user.email)
-                        this.url = "../profile/newProfileEdit.html?user=" + this.email 
+                        this.url = "../profile/newProfileEdit.html?email=" + this.email 
                         window.location.href=this.url
                     })
                     .catch((error) => {

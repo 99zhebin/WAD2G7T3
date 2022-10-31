@@ -69,14 +69,9 @@ const app = Vue.createApp({
   },
 
   methods: {
-    update() {
-        var user = firebase.database().ref('profile/' + this.key)
-        user.child('name').set(this.name)
-        user.child('username').set(this.username)
-        user.child('region').set(this.region)
-        user.child('bio').set(this.bio)
-        user.child('pets').set(this.pets)
-        window.location.href="newProfile.html?email=" + this.email
+    url(){
+        var url = "newProfileEdit.html?email=" + this.email
+        return url
     }
   },
 
@@ -101,33 +96,6 @@ const app = Vue.createApp({
           this.pets = this.profile.pets
           this.posts = this.profile.posts
           this.likes = this.profile.likes
-        }
-        else {
-          firebase.database().ref('profile/' + this.key).set({
-            pic: '',
-            name: '',
-            username: '',
-            email: this.email,
-            region: '',
-            bio: '',
-            pets: '',
-            posts: '',
-            likes: ''
-          })
-            var user = firebase.database().ref('profile/' + this.key);
-            user.once('value').then((snapshot) => {
-                if(snapshot.exists()) {
-                this.profile = snapshot.val()
-                this.email = this.profile.email
-                this.name = this.profile.name
-                this.username = this.profile.username
-                this.region = this.profile.region
-                this.bio = this.profile.bio
-                this.pets = this.profile.pets
-                this.posts = this.profile.posts
-                this.likes = this.profile.likes
-            }
-        })
         }
       });
       }
