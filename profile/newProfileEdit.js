@@ -64,7 +64,9 @@ const app = Vue.createApp({
 
         posts: '',
 
-        likes: ''
+        likes: '',
+
+        image: ''
       }
   },
 
@@ -77,6 +79,10 @@ const app = Vue.createApp({
         user.child('bio').set(this.bio)
         user.child('pets').set(this.pets)
         window.location.href="newProfile.html?email=" + this.email
+    },
+
+    loadFile(){
+      
     }
   },
 
@@ -101,6 +107,7 @@ const app = Vue.createApp({
           this.pets = this.profile.pets
           this.posts = this.profile.posts
           this.likes = this.profile.likes
+          this.image = this.profile.image
         }
         else {
           firebase.database().ref('profile/' + this.key).set({
@@ -112,7 +119,8 @@ const app = Vue.createApp({
             bio: '',
             pets: '',
             posts: '',
-            likes: ''
+            likes: '',
+            image: ''
           })
             var user = firebase.database().ref('profile/' + this.key);
             user.once('value').then((snapshot) => {
@@ -126,6 +134,7 @@ const app = Vue.createApp({
                 this.pets = this.profile.pets
                 this.posts = this.profile.posts
                 this.likes = this.profile.likes
+                this.image = this.profile.image
             }
         })
         }
