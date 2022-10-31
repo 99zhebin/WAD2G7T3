@@ -1,13 +1,5 @@
-.container{
-    width:350px;
-}
-.eventDetails{
-    margin:0px;
-
-}
-.input-field{
-    text-align:center;
-
+.input-left{
+    text-align:right;
 }
 .input-field input{
     background-color: rgb(241, 241, 241);
@@ -16,3 +8,23 @@
     border-radius: 15px;
     width: 200px;
 }
+/* upload */
+.upload{
+    text-align:center;
+    padding:20px;
+    background-color: rgb(241, 241, 241);
+    border-radius: 15px;
+    width:200px;
+    margin:auto;
+}
+#inputTag{
+    display: none;
+}
+.upload label{
+    cursor: pointer;
+}
+#imageName{
+    color:black;
+    margin-top:10px;
+}
+
