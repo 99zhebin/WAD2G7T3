@@ -145,6 +145,8 @@ const app = Vue.createApp({
         }
         })
     }
+    
 })
 
 const vm2 = app.mount("#content")
+
