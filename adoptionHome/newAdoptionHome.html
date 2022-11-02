@@ -17,6 +17,9 @@
     <!-- Axios -->
     <script src="https://unpkg.com/axios/dist/axios.js"></script>
 
+    <!-- Vue.js -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
     <!-- heart button -->
     <link rel="stylesheet" type="text/css" href="https://demo.plantpot.works/assets/css/normalize.css">
     <link rel="stylesheet" href="https://use.typekit.net/opg3wle.css">
@@ -30,7 +33,16 @@
 
 <!-- maybe make a icon to show those that alr show interest -->
 
-<body>
+<body onload="loadDisplay()">
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+    <!-- This is the API from Firebase Realtime Database -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+    <!-- API for Firebase Storage -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
+    <!-- API for Firebase Authentication-->
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+
     <!-- nav bar -->
 
     <nav class="navbar sticky-top navbar-light">
@@ -63,7 +75,7 @@
                     <a class="nav-link" aria-current="page" href="../homepage/newHomepage.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../adoptionHome/newadoptionHome.html">Adoptions</a>
+                    <a class="nav-link disabled" href="../adoptionHome/newAdoptionHome.html">Adoptions</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../eventHome/newEventHome.html">Events</a>
@@ -75,6 +87,25 @@
         </div>
         </div>
     </nav>
+
+    <!-- Modal -->
+    <div class="modal fade" id="logout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="LogoutTitle">Logout?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you wish to logout?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="logout()">Log Out</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <hr>
 
 
@@ -82,7 +113,7 @@
     <!-- populate relevant info and imgs from firebase -->
     <!-- rn information is all local -->
     <!-- change the characteristics also -->
-    <div class="row">
+    <div class="row" id="content">
         <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
             <a>
                 <div class="card">
@@ -161,6 +192,9 @@
     <script>
 
     </script>
+
+    <!-- Javascript functions -->
+    <script src="newAdoptionHome.js"></script>
 
 </body>
 
