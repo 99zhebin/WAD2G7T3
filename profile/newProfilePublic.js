@@ -52,6 +52,8 @@ const app = Vue.createApp({
 
         profile: [],
 
+        pic: '',
+
         name: '',
 
         username: '',
@@ -88,6 +90,7 @@ const app = Vue.createApp({
       user.once('value').then((snapshot) => {
         if(snapshot.exists()) {
           this.profile = snapshot.val()
+          this.pic = this.profile.pic
           this.email = this.profile.email
           this.name = this.profile.name
           this.username = this.profile.username

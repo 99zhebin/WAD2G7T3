@@ -8,6 +8,8 @@ const firebaseConfig = {
     appId: "1:113592009297:web:fd8286678c0c18abc3ee70"
     };
 
+    firebase.initializeApp(firebaseConfig);
+
 function loadDisplay() {
     console.log("--- loadDisplay() start ---")
     console.log("--- logInCheck() Start  ---")
@@ -44,6 +46,7 @@ function logout() {
 }
 
 function preview() { 
+  console.log(document.getElementById('pic').files[0])
   fileInput = document.getElementById('pic')
   imageContainer = document.getElementById('result')
   for (i of fileInput.files) {
@@ -72,6 +75,8 @@ const app = Vue.createApp({
 
         profile: [],
 
+        pic: '',
+
         name: '',
 
         username: '',
@@ -93,12 +98,24 @@ const app = Vue.createApp({
   methods: {
     update() {
         var user = firebase.database().ref('profile/' + this.key)
+        file = document.getElementById('pic').files[0]
+        console.log(file.name)
+        var storage = firebase.storage().ref()
+        var thisRef = storage.child(file.name)
+        thisRef.put(file).then(function(snapshot) {
+          console.log('Image updated');
+      })
         user.child('name').set(this.name)
         user.child('username').set(this.username)
         user.child('region').set(this.region)
         user.child('bio').set(this.bio)
         user.child('pets').set(this.pets)
-        window.location.href="newProfile.html?email=" + this.email
+        firebase.storage().ref(file.name).getDownloadURL()
+          .then((url) => {
+            user.child('pic').set(url)
+            window.location.href="newProfile.html?email=" + this.email
+          })
+
     },
 
     loadFile(){
@@ -108,8 +125,6 @@ const app = Vue.createApp({
 
   mounted() {
       console.log("--- Initialise Firebase ---")
-      firebase.initializeApp(firebaseConfig);
-      var storage = firebase.storage().ref()
       this.email = window.location.search;
       console.log(this.email)
       this.email = this.email.replace("?email=", '');
@@ -120,6 +135,7 @@ const app = Vue.createApp({
       user.once('value').then((snapshot) => {
         if(snapshot.exists()) {
           this.profile = snapshot.val()
+          this.pic = this.profile.pic
           this.email = this.profile.email
           this.name = this.profile.name
           this.username = this.profile.username
@@ -132,7 +148,7 @@ const app = Vue.createApp({
         }
         else {
           firebase.database().ref('profile/' + this.key).set({
-            pic: '',
+            pic: 'https://firebasestorage.googleapis.com/v0/b/is216-webapp.appspot.com/o/profilePic.jpg?alt=media&token=b0fd8b55-3af7-4755-a2eb-a350835241e1',
             name: '',
             username: '',
             email: this.email,
@@ -147,6 +163,7 @@ const app = Vue.createApp({
             user.once('value').then((snapshot) => {
                 if(snapshot.exists()) {
                 this.profile = snapshot.val()
+                this.pic = this.profile.pic
                 this.email = this.profile.email
                 this.name = this.profile.name
                 this.username = this.profile.username

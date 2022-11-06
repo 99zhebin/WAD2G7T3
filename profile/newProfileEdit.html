@@ -109,11 +109,11 @@
                 <div class="profile" style="height:95%;margin-bottom:5%;">
                     <!-- profile pic -->
                     <div class="row" style="align-items:center;">
-                        <img class="profilePic" src="images/profilePic.jpg" style="width: 30%;" id="profile">
+                        <img class="profilePic" :src="pic" style="width: 30%;" id="profile">
                     </div>
                     <div style="text-align: center; padding-bottom:20px;margin-top:15px;">
                         <label for="pic">Select profile image</label>
-                        <input id="pic" type="file" accept="image/jpeg, image/png, image/jpg" onchange="preview()">
+                        <input id="pic" type="file" accept="image/jpeg, image/png, image/jpg, image/jfif" onchange="preview()">
                         <output id="result"></output>
                     </div>
 
