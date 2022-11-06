@@ -55,6 +55,7 @@ function preview() {
     reader.onload = () => {
       let img = document.createElement("img");
       img.setAttribute("src", reader.result);
+      img.setAttribute("id", 'uploadPic');
       figure.insertBefore(img, figCap);
     };
     imageContainer.appendChild(figure);
@@ -108,6 +109,7 @@ const app = Vue.createApp({
   mounted() {
       console.log("--- Initialise Firebase ---")
       firebase.initializeApp(firebaseConfig);
+      var storage = firebase.storage().ref()
       this.email = window.location.search;
       console.log(this.email)
       this.email = this.email.replace("?email=", '');
