@@ -145,8 +145,31 @@ const app = Vue.createApp({
         }
         })
     }
-    
 })
 
 const vm2 = app.mount("#content")
 
+let hearts = document.getElementsByClassName("heart");
+count=0;
+for(heart of hearts) {
+    // let hid = `hid${count}`;
+    let hid = heart.getAttribute('id');
+    console.log(heart.getAttribute('id'));
+    $(document).ready(function(){
+        $(`#${hid}`).click(function(){
+          if($(`#${hid}`).hasClass("liked")){
+            $(`#${hid}`).html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
+            $(`#${hid}`).removeClass("liked");
+          }else{
+            $(`#${hid}`).html('<i class="fa fa-heart" aria-hidden="true"></i>');
+            $(`#${hid}`).addClass("liked");
+          }
+        });
+      });
+
+}
+
+for(heart of hearts) {
+    console.log(heart);
+
+}
