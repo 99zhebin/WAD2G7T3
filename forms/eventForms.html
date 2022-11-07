@@ -186,8 +186,9 @@
                             <label for="inputTag">
                                 <p>Select 6 Images </p>
                                 <i class="fa fa-2x fa-camera"></i>
-                                <input id="inputTag" type="file" multiple/>
-                                <p id="imageName"></p>
+                                <label for="pic">Select profile image</label>
+                                <input id="pic" type="file" accept="image/jpeg, image/png, image/jpg, image/jfif" multiple onchange="preview()">
+                                <output id="result"></output>
                             </label>
                         </div>
                     </div>

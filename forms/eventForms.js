@@ -43,6 +43,27 @@ function logout() {
         });
 }
 
+function preview() { 
+    console.log(document.getElementById('pic').files[0])
+    fileInput = document.getElementById('pic')
+    imageContainer = document.getElementById('result')
+    for (i of fileInput.files) {
+      let reader = new FileReader();
+      let figure = document.createElement("figure");
+      let figCap = document.createElement("figcaption");
+      figCap.innerText = i.name;
+      figure.appendChild(figCap);
+      reader.onload = () => {
+        let img = document.createElement("img");
+        img.setAttribute("src", reader.result);
+        img.setAttribute("id", 'uploadPic');
+        figure.insertBefore(img, figCap);
+      };
+      imageContainer.appendChild(figure);
+      reader.readAsDataURL(i);
+    }
+  };
+
 const app = Vue.createApp({
   data(){
       return{
@@ -71,7 +92,29 @@ const app = Vue.createApp({
   methods: {
 
     post(){
-      
+        var user = firebase.database().ref('profile/' + this.key)
+        post_list = user.posts
+        user.child('name').set(this.name)
+        user.child('username').set(this.username)
+        user.child('region').set(this.region)
+        user.child('bio').set(this.bio)
+        user.child('pets').set(this.pets)
+        file = document.getElementById('pic').files[0]
+        if(typeof file != 'undefined'){
+          var storage = firebase.storage().ref()
+          var thisRef = storage.child(file.name)
+          thisRef.put(file).then(function(snapshot) {
+            console.log('Image updated');
+        })
+          firebase.storage().ref(file.name).getDownloadURL()
+          .then((url) => {
+            user.child('pic').set(url)
+            window.location.href="newProfile.html?email=" + this.email
+          })
+        }
+        else {
+          window.location.href="newProfile.html?email=" + this.email
+        }
     }
   },
 
