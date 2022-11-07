@@ -98,24 +98,28 @@ const app = Vue.createApp({
   methods: {
     update() {
         var user = firebase.database().ref('profile/' + this.key)
-        file = document.getElementById('pic').files[0]
-        console.log(file.name)
-        var storage = firebase.storage().ref()
-        var thisRef = storage.child(file.name)
-        thisRef.put(file).then(function(snapshot) {
-          console.log('Image updated');
-      })
         user.child('name').set(this.name)
         user.child('username').set(this.username)
         user.child('region').set(this.region)
         user.child('bio').set(this.bio)
         user.child('pets').set(this.pets)
-        firebase.storage().ref(file.name).getDownloadURL()
+        file = document.getElementById('pic').files[0]
+        if(typeof file != 'undefined'){
+          var storage = firebase.storage().ref()
+          var thisRef = storage.child(file.name)
+          thisRef.put(file).then(function(snapshot) {
+            console.log('Image updated');
+        })
+          firebase.storage().ref(file.name).getDownloadURL()
           .then((url) => {
             user.child('pic').set(url)
             window.location.href="newProfile.html?email=" + this.email
           })
-
+        }
+        else {
+          window.location.href="newProfile.html?email=" + this.email
+        }
+        
     },
 
     loadFile(){
