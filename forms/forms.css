@@ -8,6 +8,14 @@
     border-radius: 15px;
     width: 200px;
 }
+
+.input-field textarea{
+    background-color: rgb(241, 241, 241);
+    padding: 10px;
+    border-width: 0px;
+    border-radius: 15px;
+    width: 200px;
+}
 /* upload */
 .upload{
     text-align:center;
