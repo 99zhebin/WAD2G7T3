@@ -112,8 +112,11 @@
                         <img class="profilePic" :src="pic" style="width: 30%;" id="profile">
                     </div>
                     <div style="text-align: center; padding-bottom:20px;margin-top:15px;">
-                        <label for="pic">Select profile image</label>
-                        <input id="pic" type="file" accept="image/jpeg, image/png, image/jpg, image/jfif" onchange="preview()">
+                        <label for="pic">
+                            Select profile image<br><br>
+                            <i class="fa fa-2x fa-camera"></i>
+                            <input id="pic" type="file" accept="image/jpeg, image/png, image/jpg, image/jfif" onchange="preview()">
+                        </label><br><br>
                         <output id="result"></output>
                     </div>
 
@@ -245,11 +248,12 @@
     <script>
         $('#pic.profilePic').onchange = evt => {
             console.log('start')
-        const [file] = profilePic.files
-        if (file) {
-          blah.src = URL.createObjectURL(file)
+            const [file] = profilePic.files
+            if (file) {
+                blah.src = URL.createObjectURL(file)
+            }
         }
-      }
+
     </script>
     
     <!-- Javascript functions -->
