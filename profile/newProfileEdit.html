@@ -255,22 +255,7 @@
             if (file) {
                 blah.src = URL.createObjectURL(file)
             }
-        }
-        const input = document.querySelector('#avatars');
-
-        // Listen for files selection
-        input.addEventListener('change', (e) => {
-        // Retrieve all files
-        const files = input.files;
-
-        // Check files count
-        if (files.length > 2) {
-            alert(`Only 2 files are allowed to upload.`);
-            return;
-        }
-
-        // TODO: continue uploading on server
-        });
+        }        
 
     </script>
     

@@ -78,7 +78,7 @@
                     <a class="nav-link" href="../adoptionHome/newAdoptionHome.html">Adoptions</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="../eventHome/newEventHome.html">Events</a>
+                    <a class="nav-link" href="../eventHome/newEventHome.html">Events</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="login" href="3">Log In</a>
@@ -298,6 +298,24 @@
 
     <!-- Javascript functions -->
     <script src="adoptionForm.js"></script>
+
+    <script>
+        const input = document.querySelector('#pic');
+
+        // Listen for files selection
+        input.addEventListener('change', (e) => {
+        // Retrieve all files
+        const files = input.files;
+
+        // Check files count
+        if (files.length > 6) {
+            alert(`Only 6 files are allowed to upload.`);
+            return;
+        }
+
+        // TODO: continue uploading on server
+        });
+    </script>
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
