@@ -69,6 +69,8 @@ const app = Vue.createApp({
             volunteer: "Volunteering",
 
             hid: [],
+
+            count: 0,
         }
     },
 
@@ -108,16 +110,29 @@ const app = Vue.createApp({
             return url
         },
 
-        checklogin(){
+        follow_display(follows){
             firebase.auth().onAuthStateChanged((user) => {
                 if (user) {
-                    window.location.href = '../forms/eventForms.html'
+                    if(follows.includes(user)){
+                        return "Unlike"
+                    }
+                    else{
+                        return "Like"
+                    }
                 }
                 else {
-                    window.location.href = '../login/newLogin.html?page=../forms/eventForms.html'
+                    "Followed By"
                 }
             })
         },
+        addcounter() {
+            newid = 'heart'+ this.count;
+            this.count += 1;
+            console.log(newid);
+            return newid;
+        }
+        
+
     },
 
     mounted() {
@@ -142,34 +157,38 @@ const app = Vue.createApp({
         }
         });
 
-        let hearts = document.getElementsByClassName("heart");
-        count=0;
+        window.addEventListener('load', () => {
+            // run after everything is in-place
+            let hearts = document.getElementsByClassName("heart");
+            for(heart of hearts) {
+                // let hid = `hid${count}`;
+                console.log(heart);
+                let hid = heart.getAttribute('id');
+                // console.log(heart.getAttribute('id'));
+                $(document).ready(function(){
+                    $(`#${hid}`).click(function(){
+                        if($(`#${hid}`).hasClass("liked")){
+                        $(`#${hid}`).html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
+                        $(`#${hid}`).removeClass("liked");
+                        }else{
+                        $(`#${hid}`).html('<i class="fa fa-heart" aria-hidden="true"></i>');
+                        $(`#${hid}`).addClass("liked");
+                        }
+                    });
+                });
+                
+            }
+       })
+
 
         // console.log(document.readyState);
         //Setting specific hearts for each post
         
-        for(heart of hearts){
-            heart.setAttribute('id',`heart${count}`);
-            count += 1;
-        }
-        for(heart of hearts) {
-            // let hid = `hid${count}`;
-            // console.log(heart);
-            let hid = heart.getAttribute('id');
-            // console.log(heart.getAttribute('id'));
-            $(document).ready(function(){
-                $(`#${hid}`).click(function(){
-                    if($(`#${hid}`).hasClass("liked")){
-                    $(`#${hid}`).html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
-                    $(`#${hid}`).removeClass("liked");
-                    }else{
-                    $(`#${hid}`).html('<i class="fa fa-heart" aria-hidden="true"></i>');
-                    $(`#${hid}`).addClass("liked");
-                    }
-                });
-            });
-            
-        }
+        // for(heart of hearts){
+        //     heart.setAttribute('id',`heart${count}`);
+        //     count += 1;
+        // }
+
     },
     // updated() {
     //     if (document.readyState == "complete") {
@@ -180,7 +199,6 @@ const app = Vue.createApp({
 })
 
 const vm2 = app.mount("#container")
-
 
 
 
