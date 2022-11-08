@@ -81,6 +81,8 @@ const app = Vue.createApp({
 
         category: '',
 
+        eventDescription: '',
+
         eventName: '',
 
         eventDate: '',
@@ -125,7 +127,8 @@ const app = Vue.createApp({
                       time: this.startTime + ' - ' + this.endTime,
                       location: this.eventLocation,
                       url: this.url,
-                      pics: this.pics
+                      pics: this.pics,
+                      description: this.eventDescription
                 })
                     var event = firebase.database().ref().child('events/' + this.eventName)
                     event.set({
@@ -136,7 +139,8 @@ const app = Vue.createApp({
                     time: this.startTime + ' - ' + this.endTime,
                     location: this.eventLocation,
                     url: this.url,
-                    pics: this.pics
+                    pics: this.pics,
+                    description: this.eventDescription
               })
                 }
                 if(this.pics.length == files.length){
