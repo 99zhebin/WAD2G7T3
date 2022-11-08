@@ -155,7 +155,7 @@
 
             <!-- new adoption listing -->
             <div style="margin-bottom:15px;margin-left:25px;">
-                <button class="btn button newEvent" v-on:click="checklogin()">New Event Listing</button>
+                <button class="btn button newEvent"><a href="../forms/eventForms.html">New Event Listing</a></button>
             </div> 
         </div>
 
@@ -173,7 +173,7 @@
                             </div>
                             <div class="col m-0 p-0 px-3" style="text-align:right;">
                                 <!-- like button -->
-                                <span class = "heart"><i class="fa fa-heart-o" aria-hidden="true" ></i> </span>
+                                <span class = "heart" :id="addcounter()"><i class="fa fa-heart-o" aria-hidden="true" ></i> </span>
                             </div>
                         </div>
                         <p class="card-text" >{{instance.location}}<br>{{instance.time}}</p>
