@@ -174,12 +174,12 @@
                         <div class="card">
                             <img :src="post.pic[0]" class="card-img-top">
                             <div class="card-body p-0">
-                                <div class="row2 p-0 m-0">
+                                <div class="row p-0 m-0">
                                     <div class="col m-0 p-0">
                                         <h8 class="card-title" >{{post.eventname}}</h8>
                                     </div>
-                                    <div class="col m-0 p-0" style="text-align:right;">
-                                        <i class="fa-regular fa-trash"></i>
+                                    <div class="col m-0 p-0 px-3" style="text-align:right;">
+                                        <span><i class="fa-regular fa-trash"></i></span>
                                     </div>
                                 </div>
                                 <p class="card-text" >{{post.location}}<br>{{post.eventdate}},{{post.time}}</p>
@@ -193,7 +193,14 @@
                         <div class="card">
                             <img src="images/event2.jpg" class="card-img-top">
                             <div class="card-body p-0">
-                                <h8 class="card-title" >Event Name</h8>
+                                <div class="row p-0 m-0">
+                                    <div class="col m-0 p-0">
+                                        <h8 class="card-title" >Event Name</h8>
+                                    </div>
+                                    <div class="col m-0 p-0 px-3" style="text-align:right;">
+                                        <span><i class=" fas fa-regular fa-trash"></i></span>
+                                    </div>
+                                </div>
                                 <p class="card-text" >Location<br>Date,Time</p>
                             </div>
                         </div>
@@ -333,4 +340,3 @@
 
 </body>
 </html>
-
