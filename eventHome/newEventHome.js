@@ -147,7 +147,7 @@ const app = Vue.createApp({
     }
 })
 
-const vm2 = app.mount("#content")
+const vm2 = app.mount("#container")
 
 let hearts = document.getElementsByClassName("heart");
 count=0;
