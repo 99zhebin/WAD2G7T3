@@ -6,7 +6,7 @@
 }
 .profilePic, #uploadPic{
     border-radius:50%;
-    width:200px;
+    width:180px;
     margin:auto;
 }
 .name{
@@ -46,7 +46,7 @@
     padding: 10px;
     border-width: 0px;
     border-radius: 15px;
-    width: 250px;
+    width: 180px;
 }
 
 .input-field textarea{
@@ -62,6 +62,32 @@ select{
     margin: 10px;
     padding: 10px;
     border-width: 0px;
-    width: 250px;
+    width: 180px;
     border-radius: 15px;
+}
+
+/* edit profile pic */
+/* upload */
+.upload{
+    text-align:center;
+    padding:20px;
+    background-color: rgb(241, 241, 241);
+    border-radius: 15px;
+    width:180px;
+    margin:auto;
+}
+#pic{
+    display: none;
+}
+.upload label{
+    cursor: pointer;
+}
+#imageName{
+    color:black;
+    margin-top:10px;
+}
+
+/* image chosen */
+#uploadPic{
+    width:50px;
 }
