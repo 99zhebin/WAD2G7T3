@@ -67,6 +67,8 @@ const app = Vue.createApp({
             fund: "Fundraiser",
 
             volunteer: "Volunteering",
+
+            hid: [],
         }
     },
 
@@ -121,6 +123,8 @@ const app = Vue.createApp({
                 }
             })
         },
+        
+
     },
 
     mounted() {
@@ -143,16 +147,23 @@ const app = Vue.createApp({
         else {
             console.log("Not Found")
         }
-        })
+        });
+
+        let hearts = document.getElementsByClassName("heart");
+        count=0;
+
+        // console.log(document.readyState);
+        //Setting specific hearts for each post
+        
         for(heart of hearts){
             heart.setAttribute('id',`heart${count}`);
             count += 1;
         }
         for(heart of hearts) {
             // let hid = `hid${count}`;
-            console.log(heart);
+            // console.log(heart);
             let hid = heart.getAttribute('id');
-            console.log(heart.getAttribute('id'));
+            // console.log(heart.getAttribute('id'));
             $(document).ready(function(){
                 $(`#${hid}`).click(function(){
                     if($(`#${hid}`).hasClass("liked")){
@@ -166,8 +177,17 @@ const app = Vue.createApp({
             });
             
         }
-    }
+    },
+    // updated() {
+    //     if (document.readyState == "complete") {
+    //         console.log('Page completed with image and files!')
+    //         // fetch to next page or some code
+    //     }
+    // }
 })
 
 const vm2 = app.mount("#container")
+
+
+
 
