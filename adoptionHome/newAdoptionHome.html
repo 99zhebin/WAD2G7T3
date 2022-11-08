@@ -115,66 +115,46 @@
     <!-- change the characteristics also -->
     <div class="row" id="content">
 
-        <div class="filterBar">
-            <div class="row">
+        <div class="row">
 
-                <div class="col">
-                    <div class="filterItem">
-                        <!-- <a v-bind:class="{ active: emergencyFilter }" id="hdb" v-on:click="filter(hdb)" href="#"> -->
-                            <img class="filterIcon" src="filterIcons/hdb.png"><br>
-                            
-                            <!-- dropdown <for hdb eligibility -->
-                            <form>
-                                <div class="multiselect" >
-                                    <div class="selectBox" onclick="showCheckboxes()">
-                                        <select style="border:0; width:140px;">
-                                            <option style="text-align:center">HDB Eligibility</option>
-                                        </select>
-                                        <div class="overSelect"></div>
-                                    </div>
-                                    <div id="checkboxes">
-                                        <label for="one">
-                                            <input type="checkbox" id="eligible" />Eligible</label>
-                                        <label for="two">
-                                            <input type="checkbox" id="notEligible" />Not Eligible</label>
-                                    </div>
-                                </div>
-                            </form>
-                        </a>
-                    </div>
+            <!-- new adoption listing -->
+            <div style="margin-bottom:15px;margin-left:25px;">
+                <button class="btn button newAdoption"><a href="../forms/adoptionForm.html">New Adoption Listing</a></button>
+            </div> 
+
+            <!-- <a v-bind:class="{ active: emergencyFilter }" id="hdb" v-on:click="filter(hdb)" href="#"> -->
+            <!-- dropdown for filter -->
+            <div class="dropdown" style="margin-left:25px;">
+                <button onclick="myFunction()" class="btn button dropbtn">Filter</button>
+                <div id="myDropdown" class="dropdown-content">
+
+                    <strong>HDB Eligiblity</strong> <br>
+                    <input type="checkbox" id="eligible">
+                        <label for="eligible">Eligible</label><br>
+                    <input type="checkbox" id="notEligible">
+                        <label for="notEligible">Not Eligible</label><br><br>
+
+                    <strong>Vaccination Status</strong><br>
+                    <input type="checkbox" id="vaccinated">
+                        <label for="vaccinated">Vaccinated</label><br>
+                    <input type="checkbox" id="notVaccinated">
+                        <label for="notVaccinated">Not Vaccinated</label><br><br>
+
+                    <strong>Species</strong><br>
+                    <input type="checkbox" id="dog">
+                        <label for="dog">Dog</label><br>
+                    <input type="checkbox" id="cat">
+                        <label for="cat">Cat</label><br>
+                    <input type="checkbox" id="rabbit">
+                        <label for="rabbit">Rabbit</label><br>
+                    <input type="checkbox" id="others">
+                        <label for="others">Others</label><br>
                 </div>
-
-                <div class="col">
-                    <div class="filterItem">
-                        <a v-bind:class="{ active: driveFilter }" id="Adoption Drive" v-on:click="filter(drive)" href="#">
-                            <img class="filterIcon" src="filterIcons/health.png"><br>
-                            <h8>Health Issues</h8>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="col filterItem">
-                        <a v-bind:class="{ active: fundFilter }" id="Fundraising" v-on:click="filter(fund)" href="#">
-                            <img class="filterIcon" src="filterIcons/vaccination.png"><br>
-                            <h8>Vaccination</h8>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="col filterItem">
-                        <a v-bind:class="{ active: volunteerFilter }" id="Volunteering" v-on:click="filter(volunteer)" href="#">
-                            <img class="filterIcon" src="filterIcons/species.png"><br>
-                            <h8>Species</h8>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
+            </span>
+            
         </div>
 
-
+        <!-- cards -->
         <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
             <a>
                 <div class="card">
@@ -250,23 +230,17 @@
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
 
-    <script>
-        var expanded = false;
-
-        function showCheckboxes() {
-        var checkboxes = document.getElementById("checkboxes");
-        if (!expanded) {
-            checkboxes.style.display = "block";
-            expanded = true;
-        } else {
-            checkboxes.style.display = "none";
-            expanded = false;
-        }
-        }
-    </script>
-
     <!-- Javascript functions -->
     <script src="newAdoptionHome.js"></script>
+
+    <script>
+        /* When the user clicks on the button,
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+    </script>
 
 </body>
 
