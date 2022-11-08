@@ -17,20 +17,12 @@
     <!-- Vue.js -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
-    <!-- heart button -->
-    <link rel="stylesheet" type="text/css" href="https://demo.plantpot.works/assets/css/normalize.css">
-    <link rel="stylesheet" href="https://use.typekit.net/opg3wle.css">
-
     <!-- style sheet -->
     <link rel="stylesheet" href="../newFormat.css">
-    <link rel="stylesheet" href="forms.css">
+    <link rel="stylesheet" href="newAdoptiontInfo.css">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat' >
 
-    <title>Pet Baguette</title>
-
 </head>
-
-<!-- maybe make a icon to show those that alr show interest -->
 
 <body onload="loadDisplay()">
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -96,8 +88,8 @@
                 Are you sure you wish to logout?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn button" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn button" onclick="logout()">Log Out</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="logout()">Log Out</button>
             </div>
         </div>
     </div>
@@ -105,152 +97,94 @@
     <hr>
 
     <!-- content -->
+    
     <div class="content" id="content">
+        <!-- Event Title -->
         <div class="row">
-            <h1 class="m-2 p-3 text-center">
-                New Event
-            </h1>
+            <h2>{{eventName}}</h2>
         </div>
 
-        <div class="row">
-            <!-- animations -->
-            <div class="col-xs-12 col-sm-12 col-lg-6 col-xl-6" style="text-align:center;">
-                <iframe src="https://embed.lottiefiles.com/animation/88146" style="width:100%;height:100%;"></iframe>
+        <!-- User who posted -->
+        <div class= "row">
+            <h8>
+                <i class="fa fa-user"></i> &nbsp
+                <a class="username" v-bind:href="url()">{{event.username}}</a>
+            </h8>
+        </div>
+
+        <div class="row" >
+            <div class="col-sm-12 col-lg-6 col-xl-5">
+
+                <!-- Pictures -->
+                <!-- pic sizes so weird cos their size diff -->
+                <div class="row" style="aspect-ratio:1.25/1;">
+                    <div class="col" style="padding:0 2%;">
+                        <!-- Expanded image -->
+                        <img v-bind:src="images[0]" id="expandedImg" style="width:100%" >
+                    </div>
+                </div>
+            
+                <div class="row">
+                    <div class="col-2" id="opics" v-for="image of images">
+                        <img v-bind:src="image" onclick="myFunction(this);">
+                    </div>
+                    <!-- <div class="col-2" id="opics">
+                        <img src="images/event2.jpg" onclick="myFunction(this);">
+                    </div>
+                    <div class="col-2" id="opics">
+                        <img src="images/event3.jpg" onclick="myFunction(this);">
+                    </div>
+                    <div class="col-2" id="opics">
+                        <img src="images/event1.jpg" onclick="myFunction(this);">
+                    </div>
+                    <div class="col-2" id="opics">
+                        <img src="images/event2.jpg" onclick="myFunction(this);">
+                    </div>
+                    <div class="col-2" id="opics">
+                        <img src="images/event3.jpg" onclick="myFunction(this);">
+                    </div> -->
+                </div>
+
             </div>
 
-            <!-- form -->
-            <div class="col-xs-12 col-sm-12 col-lg-4 col-xl-4" style="text-align:center">
-                <!-- event name -->
-                <div class="row">
-                    <div class="col m-0 p-0">
-                        Event Name
-                    </div>
-                    <div class="col m-0 p-0">
-                        <div class="input-field">
-                            <input type="text" id="eventName" placeholder="Enter event name" v-model="eventName">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- event category -->
-                <div class="row">
-                    <div class="col m-0 p-0">
-                        Event Category
-                    </div>
-                    <div class="col m-0 p-0">
-                        <div class="input-field">
-                            <select id="category" v-model="category">
-                                <option disabled selected value>Select an option</option>
-                                <option value="Emergency">Emergency</option>
-                                <option value="Adoption Drive">Drives</option>
-                                <option value="Fundraiser">Fundraising</option>
-                                <option value="Volunteering">Volunteering</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- event description -->
-                <div class="row">
-                    <div class="col m-0 p-0">
-                        Event Description
-                    </div>
-                    <div class="col m-0 p-0">
-                        <div class="input-field">
-                            <textarea id="description" rows="3" placeholder="Enter event description"
-                                v-model="eventDescription"></textarea>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- date -->
-                <div class="row">
-                    <div class="col m-0 p-0">
-                        Event Date
-                    </div>
-                    <div class="col m-0 p-0">
-                        <div class="input-field">
-                            <input type="date" id="eventDate" placeholder="Enter event date" v-model="eventDate">
-                        </div>
-                    </div>
-                </div>
+            <div class="col-sm-12 col-lg-6 col-xl-7" >
                 
+                <!-- details -->
+                <h4 style="padding-top:20px;">Event Details</h4>
+                <!-- date -->
+                <p>
+                    <i class="fa fa-calendar"></i> &emsp;
+                    {{event.eventdate}}
+                </p>
+                <!-- time -->
+                <p>
+                    <i class="fa fa-clock-o"></i> &emsp;
+                    {{event.time}}
+                </p>
+                <!-- location -->
+                <p>
+                    <i class="fa fa-map-marker"></i> &emsp;
+                    {{event.location}}
+                </p>
 
-                <!-- start time -->
-                <div class="row">
-                    <div class="col m-0 p-0">
-                        Event Start Time
-                    </div>
-                    <div class="col m-0 p-0">
-                        <div class="input-field">
-                            <input type="time" id="eventStart" v-model="startTime">
-                        </div>
-                    </div>
-                </div>
+                <!-- Description -->
+                <h4 style="padding-top:20px;">Event Description</h4>
+                <p>{{event.description}}</p>
 
-                <!-- end time -->
-                <div class="row">
-                    <div class="col m-0 p-0">
-                        Event End Time
-                    </div>
-                    <div class="col m-0 p-0">
-                        <div class="input-field">
-                            <input type="time" id="eventEnd" v-model="endTime">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Location -->
-                <div class="row">
-                    <div class="col m-0 p-0">
-                        Event Location
-                    </div>
-                    <div class="col m-0 p-0">
-                        <div class="input-field">
-                            <input type="text" id="eventLocation" placeholder="Enter event location" v-model="eventLocation">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- upload image -->
-                <div class="row">
-                    <div class="col m-0 p-0">
-                        Event Images
-                    </div>
-                    <div class="col m-0 p-0">
-                        <div class="upload">
-                            <label for="pic">
-                                <p>Upload up to 6 Images </p>
-                                <i class="fa fa-2x fa-camera"></i><br><br>
-                                <input id="pic" type="file" accept="image/jpeg, image/png, image/jpg, image/jfif" multiple onchange="preview()">
-                                <output id="result"></output>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- url -->
-                <div class="row">
-                    <div class="col m-0 p-0">
-                        Event Website
-                    </div>
-                    <div class="col m-0 p-0">
-                        <div class="input-field">
-                            <input type="text" id="eventWebsite" placeholder="Enter event website" v-model="url">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- post button -->
-                <button class="btn button" style="width:150px;" v-on:click="post()">POST</button>                
+                <!-- link to event website-->
+                <button class="btn button" v-bind:href="event.url">LEARN MORE</button>
             </div>
 
-            <div class="col-lg-2 col-xl-2"></div>
+            <!-- location api -->
+            <!-- the map size abit weird -->
+            <div class="row" style="padding:0;">
+                <h4>Where you'll be</h4>
+            </div>
+            <div class="row" style="height: 400px;padding:0;margin:0;">
+                <iframe id="locationAPI" v-bind:src="apiLink" scrolling="no" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+            </div>
         </div>
     </div>
-
-
-
 
     <!-- bottom info -->
     <hr>
@@ -291,12 +225,45 @@
         </div>
     </div>
 
+    
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
 
-    <!-- Javascript functions -->
-    <script src="eventForms.js"></script>
+    <script>
+        // images
+        function myFunction(imgs) {
+            // Get the expanded image
+            var expandImg = document.getElementById("expandedImg");
+            // Get the image text
+            var imgText = document.getElementById("imgtext");
+            // Use the same src in the expanded image as the image being clicked on from the grid
+            expandImg.src = imgs.src;
+            // Use the value of the alt attribute of the clickable image as text inside the expanded image
+            imgText.innerHTML = imgs.alt;
+            // Show the container element (hidden with CSS)
+            expandImg.parentElement.style.display = "block";
+        }
 
+        // location api
+        // convert address to latitude and longitude
+        // function addressToLatLong(){
+        //     var eventAddress = "SMU";
+        //     $.ajax({
+        //     url: `https://developers.onemap.sg/commonapi/search?searchVal=${eventAddress}&returnGeom=Y&getAddrDetails=Y&pageNum=1`,
+        //     success: function(locationDetails){
+        //         var latitude = locationDetails["results"][0]["LATITUDE"];
+        //         var longitude = locationDetails["results"][0]["LONGITUDE"];
+        //         var apiLink = `https://www.onemap.gov.sg/minimap/mm.html?mapStyle=Default&zoomLevel=17&latLng=${latitude},${longitude}`;
+        //         document.getElementById("locationAPI").src = apiLink;
+        //     }});
+
+        // }
+        // // insert the latitude and longitude into onemap link
+        // addressToLatLong();
+    </script>
+
+    <!-- Javascript functions -->
+    <script src="newEventInfo.js"></script>
 </body>
 </html>
