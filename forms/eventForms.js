@@ -79,6 +79,8 @@ const app = Vue.createApp({
 
         pics: [],
 
+        category: '',
+
         eventName: '',
 
         eventDate: '',
@@ -104,38 +106,42 @@ const app = Vue.createApp({
         var user = firebase.database().ref().child('profile/' + this.key).child('posts')
         var postref = user.push()
         files = document.getElementById('pic').files
-        for (file of files){
-          if(typeof file != 'undefined'){
-            var storage = firebase.storage().ref()
-            var thisRef = storage.child(file.name)
-            thisRef.put(file).then(function(snapshot) {
-              console.log('Image updated');
-          })
-            firebase.storage().ref(file.name).getDownloadURL()
-            .then((url) => {
-              this.pics.push(url)
+          for (file of files){
+            if(typeof file != 'undefined'){
+              var storage = firebase.storage().ref()
+              var thisRef = storage.child(file.name)
+              thisRef.put(file).then(function(snapshot) {
+                console.log('Image updated');
             })
+              firebase.storage().ref(file.name).getDownloadURL()
+              .then((url) => {
+                this.pics.push(url)
+                if (this.pics.length == files.length){
+                  postref.set({type : 'event',
+                      username: this.email,
+                        eventname: this.eventName,
+                      eventdate: this.eventDate,
+                      category: this.category,
+                      time: this.startTime + ' - ' + this.endTime,
+                      location: this.eventLocation,
+                      url: this.url,
+                      pics: this.pics
+                })
+                    var event = firebase.database().ref().child('events/' + this.eventName)
+                    event.set({
+                    username: this.email,
+                      eventname: this.eventName,
+                    eventdate: this.eventDate,
+                    category: this.category,
+                    time: this.startTime + ' - ' + this.endTime,
+                    location: this.eventLocation,
+                    url: this.url,
+                    pics: this.pics
+              })
+                }
+              })
+            }
           }
-        }
-        postref.set({type : 'event',
-          username: this.email,
-            eventname: this.eventName,
-          eventdate: this.eventDate,
-          time: this.startTime + ' - ' + this.endTime,
-          location: this.eventLocation,
-          url: this.url,
-          pics: this.pics
-    })
-        var event = firebase.database().ref().child('events/' + this.eventName)
-        event.set({
-        username: this.email,
-          eventname: this.eventName,
-        eventdate: this.eventDate,
-        time: this.startTime + ' - ' + this.endTime,
-        location: this.eventLocation,
-        url: this.url,
-        pics: this.pics
-  })
   },
 },
 

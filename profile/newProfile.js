@@ -74,6 +74,11 @@ const app = Vue.createApp({
     url(){
         var url = "newProfileEdit.html?email=" + this.email
         return url
+    },
+
+    eventurl(eventname){
+      var eventurl = '../eventInfo/newEventInfo.html?name=' + this.email + '-' + eventname
+      return eventurl
     }
   },
 
@@ -97,9 +102,14 @@ const app = Vue.createApp({
           this.region = this.profile.region
           this.bio = this.profile.bio
           this.pets = this.profile.pets
-          this.posts = this.profile.posts
           this.likes = this.profile.likes
         }
+      var posts = user.child('posts')
+      posts.once('value').then((snapshot) => {
+        if(snapshot.exists()){
+          this.posts = snapshot.val()
+        }
+      })
       });
       }
 })

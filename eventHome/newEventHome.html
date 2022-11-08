@@ -161,25 +161,26 @@
 
         <!-- events -->
         <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-12" v-for="instance of filtered">
-                <a v-bind:href="url(instance.email,instance.name)" style="text-decoration:none;color:black">
+            <div class="col-lg-3 col-md-6 col-sm-12" v-if="filtered != 'not found'" v-for="instance of filtered">
+                <a v-bind:href="url(instance.username,instance.eventname)" style="text-decoration:none;color:black">
                     <div class="card">
-                        <img v-bind:src="instance.pictures[0]" class="card-img-top">
+                        <img v-bind:src="instance.pics[0]" class="card-img-top">
                         <div class="card-body p-0">
                             <div class="row m-0 p-0">
                                 <div class="col m-0 p-0">
-                                    <h8 class="card-title" >{{instance.name}}</h8>
+                                    <h8 class="card-title" >{{instance.eventname}}</h8>
                                 </div>
                                 <div class="col m-0 p-0 px-3" style="text-align:right;">
                                     <!-- like button -->
                                     <span class = "heart" id="heart1"><i class="fa fa-heart-o" aria-hidden="true" ></i> </span>
                                 </div>
                             </div>
-                            <p class="card-text" >{{instance.address}}<br>{{instance.time}}</p>
+                            <p class="card-text" >{{instance.location}}<br>{{instance.time}}</p>
                         </div>
                     </div>
                 </a>
             </div>
+            <h1 v-else style="text-align:center">Not Found</h1>
 
             <div class="col-lg-3 col-md-6 col-sm-12">
                 <a>

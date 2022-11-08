@@ -108,7 +108,7 @@
         <div class= "row">
             <h8>
                 <i class="fa fa-user"></i> &nbsp
-                <a class="username" v-bind:href="url()">{{username}}</a>
+                <a class="username" v-bind:href="url()">{{event.username}}</a>
             </h8>
         </div>
 
@@ -154,7 +154,7 @@
                 <!-- date -->
                 <p>
                     <i class="fa fa-calendar"></i> &emsp;
-                    {{event.date}}
+                    {{event.eventdate}}
                 </p>
                 <!-- time -->
                 <p>
@@ -164,7 +164,7 @@
                 <!-- location -->
                 <p>
                     <i class="fa fa-map-marker"></i> &emsp;
-                    Location
+                    {{event.location}}
                 </p>
 
                 <!-- Description -->

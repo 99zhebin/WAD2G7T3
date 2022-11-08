@@ -91,18 +91,17 @@ const app = Vue.createApp({
         url = url.split("-")
         this.email = url[0]
         this.eventName = url[1]
-        let eventArray = firebase.database().ref('events').orderByChild("eventDate")
+        this.eventName = this.eventName.split('%20')
+        this.eventName = this.eventName.join(' ')
+        let eventArray = firebase.database().ref('events/' + this.eventName)
         eventArray.once('value').then((snapshot) => {
         if(snapshot.exists()) {
             console.log("Found")
             eventArray = snapshot.val()
-            for (key in eventArray){
-                if (eventArray[key].email == this.email && eventArray[key].name == this.eventName){
-                    this.event = eventArray[key]
-                    this.address = eventArray[key].address
-                    this.images = eventArray[key].pictures
-                }
-            }
+            console.log(eventArray)
+            this.event = eventArray
+            this.address = eventArray.location
+            this.images = eventArray.pics
             this.api = "https://developers.onemap.sg/commonapi/search?searchVal=" + this.address + "&returnGeom=Y&getAddrDetails=Y&pageNum=1"
             console.log(this.api)
             axios.get(this.api)
