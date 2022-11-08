@@ -52,6 +52,8 @@ const app = Vue.createApp({
 
         profile: [],
 
+        posts: [],
+
         pic: '',
 
         name: '',
@@ -74,6 +76,11 @@ const app = Vue.createApp({
     url(){
         var url = "newProfileEdit.html?email=" + this.email
         return url
+    },
+
+    eventurl(eventname){
+      var eventurl = '../eventInfo/newEventInfo.html?name=' + this.email + '-' + eventname
+      return eventurl
     }
   },
 
@@ -101,6 +108,12 @@ const app = Vue.createApp({
           this.likes = this.profile.likes
         }
       });
+      var posts = user.child('posts')
+      posts.once('value').then((snapshot) => {
+        if(snapshot.exists()){
+          this.posts = snapshot.val()
+        }
+      })
       }
 })
 

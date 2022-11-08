@@ -161,19 +161,19 @@
 
             <div class="row">
 
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <a>
+                <div class="col-lg-3 col-md-6 col-sm-12" v-for="key in posts">
+                    <a v-bind:href="eventurl(key.eventname)">
                         <div class="card">
-                            <img src="images/event1.png" class="card-img-top">
+                            <img :src="key.pics[0]" class="card-img-top">
                             <div class="card-body p-0">
-                                <h8 class="card-title" >Event Name</h8>
-                                <p class="card-text" >Location<br>Date,Time</p>
+                                <h8 class="card-title" >{{key.eventname}}</h8>
+                                <p class="card-text" >{{key.location}}<br>{{key.eventdate}},{{key.time}}</p>
                             </div>
                         </div>
                     </a>
                 </div>
         
-                <div class="col-lg-3 col-md-6 col-sm-12">
+                <!-- <div class="col-lg-3 col-md-6 col-sm-12">
                     <a>
                         <div class="card">
                             <img src="images/event2.jpg" class="card-img-top">
@@ -209,7 +209,7 @@
                     </a>
                 </div>
 
-            </div>
+            </div> -->
         </div>
 
         <!-- liked posts -->
