@@ -125,7 +125,7 @@
                 <!-- Pet name -->
                 <div class="row">
                     <div class="col m-0 p-0">
-                        Name
+                        Animal Name
                     </div>
                     <div class="col m-0 p-0">
                         <div class="input-field">
@@ -137,7 +137,7 @@
                 <!-- age -->
                 <div class="row">
                     <div class="col m-0 p-0">
-                        Age
+                        Animal Age
                     </div>
                     <div class="col m-0 p-0">
                         <div class="input-field">
@@ -150,7 +150,7 @@
                 <!-- species -->
                 <div class="row">
                     <div class="col m-0 p-0">
-                        Species
+                        Animal Species
                     </div>
                     <div class="col m-0 p-0">
                         <div class="input-field">
@@ -162,11 +162,11 @@
                 <!-- Personality/Temperament -->
                 <div class="row">
                     <div class="col m-0 p-0">
-                        Personality
+                        Animal Personality
                     </div>
                     <div class="col m-0 p-0">
                         <div class="input-field">
-                            <textarea id="personality" rows="3" placeholder="Describe animal's personality"
+                            <textarea id="personality" rows="3" placeholder="Enter animal's personality"
                                 v-model="personality"></textarea>
                         </div>
                     </div>
@@ -175,11 +175,15 @@
                 <!-- HDB Approved -->
                 <div class="row">
                     <div class="col m-0 p-0">
-                        HDB Approved
+                        HDB Eligibility
                     </div>
                     <div class="col m-0 p-0">
                         <div class="input-field">
-                            <input type="text" id="hdbApproved" placeholder="Yes/No" v-model="hdbApproved">
+                            <select id="hdb">
+                                <option disabled selected value>Select an option</option>
+                                <option value="eligible">Eligible</option>
+                                <option value="notEligible">Not Eligible</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -187,12 +191,15 @@
                 <!-- Vaccinated -->
                 <div class="row">
                     <div class="col m-0 p-0">
-                        Vaccinated
+                        Vaccination Status
                     </div>
                     <div class="col m-0 p-0">
                         <div class="input-field">
-                            <input type="text" id="vaccinationStatus" placeholder="Enter vaccination status"
-                                v-model="vaccinationStatus">
+                            <select id="vaccination">
+                                <option disabled selected value>Select an option</option>
+                                <option value="vaccinated">Vaccinated</option>
+                                <option value="notVaccinated">Not Vaccinated</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -200,7 +207,7 @@
                 <!-- Health -->
                 <div class="row">
                     <div class="col m-0 p-0">
-                        Health/Existing Illnesses
+                        Existing Illnesses
                     </div>
                     <div class="col m-0 p-0">
                         <div class="input-field">
@@ -217,11 +224,11 @@
                     </div>
                     <div class="col m-0 p-0">
                         <div class="upload">
-                            <label for="inputTag">
-                                <p>Select 6 Images </p>
-                                <i class="fa fa-2x fa-camera"></i>
-                                <input id="inputTag" type="file" multiple />
-                                <p id="imageName"></p>
+                            <label for="pic">
+                                <p>Upload 6 Images </p>
+                                <i class="fa fa-2x fa-camera"></i><br><br>
+                                <input id="pic" type="file" accept="image/jpeg, image/png, image/jpg, image/jfif" multiple onchange="preview()">
+                                <output id="result"></output>
                             </label>
                         </div>
                     </div>
@@ -241,7 +248,7 @@
 
                 <!-- submit button -->
                 <button class="btn button row justify-content-center" href="#" style="width:200px;"
-                    @click="all_inputs">SUBMIT DETAILS</button>
+                    @click="all_inputs">POST</button>
             </div>
 
             <div class="col-lg-2 col-xl-2"></div>
