@@ -179,7 +179,7 @@
                     </div>
                     <div class="col m-0 p-0">
                         <div class="input-field">
-                            <select id="hdb">
+                            <select id="hdb" v-model="hdbApproved">
                                 <option disabled selected value>Select an option</option>
                                 <option value="eligible">Eligible</option>
                                 <option value="notEligible">Not Eligible</option>
@@ -195,7 +195,7 @@
                     </div>
                     <div class="col m-0 p-0">
                         <div class="input-field">
-                            <select id="vaccination">
+                            <select id="vaccination" v-model="vaccinationStatus">
                                 <option disabled selected value>Select an option</option>
                                 <option value="vaccinated">Vaccinated</option>
                                 <option value="notVaccinated">Not Vaccinated</option>

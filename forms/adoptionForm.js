@@ -83,7 +83,10 @@ const app = Vue.createApp({
 
             health: '',
 
-            email: ''
+            email: '',
+
+            pics: [],
+
         }
     },
 
@@ -119,7 +122,6 @@ const app = Vue.createApp({
                                     vaccinated: this.vaccinationStatus,
                                     HDB: this.hdbApproved,
                                     health: this.health,
-                                    url: this.url,
                                     pics: this.pics,
 
                                 })
@@ -132,7 +134,6 @@ const app = Vue.createApp({
                                     vaccinated: this.vaccinationStatus,
                                     HDB: this.hdbApproved,
                                     health: this.health,
-                                    url: this.url,
                                     pics: this.pics,
                                 })
                             }
