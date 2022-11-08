@@ -51,6 +51,12 @@ const app = Vue.createApp({
             pets: [],
 
             filtered: [],
+
+            hdb: [],
+
+            vaccination: [],
+
+            species: [],
         }
     },
 

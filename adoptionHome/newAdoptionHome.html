@@ -129,25 +129,25 @@
                 <div id="myDropdown" class="dropdown-content">
 
                     <strong>HDB Eligiblity</strong> <br>
-                    <input type="checkbox" id="eligible">
+                    <input type="checkbox" id="eligible" value='eligible' v-model="hdb" checked>
                         <label for="eligible">Eligible</label><br>
-                    <input type="checkbox" id="notEligible">
+                    <input type="checkbox" id="notEligible" value="not eligible" v-model="hdb" checked>
                         <label for="notEligible">Not Eligible</label><br><br>
 
                     <strong>Vaccination Status</strong><br>
-                    <input type="checkbox" id="vaccinated">
+                    <input type="checkbox" id="vaccinated" name="vaccinated" v-model="vaccination" checked>
                         <label for="vaccinated">Vaccinated</label><br>
-                    <input type="checkbox" id="notVaccinated">
+                    <input type="checkbox" id="notVaccinated" name="not vaccinated" v-model="vaccination" checked>
                         <label for="notVaccinated">Not Vaccinated</label><br><br>
 
                     <strong>Species</strong><br>
-                    <input type="checkbox" id="dog">
+                    <input type="checkbox" id="dog" value="dog" v-model="species" checked>
                         <label for="dog">Dog</label><br>
-                    <input type="checkbox" id="cat">
+                    <input type="checkbox" id="cat" value="cat" v-model="species" checked>
                         <label for="cat">Cat</label><br>
-                    <input type="checkbox" id="rabbit">
+                    <input type="checkbox" id="rabbit" value="rabbit" v-model="species" checked>
                         <label for="rabbit">Rabbit</label><br>
-                    <input type="checkbox" id="others">
+                    <input type="checkbox" id="others" value="others" v-model="species" checked>
                         <label for="others">Others</label><br>
                 </div>
             </span>
