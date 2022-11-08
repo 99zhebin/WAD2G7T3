@@ -153,7 +153,7 @@ const app = Vue.createApp({
         }
         });
 
-        window.addEventListener('load', () => {
+        Window.addEventListener('load', () => {
             // run after everything is in-place
             let hearts = document.getElementsByClassName("heart");
             for(heart of hearts) {
