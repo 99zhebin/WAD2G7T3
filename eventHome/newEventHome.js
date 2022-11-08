@@ -147,7 +147,7 @@ const app = Vue.createApp({
     }
 })
 
-const vm2 = app.mount("#container")
+const vm2 = app.mount("#content")
 
 let hearts = document.getElementsByClassName("heart");
 count=0;
@@ -173,3 +173,4 @@ for(heart of hearts) {
     console.log(heart);
 
 }
+
