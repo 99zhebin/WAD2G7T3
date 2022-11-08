@@ -114,14 +114,75 @@
     <!-- rn information is all local -->
     <!-- change the characteristics also -->
     <div class="row" id="content">
+
+        <div class="filterBar">
+            <div class="row">
+
+                <div class="col">
+                    <div class="filterItem">
+                        <!-- <a v-bind:class="{ active: emergencyFilter }" id="hdb" v-on:click="filter(hdb)" href="#"> -->
+                            <img class="filterIcon" src="filterIcons/hdb.png"><br>
+                            
+                            <!-- dropdown <for hdb eligibility -->
+                            <form>
+                                <div class="multiselect" >
+                                    <div class="selectBox" onclick="showCheckboxes()">
+                                        <select style="border:0; width:140px;">
+                                            <option style="text-align:center">HDB Eligibility</option>
+                                        </select>
+                                        <div class="overSelect"></div>
+                                    </div>
+                                    <div id="checkboxes">
+                                        <label for="one">
+                                            <input type="checkbox" id="eligible" />Eligible</label>
+                                        <label for="two">
+                                            <input type="checkbox" id="notEligible" />Not Eligible</label>
+                                    </div>
+                                </div>
+                            </form>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="filterItem">
+                        <a v-bind:class="{ active: driveFilter }" id="Adoption Drive" v-on:click="filter(drive)" href="#">
+                            <img class="filterIcon" src="filterIcons/health.png"><br>
+                            <h8>Health Issues</h8>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="col filterItem">
+                        <a v-bind:class="{ active: fundFilter }" id="Fundraising" v-on:click="filter(fund)" href="#">
+                            <img class="filterIcon" src="filterIcons/vaccination.png"><br>
+                            <h8>Vaccination</h8>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="col filterItem">
+                        <a v-bind:class="{ active: volunteerFilter }" id="Volunteering" v-on:click="filter(volunteer)" href="#">
+                            <img class="filterIcon" src="filterIcons/species.png"><br>
+                            <h8>Species</h8>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
         <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
             <a>
                 <div class="card">
                     <img src="images/animal1.jpg" class="card-img-top">
                     <div class="card-body p-0">
-                        <h8 class="card-title">Name:</h8>
-                        <p class="card-text">Species:
-                            <br>Personality:
+                        <h8 class="card-title">Name</h8>
+                        <p class="card-text">Species
+                            <br>Personality
                         </p>
                     </div>
                 </div>
@@ -132,9 +193,9 @@
                 <div class="card h-100">
                     <img src="images/animal2.jpg" class="card-img-top">
                     <div class="card-body p-0">
-                        <h8 class="card-title">Name:</h8>
-                        <p class="card-text">Species:
-                            <br>Personality:
+                        <h8 class="card-title">Name</h8>
+                        <p class="card-text">Species
+                            <br>Personality
                         </p>
                     </div>
                 </div>
@@ -190,7 +251,18 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
 
     <script>
+        var expanded = false;
 
+        function showCheckboxes() {
+        var checkboxes = document.getElementById("checkboxes");
+        if (!expanded) {
+            checkboxes.style.display = "block";
+            expanded = true;
+        } else {
+            checkboxes.style.display = "none";
+            expanded = false;
+        }
+        }
     </script>
 
     <!-- Javascript functions -->
