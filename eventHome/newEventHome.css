@@ -34,16 +34,39 @@
     align-items: center;
 }
 
+/* cards */
+.card-text {
+    font-family: 'Montserrat';
+    font-weight: normal; 
+    font-size: 15px;
+}
+
+.card-title {
+    font-family: 'Montserrat';
+    font-weight: bold; 
+    font-size: 15px;
+}
+
+.card {
+    border:0;
+    margin: 20px;
+}
+
+.card-img-top {
+    border-radius: 25px;
+    padding-bottom: 20px;
+}
+
 /* like button */
 .fa-heart-o {
     color: red;
     cursor: pointer;
-  }
-  
-  .fa-heart {
+}
+
+.fa-heart {
     color: red;
     cursor: pointer;
-  }
+}
 
   /* new listing */
 .newEvent {
