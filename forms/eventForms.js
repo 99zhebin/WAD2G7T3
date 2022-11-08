@@ -139,6 +139,9 @@ const app = Vue.createApp({
                     pics: this.pics
               })
                 }
+                if(this.pics.length == files.length){
+                  window.location.href= "../eventInfo/newEventInfo.html?name=" + this.email + '-' + this.eventName
+                }
               })
             }
           }
