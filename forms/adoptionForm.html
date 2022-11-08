@@ -16,6 +16,9 @@
     <!-- Axios -->
     <script src="https://unpkg.com/axios/dist/axios.js"></script>
 
+    <!-- Vue.js -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
     <!-- heart button -->
     <link rel="stylesheet" type="text/css" href="https://demo.plantpot.works/assets/css/normalize.css">
     <link rel="stylesheet" href="https://use.typekit.net/opg3wle.css">
@@ -104,7 +107,7 @@
     <hr>
 
     <!-- content -->
-    <div class="content">
+    <div class="content" id="content">
         <div class="row">
             <h1 class="m-2 p-3 text-center">
                 Adoption Form
@@ -163,7 +166,8 @@
                     </div>
                     <div class="col m-0 p-0">
                         <div class="input-field">
-                            <textarea id="personality" rows="3" placeholder="Describe animal's personality" v-model="personality"></textarea>
+                            <textarea id="personality" rows="3" placeholder="Describe animal's personality"
+                                v-model="personality"></textarea>
                         </div>
                     </div>
                 </div>
@@ -187,7 +191,8 @@
                     </div>
                     <div class="col m-0 p-0">
                         <div class="input-field">
-                            <input type="text" id="vaccinationStatus" placeholder="Enter vaccination status" v-model="vaccinationStatus">
+                            <input type="text" id="vaccinationStatus" placeholder="Enter vaccination status"
+                                v-model="vaccinationStatus">
                         </div>
                     </div>
                 </div>
@@ -235,7 +240,8 @@
                 </div>
 
                 <!-- submit button -->
-                <button class="btn button row justify-content-center" href="#" style="width:200px;">SUBMIT DETAILS</button>
+                <button class="btn button row justify-content-center" href="#" style="width:200px;"
+                    @click="all_inputs">SUBMIT DETAILS</button>
             </div>
 
             <div class="col-lg-2 col-xl-2"></div>

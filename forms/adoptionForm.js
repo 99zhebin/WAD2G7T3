@@ -51,6 +51,10 @@ const app = Vue.createApp({
         animalAge: '',
 
         species: '',
+        
+        personality: '',
+
+        hdbApproved: '',
 
         vaccinationStatus: '',
 
@@ -60,8 +64,18 @@ const app = Vue.createApp({
 
   methods: {
 
-    post(){
+    // post(){
       
+    // }
+
+    all_inputs(){
+        console.log("clicked")
+        console.log(this.animalName)
+        console.log(this.animalAge)
+        console.log(this.species)
+        console.log(this.vaccinationStatus)
+        console.log(this.personality)
+
     }
   },
 
