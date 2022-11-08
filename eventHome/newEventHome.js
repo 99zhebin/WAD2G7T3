@@ -159,7 +159,7 @@ const app = Vue.createApp({
             for(heart of hearts) {
                 // let hid = `hid${count}`;
                 console.log(heart);
-                let hid = heart.getAttribute('id');
+                let hid = heart.getAttribute('id'); 
                 // console.log(heart.getAttribute('id'));
                 $(document).ready(function(){
                     $(`#${hid}`).click(function(){
