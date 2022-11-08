@@ -22,7 +22,7 @@ function loadDisplay() {
           document.getElementById("login").setAttribute("href", url)
           let ul = document.getElementById("navbar")
           let li = document.createElement("li")
-          li.innerHTML = '<button type="button" class="btn button" data-bs-toggle="modal" data-bs-target="#logout">Logout</button>'
+          li.innerHTML = '<button type="button" class="btn button my-3" data-bs-toggle="modal" data-bs-target="#logout">Logout</button>'
           ul.appendChild(li)
           // ...
         } else {
