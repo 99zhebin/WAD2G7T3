@@ -8,6 +8,8 @@ const firebaseConfig = {
     appId: "1:113592009297:web:fd8286678c0c18abc3ee70"
     };
 
+firebase.initializeApp(firebaseConfig);
+
 function loadDisplay() {
     console.log("--- loadDisplay() start ---")
     console.log("--- logInCheck() Start  ---")
@@ -75,6 +77,8 @@ const app = Vue.createApp({
 
         profile: [],
 
+        pics: [],
+
         eventName: '',
 
         eventDate: '',
@@ -92,41 +96,56 @@ const app = Vue.createApp({
   methods: {
 
     post(){
-        var user = firebase.database().ref('profile/' + this.key)
-        post_list = user.posts
-        user.child('name').set(this.name)
-        user.child('username').set(this.username)
-        user.child('region').set(this.region)
-        user.child('bio').set(this.bio)
-        user.child('pets').set(this.pets)
-        file = document.getElementById('pic').files[0]
-        if(typeof file != 'undefined'){
-          var storage = firebase.storage().ref()
-          var thisRef = storage.child(file.name)
-          thisRef.put(file).then(function(snapshot) {
-            console.log('Image updated');
-        })
-          firebase.storage().ref(file.name).getDownloadURL()
-          .then((url) => {
-            user.child('pic').set(url)
-            window.location.href="newProfile.html?email=" + this.email
+        console.log(this.email)
+        this.email = this.email.replace("?email=", '');
+        this.key = this.email.replace("@", '-');
+        this.key = this.key.replace(".", '-');
+        console.log(this.key)
+        var user = firebase.database().ref().child('profile/' + this.key).child('posts')
+        var postref = user.push()
+        files = document.getElementById('pic').files
+        for (file of files){
+          if(typeof file != 'undefined'){
+            var storage = firebase.storage().ref()
+            var thisRef = storage.child(file.name)
+            thisRef.put(file).then(function(snapshot) {
+              console.log('Image updated');
           })
+            firebase.storage().ref(file.name).getDownloadURL()
+            .then((url) => {
+              this.pics.push(url)
+            })
+          }
         }
-        else {
-          window.location.href="newProfile.html?email=" + this.email
-        }
-    }
+        postref.set({type : 'event',
+          username: this.username,
+            eventname: this.eventName,
+          eventdata: this.eventDate,
+          time: this.startTime + ' - ' + this.endTime,
+          location: this.eventLocation,
+          url: this.url,
+          pics: this.pics
+    })
+        var event = firebase.database().ref().child('events/' + this.eventName)
+        event.set({
+        username: this.username,
+          eventname: this.eventName,
+        eventdata: this.eventDate,
+        time: this.startTime + ' - ' + this.endTime,
+        location: this.eventLocation,
+        url: this.url,
+        pics: this.pics
+  })
   },
+},
 
   mounted() {
       console.log("--- Initialise Firebase ---")
-      firebase.initializeApp(firebaseConfig);
-      this.email = window.location.search;
-      console.log(this.email)
-      this.email = this.email.replace("?email=", '');
-      this.key = this.email.replace("@", '-');
-      this.key = this.key.replace(".", '-');
-      console.log(this.key)
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          this.email = user.email
+          console.log(this.email)
+        }})
       }
 })
 

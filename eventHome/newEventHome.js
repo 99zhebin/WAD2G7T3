@@ -75,9 +75,9 @@ const app = Vue.createApp({
             console.log("--- Start Filter ---")
             console.log(criteria)
             this.filtered = []
-            for (instance of this.events){
-                if (instance.category == criteria){
-                    this.filtered.push(instance)
+            for (key in this.events){
+                if (this.events[key].category == criteria){
+                    this.filtered.push(this.events[key])
                 }
             }
             if (this.filtered.length == 0){
@@ -131,9 +131,9 @@ const app = Vue.createApp({
             console.log("Found")
             console.log(snapshot.val())
             this.events = snapshot.val()
-            for(instance of this.events){
-                if (instance.category == "Emergency"){
-                    this.filtered.push(instance)
+            for(key in this.events){
+                if (this.events[key].category == "Emergency"){
+                    this.filtered.push(this.events[key])
                 }
             }
             if (this.filtered.length == 0){
