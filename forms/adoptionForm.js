@@ -64,10 +64,7 @@ const app = Vue.createApp({
 
   methods: {
 
-    // post(){
-      
-    // }
-
+ 
     all_inputs(){
         console.log("clicked")
         console.log(this.animalName)
@@ -84,16 +81,6 @@ const app = Vue.createApp({
         // ref.child("adoptions").on("value", function(snapshot) {
         //     console.log("There are "+snapshot.numChildren()+" messages");
         //   })
-
-        firebase.database().ref('adoption/' + '9').set({
-            animalname: this.animalName,
-            age: this.animalAge,
-            species: this.species,
-            description: this.personality,
-            email: this.email,
-            hdb: this.hdbApproved,
-            vaccination: this.vaccinationStatus
-        });
 
 
     }
