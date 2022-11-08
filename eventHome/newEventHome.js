@@ -110,26 +110,22 @@ const app = Vue.createApp({
             return url
         },
 
-        follow_display(follows){
-            firebase.auth().onAuthStateChanged((user) => {
-                if (user) {
-                    if(follows.includes(user)){
-                        return "Unlike"
-                    }
-                    else{
-                        return "Like"
-                    }
-                }
-                else {
-                    "Followed By"
-                }
-            })
-        },
         addcounter() {
             newid = 'heart'+ this.count;
             this.count += 1;
             console.log(newid);
             return newid;
+        },
+
+        checklogin() {
+            firebase.auth().onAuthStateChanged((user) => {
+                if (user) {
+                    window.location.href='../forms/eventForms.html'
+                }
+                else{
+                    window.location.href='../login/newLogin.html?page=../forms/eventForms.html'
+                }
+            })
         }
         
 
