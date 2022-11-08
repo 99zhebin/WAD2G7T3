@@ -15,6 +15,14 @@
     border-width: 0px;
     border-radius: 15px;
     width: 200px;
+}
+
+.input-field select{
+    background-color: rgb(241, 241, 241);
+    padding: 10px;
+    border-width: 0px;
+    border-radius: 15px;
+    width: 200px;
 
 }
 
@@ -27,7 +35,7 @@
     width:200px;
     margin:auto;
 }
-#inputTag{
+#pic{
     display: none;
 }
 .upload label{
@@ -38,3 +46,7 @@
     margin-top:10px;
 }
 
+/* image chosen */
+#uploadPic{
+    width:50px;
+}
