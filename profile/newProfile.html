@@ -172,10 +172,10 @@
                 <div class="col-lg-3 col-md-6 col-sm-12" v-for="post of posts">
                     <a v-bind:href="">
                         <div class="card">
-                            <img src="images/event1.png" class="card-img-top">
+                            <img :src="post.pic[0]" class="card-img-top">
                             <div class="card-body p-0">
-                                <h8 class="card-title" >Event Name</h8>
-                                <p class="card-text" >Location<br>Date,Time</p>
+                                <h8 class="card-title" >{{post.eventname}}</h8>
+                                <p class="card-text" >{{post.location}}<br>{{post.eventdate}},{{post.time}}</p>
                             </div>
                         </div>
                     </a>

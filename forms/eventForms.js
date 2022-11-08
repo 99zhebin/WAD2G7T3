@@ -118,9 +118,9 @@ const app = Vue.createApp({
           }
         }
         postref.set({type : 'event',
-          username: this.username,
+          username: this.email,
             eventname: this.eventName,
-          eventdata: this.eventDate,
+          eventdate: this.eventDate,
           time: this.startTime + ' - ' + this.endTime,
           location: this.eventLocation,
           url: this.url,
@@ -128,9 +128,9 @@ const app = Vue.createApp({
     })
         var event = firebase.database().ref().child('events/' + this.eventName)
         event.set({
-        username: this.username,
+        username: this.email,
           eventname: this.eventName,
-        eventdata: this.eventDate,
+        eventdate: this.eventDate,
         time: this.startTime + ' - ' + this.endTime,
         location: this.eventLocation,
         url: this.url,
