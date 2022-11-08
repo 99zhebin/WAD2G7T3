@@ -46,25 +46,15 @@ function logout() {
 const app = Vue.createApp({
   data(){
       return{
-        email: "",
+        animalName: "",
 
-        key: '',
+        animalAge: '',
 
-        username: '',
+        species: '',
 
-        profile: [],
+        vaccinationStatus: '',
 
-        eventName: '',
-
-        eventDate: '',
-
-        startTime: '',
-
-        endTime: '',
-
-        eventLocation: '',
-
-        url: '',
+        health: ''
       }
   },
 
