@@ -79,16 +79,25 @@ const app = Vue.createApp({
     }
   },
 
-  mounted() {
-      console.log("--- Initialise Firebase ---")
-      firebase.initializeApp(firebaseConfig);
-      this.email = window.location.search;
-      console.log(this.email)
-      this.email = this.email.replace("?email=", '');
-      this.key = this.email.replace("@", '-');
-      this.key = this.key.replace(".", '-');
-      console.log(this.key)
-      }
+    mounted() {
+        firebase.initializeApp(firebaseConfig);
+        // ref.child("adoptions").on("value", function(snapshot) {
+        //     console.log("There are "+snapshot.numChildren()+" messages");
+        //   })
+
+        firebase.database().ref('adoption/' + '9').set({
+            animalname: this.animalName,
+            age: this.animalAge,
+            species: this.species,
+            description: this.personality,
+            email: this.email,
+            hdb: this.hdbApproved,
+            vaccination: this.vaccinationStatus
+        });
+
+
+    }
+
 })
 
 const vm2 = app.mount("#content")
