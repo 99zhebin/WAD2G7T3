@@ -153,13 +153,13 @@ const app = Vue.createApp({
         }
         });
 
-        window.addEventListener('load', () => {
+        Window.addEventListener('load', () => {
             // run after everything is in-place
             let hearts = document.getElementsByClassName("heart");
             for(heart of hearts) {
                 // let hid = `hid${count}`;
                 console.log(heart);
-                let hid = heart.getAttribute('id');
+                let hid = heart.getAttribute('id'); 
                 // console.log(heart.getAttribute('id'));
                 $(document).ready(function(){
                     $(`#${hid}`).click(function(){

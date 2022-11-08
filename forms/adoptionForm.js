@@ -28,11 +28,11 @@ function loadDisplay() {
         } else {
             // User is signed out
             // ...
-            let url = "../login/newLogin.html?page=../eventHome/newEventHome.html"
+            let url = "../login/newLogin.html?page=../adoptionHome/newAdoptionHome.html"
             document.getElementById("login").innerText = "Log In"
             document.getElementById("login").setAttribute("href", url)
         }
-        });
+    });
 }
 
 function logout() {
@@ -123,17 +123,17 @@ const app = Vue.createApp({
                                     pics: this.pics,
 
                                 })
-                                var event = firebase.database().ref().child('adoption/' + this.animalName)
-                                event.set({
-                                username: this.email,
-                                animalname: this.animalName,
-                                age: this.animalAge,
-                                description: this.personality,
-                                vaccinated: this.vaccinationStatus,
-                                HDB: this.hdbApproved,
-                                health: this.health,
-                                url: this.url,
-                                pics: this.pics,
+                                var adoption = firebase.database().ref().child('adoption/' + this.animalName)
+                                adoption.set({
+                                    username: this.email,
+                                    animalname: this.animalName,
+                                    age: this.animalAge,
+                                    description: this.personality,
+                                    vaccinated: this.vaccinationStatus,
+                                    HDB: this.hdbApproved,
+                                    health: this.health,
+                                    url: this.url,
+                                    pics: this.pics,
                                 })
                             }
                             if (this.pics.length == files.length) {

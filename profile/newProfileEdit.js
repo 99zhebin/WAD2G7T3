@@ -152,7 +152,7 @@ const app = Vue.createApp({
         }
         else {
           firebase.database().ref('profile/' + this.key).set({
-            pic: 'https://firebasestorage.googleapis.com/v0/b/is216-webapp.appspot.com/o/profilePic.jpg?alt=media&token=b0fd8b55-3af7-4755-a2eb-a350835241e1',
+            pic: 'https://firebasestorage.googleapis.com/v0/b/is216-webapp.appspot.com/o/default.jpg?alt=media&token=b7220c3b-7a96-4dbf-8da6-f864b674fd02',
             name: '',
             username: '',
             email: this.email,
