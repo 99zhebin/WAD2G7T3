@@ -6,7 +6,9 @@ const firebaseConfig = {
     storageBucket: "is216-webapp.appspot.com",
     messagingSenderId: "113592009297",
     appId: "1:113592009297:web:fd8286678c0c18abc3ee70"
-    };
+};
+
+firebase.initializeApp(firebaseConfig);
 
 function loadDisplay() {
     console.log("--- loadDisplay() start ---")
@@ -37,67 +39,121 @@ function logout() {
     firebase.auth().signOut().then(() => {
         // Sign-out successful.
         alert("Signed out")
-        window.location.href="../homepage/newHomepage.html"
-        }).catch((error) => {
+        window.location.href = "../homepage/newHomepage.html"
+    }).catch((error) => {
         // An error happened.
-        });
+    });
 }
 
-const app = Vue.createApp({
-  data(){
-      return{
-        animalName: "",
-
-        animalAge: '',
-
-        species: '',
-        
-        personality: '',
-
-        hdbApproved: '',
-
-        vaccinationStatus: '',
-
-        health: ''
-      }
-  },
-
-  methods: {
-
-    // post(){
-      
-    // }
-
-    all_inputs(){
-        console.log("clicked")
-        console.log(this.animalName)
-        console.log(this.animalAge)
-        console.log(this.species)
-        console.log(this.vaccinationStatus)
-        console.log(this.personality)
-
+function preview() {
+    console.log(document.getElementById('pic').files[0])
+    fileInput = document.getElementById('pic')
+    imageContainer = document.getElementById('result')
+    for (i of fileInput.files) {
+        let reader = new FileReader();
+        let figure = document.createElement("figure");
+        let figCap = document.createElement("figcaption");
+        figCap.innerText = i.name;
+        figure.appendChild(figCap);
+        reader.onload = () => {
+            let img = document.createElement("img");
+            img.setAttribute("src", reader.result);
+            img.setAttribute("id", 'uploadPic');
+            figure.insertBefore(img, figCap);
+        };
+        imageContainer.appendChild(figure);
+        reader.readAsDataURL(i);
     }
-  },
+};
+
+const app = Vue.createApp({
+    data() {
+        return {
+            animalName: "",
+
+            animalAge: '',
+
+            species: '',
+
+            personality: '',
+
+            hdbApproved: '',
+
+            vaccinationStatus: '',
+
+            health: '',
+
+            email: ''
+        }
+    },
+
+    methods: {
+
+
+        post() {
+            console.log(this.email)
+            this.email = this.email.replace("?email=", '');
+            this.key = this.email.replace("@", '-');
+            this.key = this.key.replace(".", '-');
+            console.log(this.key)
+            var user = firebase.database().ref().child('profile/' + this.key).child('listings')
+            var postref = user.push()
+            files = document.getElementById('pic').files
+            for (file of files) {
+                if (typeof file != 'undefined') {
+                    var storage = firebase.storage().ref()
+                    var thisRef = storage.child(file.name)
+                    thisRef.put(file).then(function (snapshot) {
+                        console.log('Image updated');
+                    })
+                    firebase.storage().ref(file.name).getDownloadURL()
+                        .then((url) => {
+                            this.pics.push(url)
+                            if (this.pics.length == files.length) {
+                                postref.set({
+                                    type: 'adoption',
+                                    username: this.email,
+                                    animalname: this.animalName,
+                                    age: this.animalAge,
+                                    description: this.personality,
+                                    vaccinated: this.vaccinationStatus,
+                                    HDB: this.hdbApproved,
+                                    health: this.health,
+                                    url: this.url,
+                                    pics: this.pics,
+
+                                })
+                                var event = firebase.database().ref().child('adoption/' + this.animalName)
+                                event.set({
+                                username: this.email,
+                                animalname: this.animalName,
+                                age: this.animalAge,
+                                description: this.personality,
+                                vaccinated: this.vaccinationStatus,
+                                HDB: this.hdbApproved,
+                                health: this.health,
+                                url: this.url,
+                                pics: this.pics,
+                                })
+                            }
+                            if (this.pics.length == files.length) {
+                                window.location.href = "../adoptionInfo/newAdoptionInfo.html?name=" + this.email + '-' + this.animalname
+                            }
+                        })
+                }
+            }
+        },
+    },
 
     mounted() {
-        firebase.initializeApp(firebaseConfig);
-        // ref.child("adoptions").on("value", function(snapshot) {
-        //     console.log("There are "+snapshot.numChildren()+" messages");
-        //   })
-
-        firebase.database().ref('adoption/' + '9').set({
-            animalname: this.animalName,
-            age: this.animalAge,
-            species: this.species,
-            description: this.personality,
-            email: this.email,
-            hdb: this.hdbApproved,
-            vaccination: this.vaccinationStatus
-        });
-
-
+        console.log("--- Initialise Firebase ---")
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                this.email = user.email
+                console.log(this.email)
+            }
+        })
     }
-
 })
 
 const vm2 = app.mount("#content")

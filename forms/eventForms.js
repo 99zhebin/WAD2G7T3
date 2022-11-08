@@ -94,6 +94,8 @@ const app = Vue.createApp({
         eventLocation: '',
 
         url: '',
+
+        email: ''
       }
   },
 

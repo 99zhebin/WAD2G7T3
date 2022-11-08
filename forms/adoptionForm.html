@@ -241,14 +241,13 @@
                     </div>
                     <div class="col m-0 p-0">
                         <div class="input-field">
-                            <input type="text" id="email" placeholder="Enter your email">
+                            <input type="text" id="email" placeholder="Enter your email" v-model="email">
                         </div>
                     </div>
                 </div>
 
                 <!-- submit button -->
-                <button class="btn button row justify-content-center" href="#" style="width:200px;"
-                    @click="all_inputs">POST</button>
+                <button class="btn button row justify-content-center" href="#" style="width:200px;" @click="post()">POST</button>
             </div>
 
             <div class="col-lg-2 col-xl-2"></div>
