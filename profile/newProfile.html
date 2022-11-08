@@ -174,8 +174,8 @@
                         <div class="card">
                             <img :src="key.pics[0]" class="card-img-top">
                             <div class="card-body p-0">
-                                <h8 class="card-title" >{{key.eventname}}</h8>
-                                <p class="card-text" >{{key.location}}<br>{{key.eventdate}},{{key.time}}</p>
+                                <h8 class="card-title" >{{post.eventname}}</h8>
+                                <p class="card-text" >{{post.location}}<br>{{post.eventdate}},{{post.time}}</p>
                             </div>
                         </div>
                     </a>
@@ -186,7 +186,14 @@
                         <div class="card">
                             <img src="images/event2.jpg" class="card-img-top">
                             <div class="card-body p-0">
-                                <h8 class="card-title" >Event Name</h8>
+                                <div class="row p-0 m-0">
+                                    <div class="col m-0 p-0">
+                                        <h8 class="card-title" >Event Name</h8>
+                                    </div>
+                                    <div class="col m-0 p-0 px-3" style="text-align:right;">
+                                        <span><i class=" fas fa-regular fa-trash"></i></span>
+                                    </div>
+                                </div>
                                 <p class="card-text" >Location<br>Date,Time</p>
                             </div>
                         </div>
@@ -326,4 +333,3 @@
 
 </body>
 </html>
-
