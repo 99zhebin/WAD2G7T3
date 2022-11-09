@@ -48,7 +48,7 @@
     <nav class="navbar sticky-top navbar-light">
 
         <!-- Website Name -->
-        <a class="navbar-brand " href="../homepage/newHomepage.html">
+        <a class="navbar-brand" href="../homepage/newHomepage.html">
             <div class="row" style="margin:0;">
                 <div class="col">
                     <iframe src="https://embed.lottiefiles.com/animation/43901"
@@ -118,18 +118,18 @@
 
         <div class="row">
             <!-- animations -->
-            <div class="col-xs-12 col-sm-12 col-lg-6 col-xl-6" style="text-align:center;">
+            <div class="col-12 col-lg-4 px-5 py-1" style="text-align:center;">
                 <iframe src="https://embed.lottiefiles.com/animation/46864" style="width:100%; height:100%;"></iframe>
             </div>
 
             <!-- form -->
-            <div class="col-xs-12 col-sm-12 col-lg-4 col-xl-4" style="text-align:center;">
+            <div class="col-12 col-lg-7" style="text-align:center;">
                 <!-- Pet name -->
                 <div class="row">
-                    <div class="col m-0 p-0">
+                    <div class="col-6 col-md-4 m-0 p-0">
                         Animal Name
                     </div>
-                    <div class="col m-0 p-0">
+                    <div class="col-6 col-md-8 m-0 p-0">
                         <div class="input-field">
                             <input type="text" id="animalName" placeholder="Enter animal's name" v-model="animalName">
                         </div>
@@ -138,10 +138,10 @@
 
                 <!-- age -->
                 <div class="row">
-                    <div class="col m-0 p-0">
+                    <div class="col-6 col-md-4 m-0 p-0">
                         Animal Age
                     </div>
-                    <div class="col m-0 p-0">
+                    <div class="col-6 col-md-8 m-0 p-0">
                         <div class="input-field">
                             <input type="text" id="animalAge" placeholder="Enter animal's age" v-model="animalAge">
                         </div>
@@ -151,10 +151,10 @@
 
                 <!-- species -->
                 <div class="row">
-                    <div class="col m-0 p-0">
+                    <div class="col-6 col-md-4 m-0 p-0">
                         Animal Species
                     </div>
-                    <div class="col m-0 p-0">
+                    <div class="col-6 col-md-8 m-0 p-0">
                         <div class="input-field">
                             <input type="text" id="species" placeholder="Enter species (e.g. dog)" v-model="species">
                         </div>
@@ -163,10 +163,10 @@
 
                 <!-- Personality/Temperament -->
                 <div class="row">
-                    <div class="col m-0 p-0">
+                    <div class="col-6 col-md-4 m-0 p-0">
                         Animal Personality
                     </div>
-                    <div class="col m-0 p-0">
+                    <div class="col-6 col-md-8 m-0 p-0">
                         <div class="input-field">
                             <textarea id="personality" rows="3" placeholder="Enter animal's personality"
                                 v-model="personality"></textarea>
@@ -176,10 +176,10 @@
 
                 <!-- HDB Approved -->
                 <div class="row">
-                    <div class="col m-0 p-0">
+                    <div class="col-6 col-md-4 m-0 p-0">
                         HDB Eligibility
                     </div>
-                    <div class="col m-0 p-0">
+                    <div class="col-6 col-md-8 m-0 p-0">
                         <div class="input-field">
                             <select id="hdb" v-model="hdbApproved">
                                 <option disabled selected value>Select an option</option>
@@ -192,10 +192,10 @@
 
                 <!-- Vaccinated -->
                 <div class="row">
-                    <div class="col m-0 p-0">
+                    <div class="col-6 col-md-4 m-0 p-0">
                         Vaccination Status
                     </div>
-                    <div class="col m-0 p-0">
+                    <div class="col-6 col-md-8 m-0 p-0">
                         <div class="input-field">
                             <select id="vaccination" v-model="vaccinationStatus">
                                 <option disabled selected value>Select an option</option>
@@ -208,10 +208,10 @@
 
                 <!-- Health -->
                 <div class="row">
-                    <div class="col m-0 p-0">
+                    <div class="col-6 col-md-4 m-0 p-0">
                         Existing Illnesses
                     </div>
-                    <div class="col m-0 p-0">
+                    <div class="col-6 col-md-8 m-0 p-0">
                         <div class="input-field">
                             <input type="text" id="health" placeholder="Enter health status" v-model="health">
                         </div>
@@ -221,10 +221,10 @@
 
                 <!-- upload image -->
                 <div class="row">
-                    <div class="col m-0 p-0">
+                    <div class="col-6 col-md-4 m-0 p-0">
                         Animal Images
                     </div>
-                    <div class="col m-0 p-0">
+                    <div class="col-6 col-md-8 m-0 p-0">
                         <div class="upload">
                             <label for="pic">
                                 <p>Upload up to 6 Images </p>
@@ -238,10 +238,10 @@
 
                 <!-- contact -->
                 <div class="row">
-                    <div class="col m-0 p-0">
+                    <div class="col-6 col-md-4 m-0 p-0">
                         Contact Email
                     </div>
-                    <div class="col m-0 p-0">
+                    <div class="col-6 col-md-8 m-0 p-0">
                         <div class="input-field">
                             <input type="text" id="email" placeholder="Enter your email" v-model="email">
                         </div>
@@ -249,7 +249,11 @@
                 </div>
 
                 <!-- submit button -->
-                <button class="btn button row justify-content-center" href="#" style="width:200px;" @click="post()">POST</button>
+                <div class="row justify-content-end">
+                    <div class="col-6 col-md-8">
+                        <button class="btn button row justify-content-center" href="#" style="width:200px;" @click="post()">POST</button>
+                    </div>
+                </div>               
             </div>
 
             <div class="col-lg-2 col-xl-2"></div>

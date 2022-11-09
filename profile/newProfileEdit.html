@@ -108,13 +108,13 @@
 
         <div class="row">
         
-            <div class="col-lg-6 col-xl-6">
+            <div class="col-lg-6">
                 <div class="profile" style="height:95%;margin-bottom:5%;">
                     <!-- profile pic -->
                     <div class="row" style="align-items:center;">
                         <img class="profilePic" :src="pic" style="width: 30%;" id="profile">
                     </div>
-                    <div style="text-align: center; padding-bottom:20px;margin-top:15px;">
+                    <div style="text-align: center; padding-bottom:5px;margin-top:15px;">
                         <label for="pic">
                             Select profile image<br><br>
                             <i class="fa fa-2x fa-camera"></i>
@@ -124,7 +124,7 @@
                     </div>
 
                     <!-- name -->
-                    <div class="row" style="text-align:center;" >
+                    <div class="row mx-auto" style="width:60%" >
                         <div class="input-field mx-auto">
                             <input type="text" id="name" value="Current Name" v-model="name" placeholder="Enter your name">
                             <label for="Name"></label><br>
@@ -133,7 +133,7 @@
 
                     <!-- details -->
                     <div class="row" style="justify-content:center;">
-                        <table class="details" style="width:50%;">
+                        <table class="details" style="width:90%;">
                             <tr>
                                 <td><i class="fa fa-user"></i></td>
                                 <td>
@@ -176,7 +176,7 @@
                     <div style="text-align: center;">
                         <p id="bio_description">
                             <div class="input-field mx-auto">
-                                <textarea id="bio" placeholder="Enter your bio" v-model="bio">Current Bio</textarea>
+                                <textarea id="bio" placeholder="Enter your bio" v-model="bio" maxlength="200">Current Bio</textarea>
                                 <label for="bio"></label><br>
                             </div>
                         </p>

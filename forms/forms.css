@@ -6,7 +6,8 @@
     padding: 10px;
     border-width: 0px;
     border-radius: 15px;
-    width: 250px;
+    /* width: 250px; */
+    width: 100%;
 }
 
 .input-field textarea{
@@ -14,7 +15,8 @@
     padding: 10px;
     border-width: 0px;
     border-radius: 15px;
-    width: 250px;
+    /* width: 250px; */
+    width: 100%;
 }
 
 .input-field select{
@@ -22,7 +24,8 @@
     padding: 10px;
     border-width: 0px;
     border-radius: 15px;
-    width: 250px;
+    /* width: 250px; */
+    width: 100%;
 
 }
 
@@ -32,7 +35,8 @@
     padding:20px;
     background-color: rgb(241, 241, 241);
     border-radius: 15px;
-    width:250px;
+    /* width:250px; */
+    width:100%;
     margin:auto;
 }
 #pic{
