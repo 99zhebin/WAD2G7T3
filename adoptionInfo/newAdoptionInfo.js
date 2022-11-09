@@ -41,7 +41,7 @@ function logout() {
         // Sign-out successful.
         alert("Signed out")
         let query = window.location.search
-        let url = "newEventInfo.html" + query
+        let url = "newAdoptionInfo.html" + query
         window.location.href=url
       }).catch((error) => {
         // An error happened.
@@ -57,7 +57,7 @@ const app = Vue.createApp({
 
             email:"",
 
-            eventName:"",
+            animalName:"",
 
             address: "",
 
@@ -77,10 +77,9 @@ const app = Vue.createApp({
 
     methods: {
         url(){
-            let url = "../profile/newProfilePublic.html?email=" + this.email
+            let url = "../adoptionInfo/newAdoptionInfo.html?email=" + this.email
             return url
         },
-        
     },
 
     mounted() {

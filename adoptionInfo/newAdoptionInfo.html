@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="../newFormat.css">
     <link rel="stylesheet" href="newAdoptiontInfo.css">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat' >
+    <title>Pet Baguette</title>
 
 </head>
 
@@ -88,8 +89,8 @@
                 Are you sure you wish to logout?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="logout()">Log Out</button>
+                <button type="button" class="btn button" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn button" onclick="logout()">Log Out</button>
             </div>
         </div>
     </div>
@@ -99,15 +100,15 @@
     <!-- content -->
     
     <div class="content" id="content">
-        <!-- Event Title -->
+        <!-- Animal Name -->
         <div class="row">
-            <h2>{{eventName}}</h2>
+            <h2>{{animalName}}</h2>
         </div>
 
         <!-- User who posted -->
         <div class= "row">
             <h8>
-                <i class="fa fa-user"></i> &nbsp
+                <i class="fas fa-paw"></i> &nbsp
                 <a class="username" v-bind:href="url()">{{event.username}}</a>
             </h8>
         </div>
