@@ -29,7 +29,7 @@ function loadDisplay() {
           // User is signed out
           // ...
           let query = window.location.search
-          let url = "../login/newLogin.html?page=../eventInfo/newEventInfo.html" + query 
+          let url = "../login/newLogin.html?page=./adoptionInfo/newAdoptionInfo.html" + query 
           document.getElementById("login").innerText = "Log In"
           document.getElementById("login").setAttribute("href", url)
         }
@@ -51,7 +51,7 @@ function logout() {
 const app = Vue.createApp({
     data(){
         return{
-            event: [],
+            animal: [],
 
             images: [],
 

@@ -102,7 +102,7 @@
     <div class="content" id="content">
         <!-- Animal Name -->
         <div class="row">
-            <h2>{{animalName}}</h2>
+            <h2>{{ animalName }}</h2>
         </div>
 
         <!-- User who posted -->
@@ -150,30 +150,29 @@
 
             <div class="col-sm-12 col-lg-6 col-xl-7" >
                 
+                <!-- have to edit all the {{}} -->
                 <!-- details -->
                 <h4 style="padding-top:20px;">Event Details</h4>
                 <!-- date -->
                 <p>
                     <i class="fa fa-calendar"></i> &emsp;
-                    {{event.eventdate}}
+                    {{animal}}
                 </p>
                 <!-- time -->
                 <p>
                     <i class="fa fa-clock-o"></i> &emsp;
-                    {{event.time}}
+                    {{animal}}
                 </p>
                 <!-- location -->
                 <p>
                     <i class="fa fa-map-marker"></i> &emsp;
-                    {{event.location}}
+                    {{animal}}
                 </p>
 
                 <!-- Description -->
                 <h4 style="padding-top:20px;">Event Description</h4>
-                <p>{{event.description}}</p>
+                <p>{{animal}}</p>
 
-                <!-- link to event website-->
-                <button class="btn button" v-bind:href="event.url">LEARN MORE</button>
             </div>
 
             <!-- location api -->
