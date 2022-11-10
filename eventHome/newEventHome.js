@@ -128,11 +128,20 @@ const app = Vue.createApp({
             })
         },
         checkheart(hid) {
-            let disheart = document.getElementById(hid);
-            console.log(hid);
-            console.log(disheart);
-            disheart.getAttribute('class');
-            console.log(disheart.getAttribute('class'));
+            let disheart = document.getElementById(hid.currentTarget.id);
+            // console.log(hid.currentTarget.id);
+            // console.log(disheart);
+            curclass = disheart.getAttribute('class');
+            console.log(curclass);
+            // console.log(disheart.getAttribute('class'));
+            if(curclass.includes('liked')) {
+                disheart.innerHTML='<i class="fa fa-heart-o" aria-hidden="true"></i>';
+                disheart.setAttribute('class', 'heart'); 
+            }
+            else{
+                disheart.innerHTML='<i class="fa fa-heart" aria-hidden="true"></i>';
+                disheart.setAttribute('class', 'heart liked'); 
+            }
         }
         
 
@@ -159,29 +168,6 @@ const app = Vue.createApp({
             console.log("Not Found")
         }
         });
-
-        Window.addEventListener('load', () => {
-            // run after everything is in-place
-            let hearts = document.getElementsByClassName("heart");
-            for(heart of hearts) {
-                // let hid = `hid${count}`;
-                console.log(heart);
-                let hid = heart.getAttribute('id'); 
-                // console.log(heart.getAttribute('id'));
-                $(document).ready(function(){
-                    $(`#${hid}`).click(function(){
-                        if($(`#${hid}`).hasClass("liked")){
-                        $(`#${hid}`).html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
-                        $(`#${hid}`).removeClass("liked");
-                        }else{
-                        $(`#${hid}`).html('<i class="fa fa-heart" aria-hidden="true"></i>');
-                        $(`#${hid}`).addClass("liked");
-                        }
-                    });
-                });
-                
-            }
-       })
 
 
         // console.log(document.readyState);
