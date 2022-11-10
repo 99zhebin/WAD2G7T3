@@ -122,8 +122,9 @@
 
             <!-- new adoption listing -->
             <div style="margin-bottom:15px;margin-left:25px;">
-                <button class="btn button newAdoption"><a href="../forms/adoptionForm.html">New Adoption Listing</a></button>
-            </div> 
+                <button class="btn button newAdoption"><a href="../forms/adoptionForm.html">New Adoption
+                        Listing</a></button>
+            </div>
 
             <!-- <a v-bind:class="{ active: emergencyFilter }" id="hdb" v-on:click="filter(hdb)" href="#"> -->
             <!-- dropdown for filter -->
@@ -133,117 +134,118 @@
 
                     <strong>HDB Eligiblity</strong> <br>
                     <input type="checkbox" id="eligible" value='eligible' v-model="hdb" checked>
-                        <label for="eligible">Eligible</label><br>
+                    <label for="eligible">Eligible</label><br>
                     <input type="checkbox" id="notEligible" value="not eligible" v-model="hdb" checked>
-                        <label for="notEligible">Not Eligible</label><br><br>
+                    <label for="notEligible">Not Eligible</label><br><br>
 
                     <strong>Vaccination Status</strong><br>
                     <input type="checkbox" id="vaccinated" name="vaccinated" v-model="vaccination" checked>
-                        <label for="vaccinated">Vaccinated</label><br>
+                    <label for="vaccinated">Vaccinated</label><br>
                     <input type="checkbox" id="notVaccinated" name="not vaccinated" v-model="vaccination" checked>
-                        <label for="notVaccinated">Not Vaccinated</label><br><br>
+                    <label for="notVaccinated">Not Vaccinated</label><br><br>
 
                     <strong>Species</strong><br>
                     <input type="checkbox" id="dog" value="dog" v-model="species" checked>
-                        <label for="dog">Dog</label><br>
+                    <label for="dog">Dog</label><br>
                     <input type="checkbox" id="cat" value="cat" v-model="species" checked>
-                        <label for="cat">Cat</label><br>
+                    <label for="cat">Cat</label><br>
                     <input type="checkbox" id="rabbit" value="rabbit" v-model="species" checked>
-                        <label for="rabbit">Rabbit</label><br>
+                    <label for="rabbit">Rabbit</label><br>
                     <input type="checkbox" id="others" value="others" v-model="species" checked>
-                        <label for="others">Others</label><br>
+                    <label for="others">Others</label><br>
                 </div>
-            </span>
-            
-        </div>
+                </span>
 
-        <!-- cards -->
-        <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
-            <a>
-                <div class="card">
-                    <img src="images/animal1.jpg" class="card-img-top">
+            </div>
+
+            <!-- cards -->
+
+            <div class="col-lg-3 col-md-6 col-sm-12 mb-3" v-for="pet in pets">
+                  <div class="card">
+                    <img :src="pet.pics" class="card-img-top">
                     <div class="card-body p-0">
-                        <h8 class="card-title">Name</h8>
-                        <p class="card-text">Species
-                            <br>Personality
+                        <h8 class="card-title">Name: {{ pet.name }} </h8>
+                        <p class="card-text">Species: {{ pet.species }}
+                            <br>Personality : {{ pet.personality }}
                         </p>
                     </div>
                 </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12">
-            <a>
-                <div class="card h-100">
-                    <img src="images/animal2.jpg" class="card-img-top">
-                    <div class="card-body p-0">
-                        <h8 class="card-title">Name</h8>
-                        <p class="card-text">Species
-                            <br>Personality
-                        </p>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <a>
+                    <div class="card h-100">
+                        <img src="images/animal2.jpg" class="card-img-top">
+                        <div class="card-body p-0">
+                            <h8 class="card-title">Name</h8>
+                            <p class="card-text">Species
+                                <br>Personality
+                            </p>
+                        </div>
                     </div>
+                </a>
+            </div>
+
+        </div>
+
+
+        <!-- bottom info -->
+        <hr>
+        <div class="bottomInfo">
+            <div class="row">
+
+                <!-- social media -->
+                <div class="col social">
+                    <p>CONTACT US</p>
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x icon-background"></i>
+                        <i class="fa fa-facebook-f fa-stack-1x"></i>
+                    </span>
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x icon-background"></i>
+                        <i class="fa fa-instagram fa-stack-1x"></i>
+                    </span>
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x icon-background"></i>
+                        <i class="fa fa-envelope fa-stack-1x"></i>
+                    </span>
                 </div>
-            </a>
-        </div>
 
-    </div>
-
-
-    <!-- bottom info -->
-    <hr>
-    <div class="bottomInfo">
-        <div class="row">
-
-            <!-- social media -->
-            <div class="col social">
-                <p>CONTACT US</p>
-                <span class="fa-stack fa-lg">
-                    <i class="fa fa-circle fa-stack-2x icon-background"></i>
-                    <i class="fa fa-facebook-f fa-stack-1x"></i>
-                </span>
-                <span class="fa-stack fa-lg">
-                    <i class="fa fa-circle fa-stack-2x icon-background"></i>
-                    <i class="fa fa-instagram fa-stack-1x"></i>
-                </span>
-                <span class="fa-stack fa-lg">
-                    <i class="fa fa-circle fa-stack-2x icon-background"></i>
-                    <i class="fa fa-envelope fa-stack-1x"></i>
-                </span>
+                <!-- Subscribe Newsletter -->
+                <!-- make the form look less weird on com big screen? -->
+                <div class="col">
+                    <p>SUBSCRIBE TO OUR NEWSLETTER</p>
+                    <form>
+                        <input type="text" placeholder="Email Address"><br>
+                        <a href="" class="btn button" style="margin-top:15px;">SUBMIT</a>
+                    </form>
+                </div>
             </div>
 
-            <!-- Subscribe Newsletter -->
-            <!-- make the form look less weird on com big screen? -->
-            <div class="col">
-                <p>SUBSCRIBE TO OUR NEWSLETTER</p>
-                <form>
-                    <input type="text" placeholder="Email Address"><br>
-                    <a href="" class="btn button" style="margin-top:15px;">SUBMIT</a>
-                </form>
+            <!-- copyright -->
+            <div class="row copyright">
+                <h8>&copy; 2022 PET BAGUETTE</h8>
             </div>
         </div>
 
-        <!-- copyright -->
-        <div class="row copyright">
-            <h8>&copy; 2022 PET BAGUETTE</h8>
-        </div>
-    </div>
+        <!-- Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
 
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
+        <!-- Javascript functions -->
+        <script src="newAdoptionHome.js"></script>
 
-    <!-- Javascript functions -->
-    <script src="newAdoptionHome.js"></script>
+        <script>
+            /* When the user clicks on the button,
+            toggle between hiding and showing the dropdown content */
+            function myFunction() {
+                document.getElementById("myDropdown").classList.toggle("show");
+            }
 
-    <script>
-        /* When the user clicks on the button,
-        toggle between hiding and showing the dropdown content */
-        function myFunction() {
-        document.getElementById("myDropdown").classList.toggle("show");
-        }
-
-    </script>
+        </script>
 
 </body>
 

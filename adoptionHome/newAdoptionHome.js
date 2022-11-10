@@ -92,7 +92,7 @@ const app = Vue.createApp({
         },
 
         url(email,petName){
-            let url = "../adoptionInfo/newadoptionInfo.html?name=" + email + "-" + petName
+            let url = "../adoptionHome/newadoptionHome.html?name=" + email + "-" + petName
             return url
         },
 
@@ -115,19 +115,17 @@ const app = Vue.createApp({
 
     mounted() {
         console.log("--- Initialise Firebase ---")
-        let eventArray = firebase.database().ref('adoption').orderByChild("timestamp")
-        eventArray.once('value').then((snapshot) => {
+        let adoptionArray = firebase.database().ref('adoption').orderByChild("timestamp")
+        adoptionArray.once('value').then((snapshot) => {
         if(snapshot.exists()) {
             console.log("Found")
             console.log(snapshot.val())
-            this.events = snapshot.val()
-            for(instance of this.events){
+            this.pets = snapshot.val()
+            
+            for(instance of this.pets){
                 if (instance.category == "Emergency"){
                     this.filtered.push(instance)
                 }
-            }
-            if (this.filtered.length == 0){
-                this.filtered = "not found"
             }
         }
         else {
