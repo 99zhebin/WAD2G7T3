@@ -59,7 +59,10 @@ const firebaseConfig = {
                             this.passwordError="You have entered an invalid password or the email address does not exist!"
                         }
                         else if (errorCode == "auth/email-already-in-use"){
-                            this.emailError = "Account already exists"
+                            this.emailError = "Account already exists!"
+                        }
+                        else if (errorCode == "auth/weak-password"){
+                            this.passwordError = "Please use a stronger password!"
                         }
                         console.log(errorCode)
                     });

@@ -111,6 +111,17 @@ const app = Vue.createApp({
                 }
             })
         },
+
+        checklogin() {
+            firebase.auth().onAuthStateChanged((user) => {
+                if (user) {
+                    window.location.href='../forms/adoptionForm.html'
+                }
+                else{
+                    window.location.href='../login/newLogin.html?page=../forms/adoptionForm.html'
+                }
+            })
+        }
     },
 
     mounted() {
