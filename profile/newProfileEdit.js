@@ -49,6 +49,7 @@ function preview() {
   console.log(document.getElementById('pic').files[0])
   fileInput = document.getElementById('pic')
   imageContainer = document.getElementById('result')
+  imageContainer.innerHTML = ''
   for (i of fileInput.files) {
     let reader = new FileReader();
     let figure = document.createElement("figure");
