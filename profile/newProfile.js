@@ -87,22 +87,10 @@ const app = Vue.createApp({
       var eventurl = '../eventInfo/newEventInfo.html?name=' + this.email + '-' + eventname
       return eventurl
     },
-
-    checklogin() {
-      firebase.auth().onAuthStateChanged((user) => {
-        if (user) {
-          window.location.href = '../forms/eventForms.html'
-        }
-        else {
-          window.location.href = '../login/newLogin.html?page=../forms/eventForms.html'
-        }
-      })
-    }
   },
 
   mounted() {
     console.log("--- Initialise Firebase ---")
-    firebase.initializeApp(firebaseConfig);
     this.email = window.location.search;
     console.log(this.email)
     this.email = this.email.replace("?email=", '');
