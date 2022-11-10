@@ -148,7 +148,6 @@ const app = Vue.createApp({
                             this.pics.push(url)
                             if (this.pics.length == files.length) {
                                 postref.set({
-                                    postid: uid,
                                     type: 'adoption',
                                     username: this.email,
                                     name: this.name,
@@ -162,6 +161,7 @@ const app = Vue.createApp({
                                 })
                                 var adoption = firebase.database().ref().child('adoption/' + this.name)
                                 adoption.set({
+                                    postid: uid,
                                     username: this.email,
                                     name: this.name,
                                     birthday: this.birthday,

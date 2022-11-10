@@ -127,7 +127,6 @@ const app = Vue.createApp({
                 this.pics.push(url)
                 if (this.pics.length == files.length){
                   postref.set({
-                      pid: uid,
                       type : 'event',
                       username: this.email,
                       eventname: this.eventName,
@@ -141,6 +140,7 @@ const app = Vue.createApp({
                 })
                     var event = firebase.database().ref().child('events/' + this.eventName)
                     event.set({
+                      pid: uid,
                     username: this.email,
                       eventname: this.eventName,
                     eventdate: this.eventDate,
