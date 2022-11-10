@@ -71,7 +71,7 @@ const app = Vue.createApp({
         return {
             animalName: "",
 
-            animalAge: '',
+            birthday: '',
 
             species: '',
 
@@ -117,7 +117,7 @@ const app = Vue.createApp({
                                     type: 'adoption',
                                     username: this.email,
                                     animalname: this.animalName,
-                                    age: this.animalAge,
+                                    birthday: this.birthday,
                                     description: this.personality,
                                     vaccinated: this.vaccinationStatus,
                                     HDB: this.hdbApproved,
@@ -129,7 +129,7 @@ const app = Vue.createApp({
                                 adoption.set({
                                     username: this.email,
                                     animalname: this.animalName,
-                                    age: this.animalAge,
+                                    birthday: this.birthday,
                                     description: this.personality,
                                     vaccinated: this.vaccinationStatus,
                                     HDB: this.hdbApproved,
