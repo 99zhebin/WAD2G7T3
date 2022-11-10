@@ -173,15 +173,15 @@
             <div class="row">
 
                 <div class="col-lg-3 col-md-6 col-sm-12" v-for="key in posts">
-                    <a v-bind:href="eventurl(key.eventname)">
-                        <div class="card">
+                    <div class="card">
+                        <a v-bind:href="eventurl(key.eventname)">
                             <img :src="key.pics[0]" class="card-img-top">
-                            <div class="card-body p-0">
-                                <h8 class="card-title" >{{key.eventname}}</h8>
-                                <p class="card-text" >{{key.location}}<br>{{key.eventdate}},{{key.time}}</p>
-                            </div>
+                        </a>
+                        <div class="card-body p-0">
+                            <h8 class="card-title" >{{key.eventname}}</h8>
+                            <p class="card-text" >{{key.location}}<br>{{key.eventdate}},{{key.time}}</p>
                         </div>
-                    </a>
+                    </div>
                 </div>
 
                 <div class="text-center" v-if="posts.length == 0"><span>No Posts Made, Make a Post Now!</span></div>
