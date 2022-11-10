@@ -131,7 +131,7 @@
                     </div>
                     <div class="col-6 col-md-8 m-0 p-0">
                         <div class="input-field">
-                            <input type="text" id="animalName" placeholder="Enter animal's name" v-model="animalName">
+                            <input type="text" id="name" placeholder="Enter animal's name" v-model="name" required>
                         </div>
                     </div>
                 </div>
@@ -143,11 +143,10 @@
                     </div>
                     <div class="col-6 col-md-8 m-0 p-0">
                         <div class="input-field">
-                            <input type="date" id="birthday" v-model="birthday">
+                            <input type="date" id="birthday" v-model="birthday" required>
                         </div>
                     </div>
                 </div>
-
 
                 <!-- species -->
                 <div class="row">
@@ -157,14 +156,14 @@
                     <div class="col-6 col-md-8 m-0 p-0">
                         <div class="input-field">
                             <!-- <input type="text" id="species" placeholder="Enter species (e.g. dog)" v-model="species"> -->
-                            <select class="form-select form-select-sm">
+                            <select class="form-select form-select-sm" v-model="species">
                                 <option selected>Choose species from menu</option>
-                                <option value="1">Dog</option>
-                                <option value="2">Cat</option>
-                                <option value="3">Rabbit</option>
-                                <option value="4">Hamster</option>
-                                <option value="5">Fish</option>
-                                <option value="6">Others</option>
+                                <option value="dog">Dog</option>
+                                <option value="cat">Cat</option>
+                                <option value="rabbit">Rabbit</option>
+                                <option value="hamster">Hamster</option>
+                                <option value="fish">Fish</option>
+                                <option value="others">Others</option>
                               </select>
                         </div>
                     </div>
@@ -206,7 +205,7 @@
                     </div>
                     <div class="col-6 col-md-8 m-0 p-0">
                         <div class="input-field">
-                            <select id="vaccination" v-model="vaccinationStatus">
+                            <select id="vaccination" v-model="vaccinationStatus" required>
                                 <option disabled selected value>Select an option</option>
                                 <option value="vaccinated">Vaccinated</option>
                                 <option value="notVaccinated">Not Vaccinated</option>
@@ -260,7 +259,7 @@
                 <!-- submit button -->
                 <div class="row justify-content-end">
                     <div class="col-6 col-md-8">
-                        <button class="btn button row justify-content-center" href="#" style="width:200px;" @click="post()">POST</button>
+                        <button class="btn button row justify-content-center" href="#" style="width:200px;" @click="validate()">POST</button>
                     </div>
                 </div>               
             </div>

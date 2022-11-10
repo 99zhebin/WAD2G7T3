@@ -69,7 +69,7 @@ function preview() {
 const app = Vue.createApp({
     data() {
         return {
-            animalName: "",
+            name: "",
 
             birthday: '',
 
@@ -91,6 +91,37 @@ const app = Vue.createApp({
     },
 
     methods: {
+
+        validate(){
+            var today = new Date()
+            var date = this.birthday
+            console.log(date)
+            date = date.split("-")
+            var year = date[0]
+            var month = date[1]
+            var day = date[2]
+            console.log(date)
+
+            console.log(today.getFullYear())
+            console.log(today.getMonth() + 1)
+            console.log(today.getDate())
+
+            var name = this.name
+            var birthday = this.birthday
+            var species = this.species
+            var personality = this.personality
+            var hdbApproved = this.hdbApproved
+            var vaccinated = this.vaccinationStatus 
+            var health = this.health
+            
+            if(!name || !birthday || !species || !personality || !hdbApproved || !vaccinated || !health){
+                console.log(name,birthday,species,personality,hdbApproved,vaccinated,health)
+                alert("Please fill up ALL fields\n" + "Do not leave any blanks")
+            }
+            else{
+                this.post()
+            }
+        },
 
 
         post() {
@@ -116,7 +147,7 @@ const app = Vue.createApp({
                                 postref.set({
                                     type: 'adoption',
                                     username: this.email,
-                                    animalname: this.animalName,
+                                    name: this.name,
                                     birthday: this.birthday,
                                     description: this.personality,
                                     vaccinated: this.vaccinationStatus,
@@ -125,10 +156,10 @@ const app = Vue.createApp({
                                     pics: this.pics,
 
                                 })
-                                var adoption = firebase.database().ref().child('adoption/' + this.animalName)
+                                var adoption = firebase.database().ref().child('adoption/' + this.name)
                                 adoption.set({
                                     username: this.email,
-                                    animalname: this.animalName,
+                                    name: this.name,
                                     birthday: this.birthday,
                                     description: this.personality,
                                     vaccinated: this.vaccinationStatus,
@@ -138,7 +169,7 @@ const app = Vue.createApp({
                                 })
                             }
                             if (this.pics.length == files.length) {
-                                window.location.href = "../adoptionInfo/newAdoptionInfo.html?name=" + this.email + '-' + this.animalname
+                                window.location.href = "../adoptionInfo/newAdoptionInfo.html?name=" + this.email + '-' + this.name
                             }
                         })
                 }
