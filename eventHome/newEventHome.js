@@ -126,6 +126,13 @@ const app = Vue.createApp({
                     window.location.href='../login/newLogin.html?page=../forms/eventForms.html'
                 }
             })
+        },
+        checkheart(hid) {
+            let disheart = document.getElementById(hid);
+            console.log(hid);
+            console.log(disheart);
+            disheart.getAttribute('class');
+            console.log(disheart.getAttribute('class'));
         }
         
 

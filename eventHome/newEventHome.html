@@ -178,7 +178,7 @@
                             </div>
                             <div class="col m-0 p-0 px-3" style="text-align:right;">
                                 <!-- like button -->
-                                <span class = "heart" :id="addcounter()"><i class="fa fa-heart-o" aria-hidden="true" ></i> </span>
+                                <span class="heart" :id="addcounter()" v-on:click="checkheart(this.id)"><i class="fa fa-heart-o" aria-hidden="true" ></i> </span>
                             </div>
                         </div>
                         <p class="card-text" >{{instance.location}}<br>{{instance.time}}</p>
