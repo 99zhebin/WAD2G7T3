@@ -10,6 +10,8 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+eventDate.min = new Date().toISOString().split("T")[0]
+
 function loadDisplay() {
     console.log("--- loadDisplay() start ---")
     console.log("--- logInCheck() Start  ---")
