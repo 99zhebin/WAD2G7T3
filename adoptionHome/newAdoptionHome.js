@@ -122,6 +122,7 @@ const app = Vue.createApp({
             console.log(snapshot.val())
             this.pets = snapshot.val()
             
+            // here onwards idk whats goin on 
             for(instance of this.pets){
                 if (instance.category == "Emergency"){
                     this.filtered.push(instance)
