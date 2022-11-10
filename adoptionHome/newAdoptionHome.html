@@ -162,7 +162,9 @@
 
             <div class="col-lg-3 col-md-6 col-sm-12 mb-3" v-for="pet in pets">
                   <div class="card">
-                    <img :src="pet.pics" class="card-img-top">
+                    <a v-bind:href="url(pet.email,pet.name)" style="text-decoration:none;color:black">
+                        <img :src="pet.pics" class="card-img-top">
+                    </a>
                     <div class="card-body p-0">
                         <h8 class="card-title">Name: {{ pet.name }} </h8>
                         <p class="card-text">Species: {{ pet.species }}

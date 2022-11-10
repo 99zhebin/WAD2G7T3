@@ -92,7 +92,7 @@ const app = Vue.createApp({
         },
 
         url(email,petName){
-            let url = "../adoptionHome/newadoptionHome.html?name=" + email + "-" + petName
+            let url = "../adoptioninfo/newadoptionInfo.html?name=" + email + "-" + petName
             return url
         },
 
@@ -134,11 +134,11 @@ const app = Vue.createApp({
             this.pets = snapshot.val()
             
             // here onwards idk whats goin on 
-            for(instance of this.pets){
-                if (instance.category == "Emergency"){
-                    this.filtered.push(instance)
-                }
-            }
+            // for(instance of this.pets){
+            //     if (instance.category == "Emergency"){
+            //         this.filtered.push(instance)
+            //     }
+            // }
         }
         else {
             console.log("Not Found")
