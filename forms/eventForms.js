@@ -1,3 +1,5 @@
+const { uniqueId } = require("lodash");
+
 const firebaseConfig = {
     apiKey: "AIzaSyAWvVP_h1HKDOSqjp9BFZ1ttifg_UhC0eQ",
     authDomain: "is216-webapp.firebaseapp.com",
@@ -105,6 +107,7 @@ const app = Vue.createApp({
 
     post(){
         console.log(this.email)
+        var uid = Date.now()
         this.email = this.email.replace("?email=", '');
         this.key = this.email.replace("@", '-');
         this.key = this.key.replace(".", '-');
@@ -123,9 +126,11 @@ const app = Vue.createApp({
               .then((url) => {
                 this.pics.push(url)
                 if (this.pics.length == files.length){
-                  postref.set({type : 'event',
+                  postref.set({
+                      pid: uid,
+                      type : 'event',
                       username: this.email,
-                        eventname: this.eventName,
+                      eventname: this.eventName,
                       eventdate: this.eventDate,
                       category: this.category,
                       time: this.startTime + ' - ' + this.endTime,

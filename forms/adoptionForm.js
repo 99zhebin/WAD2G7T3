@@ -93,6 +93,7 @@ const app = Vue.createApp({
     methods: {
 
         validate(){
+
             var today = new Date()
             var date = this.birthday
             console.log(date)
@@ -125,6 +126,8 @@ const app = Vue.createApp({
 
 
         post() {
+            //creation of unique id based on date(millisecond precision)
+            var uid = Date.now()
             console.log(this.email)
             this.email = this.email.replace("?email=", '');
             this.key = this.email.replace("@", '-');
@@ -145,6 +148,7 @@ const app = Vue.createApp({
                             this.pics.push(url)
                             if (this.pics.length == files.length) {
                                 postref.set({
+                                    postid: uid,
                                     type: 'adoption',
                                     username: this.email,
                                     name: this.name,

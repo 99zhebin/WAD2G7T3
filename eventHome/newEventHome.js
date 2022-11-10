@@ -69,8 +69,6 @@ const app = Vue.createApp({
             volunteer: "Volunteering",
 
             hid: [],
-
-            count: 0,
         }
     },
 
@@ -129,11 +127,11 @@ const app = Vue.createApp({
         },
         checkheart(hid) {
             let disheart = document.getElementById(hid.currentTarget.id);
-            // console.log(hid.currentTarget.id);
-            // console.log(disheart);
+
             curclass = disheart.getAttribute('class');
-            console.log(curclass);
-            // console.log(disheart.getAttribute('class'));
+
+
+            
             if(curclass.includes('liked')) {
                 disheart.innerHTML='<i class="fa fa-heart-o" aria-hidden="true"></i>';
                 disheart.setAttribute('class', 'heart'); 
