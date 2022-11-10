@@ -87,6 +87,7 @@ const app = Vue.createApp({
     mounted() {
         console.log("--- Initialise Firebase ---")
         var url = window.location.search;
+        // hellp zhebin if u console log the url the name is undefined
         console.log(url)
         url = url.replace("?name=", '');
         url = url.split("-")
