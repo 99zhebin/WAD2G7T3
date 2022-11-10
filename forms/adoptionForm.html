@@ -143,7 +143,7 @@
                     </div>
                     <div class="col-6 col-md-8 m-0 p-0">
                         <div class="input-field">
-                            <input type="date" id="birthday" placeholder="Enter animal's age" v-model="birthday">
+                            <input type="date" id="birthday" v-model="birthday">
                         </div>
                     </div>
                 </div>
@@ -156,7 +156,15 @@
                     </div>
                     <div class="col-6 col-md-8 m-0 p-0">
                         <div class="input-field">
-                            <input type="text" id="species" placeholder="Enter species (e.g. dog)" v-model="species">
+                            <!-- <input type="text" id="species" placeholder="Enter species (e.g. dog)" v-model="species"> -->
+                            <select class="form-select form-select-sm">
+                                <option selected>Choose species from menu</option>
+                                <option value="1">Dog</option>
+                                <option value="2">Cat</option>
+                                <option value="3">Rabbit</option>
+                                <option value="4">Hamster</option>
+                                <option value="5">Others</option>
+                              </select>
                         </div>
                     </div>
                 </div>
