@@ -24,7 +24,7 @@ function loadDisplay() {
           document.getElementById("login").setAttribute("href", url)
           let ul = document.getElementById("navbar")
           let li = document.createElement("li")
-          li.innerHTML = '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#logout">Logout</button>'
+          li.innerHTML = '<a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#logout">Logout</a>'
           ul.appendChild(li)
           // ...
         } else {
@@ -53,8 +53,10 @@ function logout() {
 const app = Vue.createApp({
     data(){
         return{
-            animal: [],
 
+            // have to edit data returned
+            animal: [],
+            
             images: [],
 
             email:"",
@@ -101,7 +103,7 @@ const app = Vue.createApp({
             const animalArray = snapshot.val()
             console.log(animalArray)
             this.animal = animalArray
-            this.images =this.animal['pics']
+            this.images = animalArray.pics
         })
 
         // petArray.once('value').then((snapshot) => {

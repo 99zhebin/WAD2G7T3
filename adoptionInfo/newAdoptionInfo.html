@@ -17,6 +17,9 @@
     <!-- Vue.js -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
+    <!-- lottie files -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
     <!-- style sheet -->
     <link rel="stylesheet" href="../newFormat.css">
     <link rel="stylesheet" href="newAdoptionInfo.css">
@@ -43,7 +46,7 @@
         <a class="navbar-brand"  href="../homepage/newHomepage.html">
                 <div class="row" style="margin:0;">
                     <div class="col-3">
-                        <iframe src="https://embed.lottiefiles.com/animation/43901" style="height: 50px; width: 50px;"></iframe>
+                        <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_syqnfe7c.json"  background="transparent"  speed="1"  style="width: 50px; height: 50px;"  loop  autoplay></lottie-player>
                     </div>
                     <div class="col-9 my-auto">
                         <h8>PET BAGUETTE</h8>
@@ -109,7 +112,7 @@
         <!-- User who posted -->
         <div class= "row">
             <h8>
-                <i class="fas fa-paw"></i>
+                <i class="fas fa-paw"></i> &ensp;
                 <a class="username" v-bind:href="url()">{{ email }}</a>
             </h8>
         </div>
@@ -122,13 +125,13 @@
                 <div class="row" style="aspect-ratio:1.25/1;">
                     <div class="col" style="padding:0 2%;">
                         <!-- Expanded image -->
-                        <img v-bind:src="images[0]" id="expandedImg" style="width:100%" >
+                        <img :src="images[0]" id="expandedImg" style="width:100%" >
                     </div>
                 </div>
             
                 <div class="row">
                     <div class="col-2" id="opics" v-for="image of images">
-                        <img v-bind:src="image" onclick="myFunction(this);">
+                        <img :src="image" onclick="myFunction(this);">
                     </div>
                     <!-- <div class="col-2" id="opics">
                         <img src="images/event2.jpg" onclick="myFunction(this);">
@@ -149,30 +152,30 @@
 
             </div>
 
-            <div class="col-sm-12 col-lg-6 col-xl-7" v-for="key of animal">
+            <div class="col-sm-12 col-lg-6 col-xl-7">
                 
                 <!-- have to edit all the {{}} -->
                 <!-- details -->
-                <h4 style="padding-top:20px;">{{ key.name }}</h4>
+                <h4 style="padding-top:20px;">{{ animal.name }}</h4>
                 <!-- date -->
                 <p>
                     <i class="fa fa-calendar"></i> &emsp;
-                    {{animal[0]}}
+                    {{ animal.birthday }}
                 </p>
                 <!-- time -->
                 <p>
-                    <i class="fa fa-clock-o"></i> &emsp;
-                    {{animal}}
+                    <i class="fas fa-paw"></i> &emsp;
+                    {{ animal.description }}
                 </p>
                 <!-- location -->
                 <p>
-                    <i class="fa fa-map-marker"></i> &emsp;
-                    {{animal}}
+                    <i class="fas fa-syringe"></i> &emsp;
+                    {{ animal.vaccinated }}
                 </p>
 
                 <!-- Description -->
-                <h4 style="padding-top:20px;">Event Description</h4>
-                <p>{{animal}}</p>
+                <h4 style="padding-top:20px;">{{ animal.name }} Personality</h4>
+                <!-- <p>{{ animal.personality }}</p> -->
 
             </div>
 

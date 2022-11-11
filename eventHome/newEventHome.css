@@ -77,6 +77,3 @@
     text-decoration: none;
     display: inline-block;
 }
-.newEvent:hover, .newEvent:focus {
-    background-color: bisque;
-}

@@ -40,6 +40,9 @@ hr{
 .navbar-nav a:hover{
     background-color:bisque;
 }
+.nav-item{
+    float:right;
+}
 
 /* bottom */
 .bottomInfo{
@@ -71,5 +74,8 @@ hr{
 .button{
     border:2px solid black;
     font-size: 15px;
+}
+.button:hover, .button:focus {
+    background-color: bisque;
 }
 

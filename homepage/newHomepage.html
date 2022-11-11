@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <!-- Awesome Font -->
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
@@ -14,10 +16,13 @@
     <!-- Axios -->
     <script src="https://unpkg.com/axios/dist/axios.js"></script>
 
+    <!-- lottie files -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
     <!-- style sheet -->
     <link rel="stylesheet" href="../newFormat.css">
     <link rel="stylesheet" href="newHomePage.css">
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat' >
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat'>
 
     <title>
         Pet Baguette
@@ -27,11 +32,11 @@
 
 <body onload="loadDisplay()">
     <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
     <!-- This is the API from Firebase Realtime Database -->
-    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
     <!-- API for Firebase Storage -->
-    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
     <!-- API for Firebase Authentication-->
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
     <!-- nav bar -->
@@ -39,24 +44,25 @@
     <nav class="navbar sticky-top navbar-light navbar-expand-md">
 
         <!-- Website Name -->
-        <a class="navbar-brand "  href="../homepage/newHomepage.html">
-                <div class="row" style="margin:0;">
-                    <div class="col-3">
-                        <iframe src="https://embed.lottiefiles.com/animation/43901" style="height: 50px; width: 50px;"></iframe>
-                    </div>
-                    <div class="col-9 my-auto">
-                        <h8>PET BAGUETTE</h8>
-                    </div>
-
+        <a class="navbar-brand " href="../homepage/newHomepage.html">
+            <div class="row" style="margin:0;">
+                <div class="col-3">
+                    <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_syqnfe7c.json"
+                        background="transparent" speed="1" style="width: 50px; height: 50px;" loop autoplay>
+                    </lottie-player>
+                </div>
+                <div class="col-9 my-auto">
+                    <h8>PET BAGUETTE</h8>
                 </div>
             </div>
         </a>
 
         <!-- Menu Icon -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        
+
         <!-- NavBar Items -->
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav" id="navbar">
@@ -74,27 +80,27 @@
                 </li>
             </ul>
         </div>
-    </div>
-</nav>
+        </div>
+    </nav>
 
-<!-- Modal -->
-<div class="modal fade" id="logout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="LogoutTitle">Logout?</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Are you sure you wish to logout?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn button" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn button" onclick="logout()">Log Out</button>
+    <!-- Modal -->
+    <div class="modal fade" id="logout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="LogoutTitle">Logout?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you wish to logout?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn button" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn button" onclick="logout()">Log Out</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
     <hr>
 
     <!-- content -->
@@ -107,7 +113,7 @@
                 <div class="row">
                     <img src="images/homeSlogan.png" style="width:100%">
                 </div>
-                
+
                 <div class="row">
                     <div class="col-sm-6">
                         <img src="images/homeStats.png" style="width:100%">
@@ -125,10 +131,11 @@
                 <img src="images/homeCollage.png" style="width:100%">
             </div>
         </div>
-        
+
         <!-- moving dog -->
-        <div id="move">            
-            <iframe src="https://embed.lottiefiles.com/animation/73716"></iframe>
+        <div id="move">
+            <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_itqodaed.json" background="transparent"
+                speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
         </div>
 
 
@@ -166,11 +173,11 @@
                 <span class="fa-stack fa-lg">
                     <i class="fa fa-circle fa-stack-2x icon-background"></i>
                     <i class="fa fa-facebook-f fa-stack-1x"></i>
-                </span>   
+                </span>
                 <span class="fa-stack fa-lg">
                     <i class="fa fa-circle fa-stack-2x icon-background"></i>
                     <i class="fa fa-instagram fa-stack-1x"></i>
-                </span>   
+                </span>
                 <span class="fa-stack fa-lg">
                     <i class="fa fa-circle fa-stack-2x icon-background"></i>
                     <i class="fa fa-envelope fa-stack-1x"></i>
@@ -183,7 +190,8 @@
                 <p>SUBSCRIBE TO OUR NEWSLETTER</p>
                 <div class="row">
                     <div class="col-sm-12 col-lg-7 mb-3 text-lg-end">
-                        <input type="text" placeholder="Email Address" style="height: 38.5px; border-color: darkslategrey;">
+                        <input type="text" placeholder="Email Address"
+                            style="height: 38.5px; border-color: darkslategrey;">
                     </div>
 
                     <div class="col-sm-12 col-lg-5 text-lg-start">
@@ -192,7 +200,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- copyright -->
         <div class="row copyright">
             <h8>&copy; 2022 PET BAGUETTE</h8>
@@ -203,8 +211,11 @@
     <script src="newHomePage.js"></script>
 
     <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
 
 </body>
+
 </html>
