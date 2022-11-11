@@ -135,15 +135,18 @@ const app = Vue.createApp({
             var curemail = this.email
             curemail = curemail.replace("@",'-');
             curemail = curemail.replaceAll(".",'-');
-            // console.log(curemail)
-            var postid = this.pid
-            // console.log(instance.pid)
-            // console.log(curemail);
+
             database = firebase.database();
             var ref = database.ref('profile/' + curemail);
             ref.once("value", function(snapshot){
                 ulikes = snapshot.val().likes
-                console.log(ulikes);
+                likelist = [];
+                for(key in ulikes){
+                    likelist.push(ulikes[key]);
+                }
+                this.userlikes = likelist;
+                console.log(this.userlikes[0]);
+                // console.log(ulikes);
                 valid = true;
                 for(key in ulikes){
                     if(ulikes[key] == instance.pid){
@@ -183,8 +186,17 @@ const app = Vue.createApp({
                 disheart.setAttribute('class', 'heart liked'); 
             }
         },
-        getData(data){
-            console.log(data.value());
+        userlikesload(){
+            database = firebase.database();
+            ref.once("value", function(snapshot){
+                ulikes = snapshot.val().likes
+                likelist = [];
+                for(key in ulikes){
+                    likelist.push(ulikes[key]);
+                }
+                console.log(likelist);
+                this.userlikes = likelist;
+            })
         }
         
 
@@ -220,7 +232,7 @@ const app = Vue.createApp({
         }
         });
 
-        
+
 
         // console.log(document.readyState);
         //Setting specific hearts for each post
