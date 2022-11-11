@@ -5,6 +5,7 @@ body {
 
     max-width: 100%;
     overflow-x: hidden;
+    height: 100vh;
 
 }
 
@@ -26,6 +27,7 @@ body {
         width: 300%;
     }
 }
+
 
 /* nav cards */
 .card {
