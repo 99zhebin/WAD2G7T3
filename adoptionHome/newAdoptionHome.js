@@ -57,37 +57,33 @@ const app = Vue.createApp({
             vaccination: [],
 
             species: [],
+
+            health: [],
         }
     },
 
     methods: {
-        filter(criteria){
+        filter(){
             console.log("--- Start Filter ---")
-            console.log(criteria)
             this.filtered = []
-            for (instance of this.events){
-                if (instance.category == criteria){
-                    this.filtered.push(instance)
+            for (key in this.pets){
+                correct = true
+                if (this.hdb == 'eligible' && this.pets[key].HDB != 'eligible'){
+                    correct = false
                 }
-            }
-            if (this.filtered.length == 0){
-                this.filtered = "not found"
-            }
-            this.emergencyFilter = false
-            this.driveFilter = false
-            this.fundFilter = false
-            this.volunteerFilter = false
-            if (criteria == 'Emergency'){
-                this.emergencyFilter = true
-            }
-            else if (criteria == 'Adoption Drive'){
-                this.driveFilter = true
-            }
-            else if (criteria == 'Fundraiser'){
-                this.fundFilter = true
-            }
-            else if (criteria == 'Volunteering'){
-                this.volunteerFilter = true
+                if (this.vaccination == 'vaccinated' && this.pets[key].vaccinated != 'vaccinated'){
+                    correct = false
+                }
+                if (this.health == 'none' && this.pets[key].health != 'NIL'){
+                    correct = false
+                }
+                if(this.species.includes(this.pets[key].species) == false){
+                    correct = false
+                }
+                if (correct == true){
+                    console.log(this.pets[key])
+                    this.filtered.push(this.pets[key])
+                }
             }
         },
 
@@ -126,12 +122,13 @@ const app = Vue.createApp({
 
     mounted() {
         console.log("--- Initialise Firebase ---")
-        let adoptionArray = firebase.database().ref('adoption').orderByChild("timestamp")
+        let adoptionArray = firebase.database().ref('adoption')
         adoptionArray.once('value').then((snapshot) => {
         if(snapshot.exists()) {
             console.log("Found")
             console.log(snapshot.val())
             this.pets = snapshot.val()
+            this.filtered = this.pets
             
             // here onwards idk whats goin on 
             // for(instance of this.pets){

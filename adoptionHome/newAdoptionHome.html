@@ -130,18 +130,24 @@
             <div class="dropdown" style="margin-left:25px;">
                 <button onclick="myFunction()" class="btn button dropbtn">Filter</button>
                 <div id="myDropdown" class="dropdown-content">
-
+                    
                     <strong>HDB Eligiblity</strong> <br>
-                    <input type="checkbox" id="eligible" value='eligible' v-model="hdb" checked>
-                    <label for="eligible">Eligible</label><br>
-                    <input type="checkbox" id="notEligible" value="not eligible" v-model="hdb" checked>
-                    <label for="notEligible">Not Eligible</label><br><br>
+                    <input type="radio" id="eligible" value='eligible' v-model="hdb">
+                    <label for="eligible">Eligible Only</label><br>
+                    <input type="radio" id="notEligible" value="any" v-model="hdb" checked>
+                    <label for="notEligible">Any</label><br><br>
 
                     <strong>Vaccination Status</strong><br>
-                    <input type="checkbox" id="vaccinated" name="vaccinated" v-model="vaccination" checked>
-                    <label for="vaccinated">Vaccinated</label><br>
-                    <input type="checkbox" id="notVaccinated" name="not vaccinated" v-model="vaccination" checked>
-                    <label for="notVaccinated">Not Vaccinated</label><br><br>
+                    <input type="radio" id="vaccinated" value="vaccinated" v-model="vaccination">
+                    <label for="vaccinated">Vaccinated Only</label><br>
+                    <input type="radio" id="notVaccinated" value="any" v-model="vaccination" checked>
+                    <label for="notVaccinated">Any</label><br><br>
+
+                    <strong>Health Issues</strong><br>
+                    <input type="radio" id="none" value="none" v-model="health">
+                    <label for="none">No Health Issues</label><br>
+                    <input type="radio" id="serious" value="any" v-model="health" checked>
+                    <label for="serious">Any</label><br><br>
 
                     <strong>Species</strong><br>
                     <input type="checkbox" id="dog" value="dog" v-model="species" checked>
@@ -151,7 +157,9 @@
                     <input type="checkbox" id="rabbit" value="rabbit" v-model="species" checked>
                     <label for="rabbit">Rabbit</label><br>
                     <input type="checkbox" id="others" value="others" v-model="species" checked>
-                    <label for="others">Others</label><br>
+                    <label for="others">Others</label><br><br>
+
+                    <button class="btn button" v-on:click="filter()">Filter</button>
                 </div>
                 </span>
 
@@ -159,7 +167,7 @@
 
             <!-- cards -->
 
-            <div class="col-lg-3 col-md-6 col-sm-12 mb-3" v-for="pet in pets">
+            <div class="col-lg-3 col-md-6 col-sm-12 mb-3" v-for="pet in filtered">
                 <div class="card">
                     <a v-bind:href="url(pet.username,pet.name)" style="text-decoration:none;color:black">
                         <img :src="pet.pics" class="card-img-top">

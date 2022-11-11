@@ -159,6 +159,7 @@ const app = Vue.createApp({
                                     HDB: this.hdbApproved,
                                     health: this.health,
                                     pics: this.pics,
+                                    species: this.species
 
                                 })
                                 var adoption = firebase.database().ref().child('adoption/' + this.name)
@@ -172,6 +173,7 @@ const app = Vue.createApp({
                                     HDB: this.hdbApproved,
                                     health: this.health,
                                     pics: this.pics,
+                                    species: this.species
                                 })
                             }
                             if (this.pics.length == files.length) {
