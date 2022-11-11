@@ -1,5 +1,3 @@
-const { files } = require("jszip");
-
 const firebaseConfig = {
     apiKey: "AIzaSyAWvVP_h1HKDOSqjp9BFZ1ttifg_UhC0eQ",
     authDomain: "is216-webapp.firebaseapp.com",
