@@ -153,6 +153,11 @@
                     <label for="rabbit">Rabbit</label><br>
                     <input type="checkbox" id="others" value="others" v-model="species" checked>
                     <label for="others">Others</label><br>
+
+                    <!-- filter button -->
+                    <div style="text-align:right; margin-top:10px;">
+                    <button class="btn button">Search</button>
+                    </div>
                 </div>
                 </span>
 
@@ -161,14 +166,14 @@
             <!-- cards -->
 
             <div class="col-lg-3 col-md-6 col-sm-12 mb-3" v-for="pet in pets">
-                  <div class="card">
+                    <div class="card">
                     <a v-bind:href="url(pet.email,pet.name)" style="text-decoration:none;color:black">
                         <img :src="pet.pics" class="card-img-top">
                     </a>
                     <div class="card-body p-0">
-                        <h8 class="card-title">Name: {{ pet.name }} </h8>
-                        <p class="card-text">Species: {{ pet.species }}
-                            <br>Personality : {{ pet.personality }}
+                        <h8 class="card-title">{{ pet.name }} </h8>
+                        <p class="card-text">{{ pet.species }}
+                            <br>{{ pet.personality }}
                         </p>
                     </div>
                 </div>

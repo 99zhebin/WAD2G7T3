@@ -40,6 +40,9 @@ hr{
 .navbar-nav a:hover{
     background-color:bisque;
 }
+.nav-item{
+    float:right;
+}
 
 /* bottom */
 .bottomInfo{

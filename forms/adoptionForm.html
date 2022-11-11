@@ -156,15 +156,15 @@
                     <div class="col-6 col-md-8 m-0 p-0">
                         <div class="input-field">
                             <!-- <input type="text" id="species" placeholder="Enter species (e.g. dog)" v-model="species"> -->
-                            <select class="form-select form-select-sm" v-model="species">
-                                <option selected>Choose species from menu</option>
+                            <select class="form-select form-select-sm" v-model="species" required>
+                                <option disabled selected value>Select an option</option>
                                 <option value="dog">Dog</option>
                                 <option value="cat">Cat</option>
                                 <option value="rabbit">Rabbit</option>
                                 <option value="hamster">Hamster</option>
                                 <option value="fish">Fish</option>
                                 <option value="others">Others</option>
-                              </select>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -176,8 +176,16 @@
                     </div>
                     <div class="col-6 col-md-8 m-0 p-0">
                         <div class="input-field">
-                            <textarea id="personality" rows="3" placeholder="Enter animal's personality"
-                                v-model="personality"></textarea>
+                            <select name="personality" id="personality" v-model="personality">
+                                <option disabled selected value>Select an option</option>
+                                <option value="aggressive">Aggressive</option>
+                                <option value="bold">Bold</option>
+                                <option value="energetic">Energetic</option>
+                                <option value="gentle">Gentle</option>
+                                <option value="fearful">Fearful</option>
+                                <option value="shy">Shy</option>
+                                <option value="playful">Playful</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -221,7 +229,11 @@
                     </div>
                     <div class="col-6 col-md-8 m-0 p-0">
                         <div class="input-field">
-                            <input type="text" id="health" placeholder="Enter health status" v-model="health">
+                            <select name="health" id="health" v-model="health">
+                                <option disabled selected value>Select an option</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
                         </div>
                     </div>
                 </div>
