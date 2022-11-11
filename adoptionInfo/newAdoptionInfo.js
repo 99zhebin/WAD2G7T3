@@ -55,6 +55,8 @@ const app = Vue.createApp({
         return{
 
             // have to edit data returned
+            animal: [],
+            
             images: [],
 
             email:"",
