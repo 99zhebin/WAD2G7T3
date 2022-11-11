@@ -139,10 +139,10 @@
 
                 <!-- age -->
                 <div class="row">
-                    <div class="col-6 col-md-4 m-0 p-0">
+                    <div class="col-12 col-md-4 m-0 p-0">
                         Birthday
                     </div>
-                    <div class="col-6 col-md-8 m-0 p-0">
+                    <div class="col-12 col-md-8 m-0 p-0">
                         <div class="input-field">
                             <input type="date" id="birthday" v-model="birthday" required>
                         </div>
@@ -151,10 +151,10 @@
 
                 <!-- species -->
                 <div class="row">
-                    <div class="col-6 col-md-4 m-0 p-0">
+                    <div class="col-12 col-md-4 m-0 p-0">
                         Animal Species
                     </div>
-                    <div class="col-6 col-md-8 m-0 p-0">
+                    <div class="col-12 col-md-8 m-0 p-0">
                         <div class="input-field">
                             <!-- <input type="text" id="species" placeholder="Enter species (e.g. dog)" v-model="species"> -->
                             <select class="form-select form-select-sm" v-model="species" required>
@@ -172,10 +172,10 @@
 
                 <!-- Personality/Temperament -->
                 <div class="row">
-                    <div class="col-6 col-md-4 m-0 p-0">
+                    <div class="col-12 col-md-4 m-0 p-0">
                         Animal Personality
                     </div>
-                    <div class="col-6 col-md-8 m-0 p-0">
+                    <div class="col-12 col-md-8 m-0 p-0">
                         <div class="input-field">
                             <select name="personality" id="personality" v-model="personality">
                                 <option disabled selected value>Select an option</option>
@@ -191,12 +191,24 @@
                     </div>
                 </div>
 
+                 <!-- Short Description/Background -->
+                <div class="row">
+                    <div class="col-12 col-md-4 m-0 p-0">
+                        Animal Description
+                    </div>
+                    <div class="col-12 col-md-8 m-0 p-0">
+                        <div class="input-field">
+                           <textarea name="description" id="description" cols="30" rows="10" placeholder="Write something interesting! (Up to 250 characters)" v-model="description"></textarea>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- HDB Approved -->
                 <div class="row">
-                    <div class="col-6 col-md-4 m-0 p-0">
+                    <div class="col-12 col-md-4 m-0 p-0">
                         HDB Eligibility
                     </div>
-                    <div class="col-6 col-md-8 m-0 p-0">
+                    <div class="col-12 col-md-8 m-0 p-0">
                         <div class="input-field">
                             <select id="hdb" v-model="hdbApproved">
                                 <option disabled selected value>Select an option</option>
@@ -209,10 +221,10 @@
 
                 <!-- Vaccinated -->
                 <div class="row">
-                    <div class="col-6 col-md-4 m-0 p-0">
+                    <div class="col-12 col-md-4 m-0 p-0">
                         Vaccination Status
                     </div>
-                    <div class="col-6 col-md-8 m-0 p-0">
+                    <div class="col-12 col-md-8 m-0 p-0">
                         <div class="input-field">
                             <select id="vaccination" v-model="vaccinationStatus" required>
                                 <option disabled selected value>Select an option</option>
@@ -225,10 +237,10 @@
 
                 <!-- Health -->
                 <div class="row">
-                    <div class="col-6 col-md-4 m-0 p-0">
+                    <div class="col-12 col-md-4 m-0 p-0">
                         Existing Illnesses
                     </div>
-                    <div class="col-6 col-md-8 m-0 p-0">
+                    <div class="col-12 col-md-8 m-0 p-0">
                         <div class="input-field">
                             <select name="health" id="health" v-model="health">
                                 <option disabled selected value>Select an option</option>
@@ -241,10 +253,10 @@
 
                 <!-- upload image -->
                 <div class="row">
-                    <div class="col-6 col-md-4 m-0 p-0">
+                    <div class="col-12 col-md-4 m-0 p-0">
                         Animal Images
                     </div>
-                    <div class="col-6 col-md-8 m-0 p-0">
+                    <div class="col-12 col-md-8 m-0 p-0">
                         <div class="upload">
                             <label for="pic">
                                 <p>Upload up to 6 Images </p>
@@ -259,10 +271,10 @@
 
                 <!-- contact -->
                 <div class="row">
-                    <div class="col-6 col-md-4 m-0 p-0">
+                    <div class="col-12 col-md-4 m-0 p-0">
                         Contact Email
                     </div>
-                    <div class="col-6 col-md-8 m-0 p-0">
+                    <div class="col-12 col-md-8 m-0 p-0">
                         <div class="input-field">
                             <input type="text" id="email" placeholder="Enter your email" v-model="email">
                         </div>
@@ -271,7 +283,7 @@
 
                 <!-- submit button -->
                 <div class="row justify-content-end">
-                    <div class="col-6 col-md-8">
+                    <div class="col-12 col-md-8">
                         <button class="btn button " style="width:150px;" @click="validate()">POST</button>
                     </div>
                 </div>

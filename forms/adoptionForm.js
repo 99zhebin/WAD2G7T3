@@ -89,25 +89,14 @@ const app = Vue.createApp({
 
             pics: [],
 
+            description: ""
+
         }
     },
 
     methods: {
 
         validate(){
-
-            var today = new Date()
-            var date = this.birthday
-            console.log(date)
-            date = date.split("-")
-            var year = date[0]
-            var month = date[1]
-            var day = date[2]
-            console.log(date)
-
-            console.log(today.getFullYear())
-            console.log(today.getMonth() + 1)
-            console.log(today.getDate())
 
             var name = this.name
             var birthday = this.birthday
@@ -116,13 +105,19 @@ const app = Vue.createApp({
             var hdbApproved = this.hdbApproved
             var vaccinated = this.vaccinationStatus 
             var health = this.health
+            var description = this.description
             
-            if(!name || !birthday || !species || !personality || !hdbApproved || !vaccinated || !health){
+            if(!name || !birthday || !species || !personality || !hdbApproved || !vaccinated || !health || !description){
                 console.log(name,birthday,species,personality,hdbApproved,vaccinated,health)
                 alert("Please fill up ALL fields\n" + "Do not leave any blanks")
             }
             else{
-                this.post()
+                if(description.length > 250){
+                    alert("You have overshot the character limit!\nPlease shorten your message!")
+                }
+                else{
+                    this.post()
+                }
             }
         },
 
