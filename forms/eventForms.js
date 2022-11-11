@@ -103,6 +103,26 @@ const app = Vue.createApp({
 
   methods: {
 
+    validate(){
+
+      var name = this.eventName
+      var category = this.category
+      var description = this.eventDescription
+      var date = this.eventDate
+      var startTime = this.startTime
+      var endTime = this.endTime 
+      var location = this.eventLocation
+      files = document.getElementById('pic').files
+      
+      if(!name || !birthday || !species || !personality || !hdbApproved || !vaccinated || !health){
+          console.log(name,birthday,species,personality,hdbApproved,vaccinated,health)
+          alert("Please fill up ALL fields\n" + "Do not leave any blanks")
+      }
+      else{
+          this.post()
+      }
+  },
+
     post(){
         console.log(this.email)
         var uid = Date.now()
