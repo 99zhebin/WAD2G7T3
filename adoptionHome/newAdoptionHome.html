@@ -88,7 +88,6 @@
                 </li>
             </ul>
         </div>
-        </div>
     </nav>
 
     <!-- Modal -->
@@ -123,7 +122,7 @@
             <!-- new adoption listing -->
             <div style="margin-bottom:15px;margin-left:25px;">
                 <button class="btn button newAdoption" v-on:click="checklogin()">New Adoption
-                        Listing</button>
+                    Listing</button>
             </div>
 
             <!-- <a v-bind:class="{ active: emergencyFilter }" id="hdb" v-on:click="filter(hdb)" href="#"> -->
@@ -161,7 +160,7 @@
             <!-- cards -->
 
             <div class="col-lg-3 col-md-6 col-sm-12 mb-3" v-for="pet in pets">
-                  <div class="card">
+                <div class="card">
                     <a v-bind:href="url(pet.email,pet.name)" style="text-decoration:none;color:black">
                         <img :src="pet.pics" class="card-img-top">
                     </a>
