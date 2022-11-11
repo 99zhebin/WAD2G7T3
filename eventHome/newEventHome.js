@@ -110,7 +110,7 @@ const app = Vue.createApp({
         addcounter() {
             newid = 'heart'+ this.count;
             this.count += 1;
-            console.log(newid);
+            // console.log(newid);
             return newid;
         },
 
@@ -124,12 +124,12 @@ const app = Vue.createApp({
                 }
             })
         },
-        checkheart(hid) {
+        checkheart(hid, instance) {
             let disheart = document.getElementById(hid.currentTarget.id);
 
             curclass = disheart.getAttribute('class');
 
-
+            console.log(instance.pid);
             
             if(curclass.includes('liked')) {
                 disheart.innerHTML='<i class="fa fa-heart-o" aria-hidden="true"></i>';
@@ -166,6 +166,7 @@ const app = Vue.createApp({
         }
         });
 
+        
 
         // console.log(document.readyState);
         //Setting specific hearts for each post
