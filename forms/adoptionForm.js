@@ -10,6 +10,8 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+birthday.max = new Date().toISOString().split("T")[0]
+
 function loadDisplay() {
     console.log("--- loadDisplay() start ---")
     console.log("--- logInCheck() Start  ---")
