@@ -53,8 +53,8 @@ function logout() {
 const app = Vue.createApp({
     data(){
         return{
-            animal: [],
 
+            // have to edit data returned
             images: [],
 
             email:"",
@@ -101,7 +101,7 @@ const app = Vue.createApp({
             const animalArray = snapshot.val()
             console.log(animalArray)
             this.animal = animalArray
-            this.images =this.animal['pics']
+            this.images = animalArray.pics
         })
 
         // petArray.once('value').then((snapshot) => {
