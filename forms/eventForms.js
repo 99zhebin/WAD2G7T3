@@ -1,3 +1,5 @@
+const { files } = require("jszip");
+
 const firebaseConfig = {
     apiKey: "AIzaSyAWvVP_h1HKDOSqjp9BFZ1ttifg_UhC0eQ",
     authDomain: "is216-webapp.firebaseapp.com",
@@ -114,8 +116,8 @@ const app = Vue.createApp({
       var location = this.eventLocation
       files = document.getElementById('pic').files
       
-      if(!name || !birthday || !species || !personality || !hdbApproved || !vaccinated || !health){
-          console.log(name,birthday,species,personality,hdbApproved,vaccinated,health)
+      if(!name || !category || !description || !date || !startTime || !endTime || !location || files.length == 0){
+          console.log(name, category, description, date, startTime, endTime, location, files)
           alert("Please fill up ALL fields\n" + "Do not leave any blanks")
       }
       else{
