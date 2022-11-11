@@ -75,4 +75,7 @@ hr{
     border:2px solid black;
     font-size: 15px;
 }
+.button:hover, .button:focus {
+    background-color: bisque;
+}
 
