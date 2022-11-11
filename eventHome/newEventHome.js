@@ -68,6 +68,8 @@ const app = Vue.createApp({
 
             volunteer: "Volunteering",
 
+            email: ''
+
         }
     },
 
@@ -124,11 +126,32 @@ const app = Vue.createApp({
                 }
             })
         },
+
         checkheart(hid) {
             let disheart = document.getElementById(hid.currentTarget.id);
 
             curclass = disheart.getAttribute('class');
+            console.log(this.email)
+            this.email = this.email.replace("?email=", '');
+            this.key = this.email.replace("@", '-');
+            this.key = this.key.replace(".", '-');
+            console.log(this.key)
+            var user = firebase.database().ref('profile/' + this.key).child('likes')
+            var likeref = user.push()
 
+            // Get Likes
+            user.once('value').then((snapshot) => {
+            if (snapshot.exists()) {
+                console.log(snapshot.val())
+            }
+            else {
+                console.log('no likes')
+            }
+            });
+
+            // Push Likes
+            likeref.set() 
+            // put in bracket what you want to put into the database
 
             
             if(curclass.includes('liked')) {
@@ -146,6 +169,14 @@ const app = Vue.createApp({
 
     mounted() {
         console.log("--- Initialise Firebase ---")
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                this.email = user.email
+            }
+            else {
+                
+            }
+        })
         let eventArray = firebase.database().ref('events').orderByChild("timestamp")
         eventArray.once('value').then((snapshot) => {
         if(snapshot.exists()) {
