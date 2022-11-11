@@ -48,45 +48,43 @@
     <nav class="navbar sticky-top navbar-light navbar-expand-md">
 
         <!-- Website Name -->
-        <a class="navbar-brand" href="../homepage/newHomepage.html">
-            <div class="row" style="margin:0;">
-                <div class="col-3">
-                    <iframe src="https://embed.lottiefiles.com/animation/43901"
-                        style="height: 50px; width: 50px;"></iframe>
-                </div>
-                <div class="col-9 my-auto">
-                    <h8>PET BAGUETTE</h8>
-                </div>
+        <a class="navbar-brand"  href="../homepage/newHomepage.html">
+                <div class="row" style="margin:0;">
+                    <div class="col-3">
+                        <iframe src="https://embed.lottiefiles.com/animation/43901" style="height: 50px; width: 50px;"></iframe>
+                    </div>
+                    <div class="col-9 my-auto">
+                        <h8>PET BAGUETTE</h8>
+                    </div>
 
-            </div>
+                </div>
             </div>
         </a>
 
         <!-- Menu Icon -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
+        
         <!-- NavBar Items -->
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav" id="navbar">
-                <li class="nav-item">
-                    <a class="nav-link my-auto" aria-current="page" href="../homepage/newHomepage.html">Home</a>
+                <li class="nav-item my-auto">
+                    <a class="nav-link" aria-current="page" href="../homepage/newHomepage.html">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link my-auto" href="../adoptionHome/newAdoptionHome.html">Adoptions</a>
+                <li class="nav-item my-auto">
+                    <a class="nav-link" href="../adoptionHome/newAdoptionHome.html">Adoptions</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link my-auto" href="../eventHome/newEventHome.html">Events</a>
+                <li class="nav-item my-auto">
+                    <a class="nav-link" href="../eventHome/newEventHome.html">Events</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link my-auto" id="login" href="3">Log In</a>
+                <li class="nav-item my-auto">
+                    <a class="nav-link" id="login" href="3">Log In</a>
                 </li>
             </ul>
         </div>
-        </div>
-    </nav>
+    </div>
+</nav>
 
     <!-- Modal -->
     <div class="modal fade" id="logout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -164,7 +162,7 @@
                                 <option value="hamster">Hamster</option>
                                 <option value="fish">Fish</option>
                                 <option value="others">Others</option>
-                              </select>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -237,7 +235,8 @@
                             <label for="pic">
                                 <p>Upload up to 6 Images </p>
                                 <i class="fa fa-2x fa-camera"></i><br><br>
-                                <input id="pic" type="file" accept="image/jpeg, image/png, image/jpg, image/jfif" multiple onchange="preview()">
+                                <input id="pic" type="file" accept="image/jpeg, image/png, image/jpg, image/jfif"
+                                    multiple onchange="preview()">
                                 <output id="result"></output>
                             </label>
                         </div>
@@ -261,7 +260,7 @@
                     <div class="col-6 col-md-8">
                         <button class="btn button " style="width:150px;" @click="validate()">POST</button>
                     </div>
-                </div>               
+                </div>
             </div>
 
             <div class="col-lg-2 col-xl-2"></div>
@@ -297,17 +296,18 @@
                 <p>SUBSCRIBE TO OUR NEWSLETTER</p>
                 <div class="row">
                     <div class="col-sm-12 col-lg-7 mb-3 text-lg-end">
-                        <input type="text" placeholder="Email Address" style="height: 38.5px; border-color: darkslategrey;">
+                        <input type="text" placeholder="Email Address"
+                            style="height: 38.5px; border-color: darkslategrey;">
                     </div>
 
                     <div class="col-sm-12 col-lg-5 text-lg-start">
                         <button type="submit" class="btn button">Submit</button>
                     </div>
                 </div>
-                
+
             </div>
         </div>
-        
+
         <!-- copyright -->
         <div class="row copyright">
             <h8>&copy; 2022 PET BAGUETTE</h8>
@@ -322,16 +322,16 @@
 
         // Listen for files selection
         input.addEventListener('change', (e) => {
-        // Retrieve all files
-        const files = input.files;
+            // Retrieve all files
+            const files = input.files;
 
-        // Check files count
-        if (files.length > 6) {
-            alert(`Only 6 files are allowed to upload.`);
-            return;
-        }
+            // Check files count
+            if (files.length > 6) {
+                alert(`Only 6 files are allowed to upload.`);
+                return;
+            }
 
-        // TODO: continue uploading on server
+            // TODO: continue uploading on server
         });
     </script>
 
