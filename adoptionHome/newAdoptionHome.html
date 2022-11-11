@@ -24,6 +24,9 @@
     <link rel="stylesheet" type="text/css" href="https://demo.plantpot.works/assets/css/normalize.css">
     <link rel="stylesheet" href="https://use.typekit.net/opg3wle.css">
 
+    <!-- lottie files -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
     <!-- style sheet -->
     <link rel="stylesheet" href="../newFormat.css">
     <link rel="stylesheet" href="newAdoptionHome.css">
@@ -54,8 +57,7 @@
         <a class="navbar-brand" href="../homepage/newHomepage.html">
             <div class="row" style="margin:0;">
                 <div class="col-3">
-                    <iframe src="https://embed.lottiefiles.com/animation/43901"
-                        style="height: 50px; width: 50px;"></iframe>
+                    <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_syqnfe7c.json"  background="transparent"  speed="1"  style="width: 50px; height: 50px;"  loop  autoplay></lottie-player>
                 </div>
                 <div class="col-9 my-auto">
                     <h8>PET BAGUETTE</h8>
@@ -152,6 +154,11 @@
                     <label for="rabbit">Rabbit</label><br>
                     <input type="checkbox" id="others" value="others" v-model="species" checked>
                     <label for="others">Others</label><br>
+
+                    <!-- filter button -->
+                    <div style="text-align:right; margin-top:10px;">
+                    <button class="btn button">Search</button>
+                    </div>
                 </div>
                 </span>
 
@@ -161,13 +168,13 @@
 
             <div class="col-lg-3 col-md-6 col-sm-12 mb-3" v-for="pet in pets">
                 <div class="card">
-                    <a v-bind:href="url(pet.email,pet.name)" style="text-decoration:none;color:black">
+                    <a v-bind:href="url(pet.username,pet.name)" style="text-decoration:none;color:black">
                         <img :src="pet.pics" class="card-img-top">
                     </a>
                     <div class="card-body p-0">
-                        <h8 class="card-title">Name: {{ pet.name }} </h8>
-                        <p class="card-text">Species: {{ pet.species }}
-                            <br>Personality : {{ pet.personality }}
+                        <h8 class="card-title">{{ pet.name }} </h8>
+                        <p class="card-text">{{ pet.species }}
+                            <br>{{ pet.personality }}
                         </p>
                     </div>
                 </div>
