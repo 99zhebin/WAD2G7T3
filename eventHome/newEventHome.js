@@ -131,21 +131,27 @@ const app = Vue.createApp({
             let disheart = document.getElementById(hid.currentTarget.id);
 
             curclass = disheart.getAttribute('class');
+
+            // Functions to access database
             console.log(this.email)
             this.email = this.email.replace("?email=", '');
             this.key = this.email.replace("@", '-');
             this.key = this.key.replace(".", '-');
             console.log(this.key)
+            // The one below is to get all the likes
             var user = firebase.database().ref('profile/' + this.key).child('likes')
+            // Add the one below in addition to the one above to add new likes
             var likeref = user.push()
 
             // Get Likes
             user.once('value').then((snapshot) => {
             if (snapshot.exists()) {
                 console.log(snapshot.val())
+                // Happens if there is something in likes
             }
             else {
                 console.log('no likes')
+                // If there are no likes right now
             }
             });
 
