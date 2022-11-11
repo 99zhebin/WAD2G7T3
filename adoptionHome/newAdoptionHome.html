@@ -74,20 +74,19 @@
         <!-- NavBar Items -->
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav" id="navbar">
-                <li class="nav-item">
+                <li class="nav-item my-auto">
                     <a class="nav-link" aria-current="page" href="../homepage/newHomepage.html">Home</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item my-auto">
                     <a class="nav-link disabled" href="../adoptionHome/newAdoptionHome.html">Adoptions</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item my-auto">
                     <a class="nav-link" href="../eventHome/newEventHome.html">Events</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item my-auto">
                     <a class="nav-link" id="login" href="3">Log In</a>
                 </li>
             </ul>
-        </div>
         </div>
     </nav>
 
@@ -123,7 +122,7 @@
             <!-- new adoption listing -->
             <div style="margin-bottom:15px;margin-left:25px;">
                 <button class="btn button newAdoption" v-on:click="checklogin()">New Adoption
-                        Listing</button>
+                    Listing</button>
             </div>
 
             <!-- <a v-bind:class="{ active: emergencyFilter }" id="hdb" v-on:click="filter(hdb)" href="#"> -->
@@ -166,8 +165,8 @@
             <!-- cards -->
 
             <div class="col-lg-3 col-md-6 col-sm-12 mb-3" v-for="pet in pets">
-                    <div class="card">
-                    <a v-bind:href="url(pet.email,pet.name)" style="text-decoration:none;color:black">
+                <div class="card">
+                    <a v-bind:href="url(pet.username,pet.name)" style="text-decoration:none;color:black">
                         <img :src="pet.pics" class="card-img-top">
                     </a>
                     <div class="card-body p-0">
@@ -180,7 +179,7 @@
 
             </div>
 
-            <div class="col-lg-3 col-md-6 col-sm-12">
+            <!-- <div class="col-lg-3 col-md-6 col-sm-12">
                 <a>
                     <div class="card h-100">
                         <img src="images/animal2.jpg" class="card-img-top">
@@ -192,7 +191,7 @@
                         </div>
                     </div>
                 </a>
-            </div>
+            </div> -->
 
         </div>
 
@@ -221,14 +220,21 @@
 
                 <!-- Subscribe Newsletter -->
                 <!-- make the form look less weird on com big screen? -->
-                <div class="col">
+                <div class="col text-center">
                     <p>SUBSCRIBE TO OUR NEWSLETTER</p>
-                    <form>
-                        <input type="text" placeholder="Email Address"><br>
-                        <a href="" class="btn button" style="margin-top:15px;">SUBMIT</a>
-                    </form>
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-7 mb-3 text-lg-end">
+                            <input type="text" placeholder="Email Address" style="height: 38.5px; border-color: darkslategrey;">
+                        </div>
+    
+                        <div class="col-sm-12 col-lg-5 text-lg-start">
+                            <button type="submit" class="btn button">Submit</button>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
+            
 
             <!-- copyright -->
             <div class="row copyright">

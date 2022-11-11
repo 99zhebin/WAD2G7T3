@@ -22,7 +22,7 @@ function loadDisplay() {
           document.getElementById("login").setAttribute("href", url)
           let ul = document.getElementById("navbar")
           let li = document.createElement("li")
-          li.innerHTML = '<button type="button" class="btn button my-3" data-bs-toggle="modal" data-bs-target="#logout">Logout</button>'
+          li.innerHTML = '<a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#logout">Logout</a>'
           ul.appendChild(li)
           // ...
         } else {
@@ -68,7 +68,8 @@ const app = Vue.createApp({
 
             volunteer: "Volunteering",
 
-            hid: [],
+            email: ''
+
         }
     },
 
@@ -125,11 +126,38 @@ const app = Vue.createApp({
                 }
             })
         },
+
         checkheart(hid) {
             let disheart = document.getElementById(hid.currentTarget.id);
 
             curclass = disheart.getAttribute('class');
 
+            // Functions to access database
+            console.log(this.email)
+            this.email = this.email.replace("?email=", '');
+            this.key = this.email.replace("@", '-');
+            this.key = this.key.replace(".", '-');
+            console.log(this.key)
+            // The one below is to get all the likes
+            var user = firebase.database().ref('profile/' + this.key).child('likes')
+            // Add the one below in addition to the one above to add new likes
+            var likeref = user.push()
+
+            // Get Likes
+            user.once('value').then((snapshot) => {
+            if (snapshot.exists()) {
+                console.log(snapshot.val())
+                // Happens if there is something in likes
+            }
+            else {
+                console.log('no likes')
+                // If there are no likes right now
+            }
+            });
+
+            // Push Likes
+            likeref.set() 
+            // put in bracket what you want to put into the database
 
             
             if(curclass.includes('liked')) {
@@ -147,6 +175,14 @@ const app = Vue.createApp({
 
     mounted() {
         console.log("--- Initialise Firebase ---")
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                this.email = user.email
+            }
+            else {
+                
+            }
+        })
         let eventArray = firebase.database().ref('events').orderByChild("timestamp")
         eventArray.once('value').then((snapshot) => {
         if(snapshot.exists()) {

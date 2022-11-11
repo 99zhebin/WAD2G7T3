@@ -1,5 +1,3 @@
-const { uniqueId } = require("lodash");
-
 const firebaseConfig = {
     apiKey: "AIzaSyAWvVP_h1HKDOSqjp9BFZ1ttifg_UhC0eQ",
     authDomain: "is216-webapp.firebaseapp.com",
@@ -26,7 +24,7 @@ function loadDisplay() {
             document.getElementById("login").setAttribute("href", url)
             let ul = document.getElementById("navbar")
             let li = document.createElement("li")
-            li.innerHTML = '<button type="button" class="btn button my-3" data-bs-toggle="modal" data-bs-target="#logout">Logout</button>'
+            li.innerHTML = '<a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#logout">Logout</a>'
             ul.appendChild(li)
             // ...
         } else {
@@ -105,6 +103,26 @@ const app = Vue.createApp({
 
   methods: {
 
+    validate(){
+
+      var name = this.eventName
+      var category = this.category
+      var description = this.eventDescription
+      var date = this.eventDate
+      var startTime = this.startTime
+      var endTime = this.endTime 
+      var location = this.eventLocation
+      files = document.getElementById('pic').files
+      
+      if(!name || !category || !description || !date || !startTime || !endTime || !location || files.length == 0){
+          console.log(name, category, description, date, startTime, endTime, location, files)
+          alert("Please fill up ALL fields\n" + "Do not leave any blanks")
+      }
+      else{
+          this.post()
+      }
+  },
+
     post(){
         console.log(this.email)
         var uid = Date.now()
@@ -127,7 +145,6 @@ const app = Vue.createApp({
                 this.pics.push(url)
                 if (this.pics.length == files.length){
                   postref.set({
-                      pid: uid,
                       type : 'event',
                       username: this.email,
                       eventname: this.eventName,
@@ -141,6 +158,7 @@ const app = Vue.createApp({
                 })
                     var event = firebase.database().ref().child('events/' + this.eventName)
                     event.set({
+                      pid: uid,
                     username: this.email,
                       eventname: this.eventName,
                     eventdate: this.eventDate,

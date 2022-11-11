@@ -24,7 +24,7 @@ function loadDisplay() {
           document.getElementById("login").setAttribute("href", url)
           let ul = document.getElementById("navbar")
           let li = document.createElement("li")
-          li.innerHTML = '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#logout">Logout</button>'
+          li.innerHTML = '<a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#logout">Logout</a>'
           ul.appendChild(li)
           // ...
         } else {
@@ -87,7 +87,6 @@ const app = Vue.createApp({
     mounted() {
         console.log("--- Initialise Firebase ---")
         var url = window.location.search;
-        // hellp zhebin if u console log the url the name is undefined
         console.log(url)
         url = url.replace("?name=", '');
         url = url.split("-")
@@ -102,6 +101,7 @@ const app = Vue.createApp({
             const animalArray = snapshot.val()
             console.log(animalArray)
             this.animal = animalArray
+            this.images =this.animal['pics']
         })
 
         // petArray.once('value').then((snapshot) => {

@@ -63,16 +63,16 @@
         <!-- NavBar Items -->
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav" id="navbar">
-                <li class="nav-item">
+                <li class="nav-item my-auto">
                     <a class="nav-link" aria-current="page" href="../homepage/newHomepage.html">Home</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item my-auto">
                     <a class="nav-link" href="../adoptionHome/newAdoptionHome.html">Adoptions</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item my-auto">
                     <a class="nav-link" href="../eventHome/newEventHome.html">Events</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item my-auto">
                     <a class="nav-link" id="login" href="3">Log In</a>
                 </li>
             </ul>
@@ -297,14 +297,21 @@
 
                 <!-- Subscribe Newsletter -->
                 <!-- make the form look less weird on com big screen? -->
-                <div class="col">
+                <div class="col text-center">
                     <p>SUBSCRIBE TO OUR NEWSLETTER</p>
-                    <form>
-                        <input type="text" placeholder="Email Address"><br>
-                        <a href="" class="btn button" style="margin-top:15px;">SUBMIT</a>
-                    </form>
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-7 mb-3 text-lg-end">
+                            <input type="text" placeholder="Email Address" style="height: 38.5px; border-color: darkslategrey;">
+                        </div>
+    
+                        <div class="col-sm-12 col-lg-5 text-lg-start">
+                            <button type="submit" class="btn button">Submit</button>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
+            
             
             <!-- copyright -->
             <div class="row copyright">

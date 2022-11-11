@@ -10,6 +10,8 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+birthday.max = new Date().toISOString().split("T")[0]
+
 function loadDisplay() {
     console.log("--- loadDisplay() start ---")
     console.log("--- logInCheck() Start  ---")
@@ -22,7 +24,7 @@ function loadDisplay() {
             document.getElementById("login").setAttribute("href", url)
             let ul = document.getElementById("navbar")
             let li = document.createElement("li")
-            li.innerHTML = '<button type="button" class="btn button my-3" data-bs-toggle="modal" data-bs-target="#logout">Logout</button>'
+            li.innerHTML = '<a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#logout">Logout</a>'
             ul.appendChild(li)
             // ...
         } else {
@@ -148,7 +150,6 @@ const app = Vue.createApp({
                             this.pics.push(url)
                             if (this.pics.length == files.length) {
                                 postref.set({
-                                    postid: uid,
                                     type: 'adoption',
                                     username: this.email,
                                     name: this.name,
@@ -162,6 +163,7 @@ const app = Vue.createApp({
                                 })
                                 var adoption = firebase.database().ref().child('adoption/' + this.name)
                                 adoption.set({
+                                    postid: uid,
                                     username: this.email,
                                     name: this.name,
                                     birthday: this.birthday,
