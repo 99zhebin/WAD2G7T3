@@ -59,6 +59,8 @@ const app = Vue.createApp({
             
             images: [],
 
+            vaccinated: '',
+
             email:"",
 
             name:"",
@@ -75,7 +77,8 @@ const app = Vue.createApp({
 
             longitude: "",
 
-            username: ""
+            username: "",
+
         }
     },
 
@@ -84,6 +87,13 @@ const app = Vue.createApp({
             let url = "../profile/newProfilePublic.html?email=" + this.email
             return url
         },
+
+        capitalise(word){
+            var lowerCase = word.toLowerCase()
+            var uppercase = lowerCase.charAt(0).toUpperCase() + lowerCase.slice(1)
+
+            return uppercase
+        }
     },
 
     mounted() {
@@ -100,10 +110,23 @@ const app = Vue.createApp({
         var adoptionArray = firebase.database().ref('adoption/' + this.name)
 
         adoptionArray.on('value',(snapshot) =>{
+            if(snapshot.exists()){
+            console.log("Found")
+            
             const animalArray = snapshot.val()
             console.log(animalArray)
             this.animal = animalArray
             this.images = animalArray.pics
+
+            //capitalising first letter
+            this.vaccinated = animalArray.vaccinated.toLowerCase()
+            this.vaccinated = this.vaccinated.charAt(0).toUpperCase() + this.vaccinated.slice(1)
+            console.log(this.vaccinated)
+
+            }
+            else{
+                console.log("Not Found")
+            }
         })
 
         // petArray.once('value').then((snapshot) => {
