@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <!-- Awesome Font -->
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
@@ -23,7 +25,7 @@
     <!-- style sheet -->
     <link rel="stylesheet" href="../newFormat.css">
     <link rel="stylesheet" href="newProfile.css">
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat' >
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat'>
 
     <title>
         Pet Baguette
@@ -32,11 +34,11 @@
 
 <body onload="loadDisplay()">
     <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
     <!-- This is the API from Firebase Realtime Database -->
-    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
     <!-- API for Firebase Storage -->
-    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
     <!-- API for Firebase Authentication-->
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
     <!-- nav bar -->
@@ -44,62 +46,64 @@
     <nav class="navbar sticky-top navbar-light navbar-expand-md">
 
         <!-- Website Name -->
-        <a class="navbar-brand "  href="../homepage/newHomepage.html">
-                <div class="row" style="margin:0;">
-                    <div class="col-3">
-                        <iframe src="https://embed.lottiefiles.com/animation/43901" style="height: 50px; width: 50px;"></iframe>
-                    </div>
-                    <div class="col-9 my-auto">
-                        <h8>PET BAGUETTE</h8>
-                    </div>
-
+        <a class="navbar-brand " href="../homepage/newHomepage.html">
+            <div class="row" style="margin:0;">
+                <div class="col-3">
+                    <iframe src="https://embed.lottiefiles.com/animation/43901"
+                        style="height: 50px; width: 50px;"></iframe>
                 </div>
+                <div class="col-9 my-auto">
+                    <h8>PET BAGUETTE</h8>
+                </div>
+
+            </div>
             </div>
         </a>
 
         <!-- Menu Icon -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        
+
         <!-- NavBar Items -->
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav" id="navbar">
-                <li class="nav-item">
+                <li class="nav-item my-auto">
                     <a class="nav-link" aria-current="page" href="../homepage/newHomepage.html">Home</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item my-auto">
                     <a class="nav-link" href="../adoptionHome/newAdoptionHome.html">Adoptions</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item my-auto">
                     <a class="nav-link" href="../eventHome/newEventHome.html">Events</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item my-auto">
                     <a class="nav-link" id="login" href="3">Log In</a>
                 </li>
             </ul>
         </div>
-    </div>
-</nav>
+        </div>
+    </nav>
 
-<!-- Modal -->
-<div class="modal fade" id="logout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="LogoutTitle">Logout?</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Are you sure you wish to logout?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn button" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn button" onclick="logout()">Log Out</button>
+    <!-- Modal -->
+    <div class="modal fade" id="logout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="LogoutTitle">Logout?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you wish to logout?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn button" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn button" onclick="logout()">Log Out</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
     <hr>
 
     <!-- content -->
@@ -107,7 +111,7 @@
     <div class="container" id="content">
 
         <div class="row">
-        
+
             <div class="col-lg-6">
                 <div class="profile" style="height:95%;margin-bottom:5%;">
                     <!-- profile pic -->
@@ -118,7 +122,8 @@
                         <label for="pic">
                             Select profile image<br><br>
                             <i class="fa fa-2x fa-camera"></i>
-                            <input id="pic" type="file" accept="image/jpeg, image/png, image/jpg, image/jfif" onchange="preview()">
+                            <input id="pic" type="file" accept="image/jpeg, image/png, image/jpg, image/jfif"
+                                onchange="preview()">
                         </label><br><br>
                         <output id="result"></output>
                     </div>
@@ -135,7 +140,8 @@
                                 <td><i class="fa fa-id-card"></i></td>
                                 <td>
                                     <div class="input-field mx-auto">
-                                        <input type="text" id="name" value="Current Name" v-model="name" placeholder="Enter your name">
+                                        <input type="text" id="name" value="Current Name" v-model="name"
+                                            placeholder="Enter your name">
                                         <label for="Name"></label><br>
                                     </div>
                                 </td>
@@ -144,7 +150,8 @@
                                 <td><i class="fa fa-user"></i></td>
                                 <td>
                                     <div class="input-field mx-auto">
-                                        <input type="text" id="username" value="Current Username" v-model="username" placeholder="Enter your username">
+                                        <input type="text" id="username" value="Current Username" v-model="username"
+                                            placeholder="Enter your username">
                                         <label for="Username"></label><br>
                                     </div>
                                 </td>
@@ -153,7 +160,8 @@
                                 <td><i class="fa fa-envelope"></i></td>
                                 <td>
                                     <div class="input-field mx-auto">
-                                        <input type="text" id="email" value="Current Email" v-model="email" placeholder="Enter your email">
+                                        <input type="text" id="email" value="Current Email" v-model="email"
+                                            placeholder="Enter your email">
                                         <label for="Email"></label><br>
                                     </div>
                                 </td>
@@ -181,10 +189,11 @@
                     <p style="font-size:25px;text-align: center;">Bio</p>
                     <div style="text-align: center;">
                         <p id="bio_description">
-                            <div class="input-field mx-auto">
-                                <textarea id="bio" placeholder="Enter your bio" v-model="bio" maxlength="200">Current Bio</textarea>
-                                <label for="bio"></label><br>
-                            </div>
+                        <div class="input-field mx-auto">
+                            <textarea id="bio" placeholder="Enter your bio" v-model="bio"
+                                maxlength="200">Current Bio</textarea>
+                            <label for="bio"></label><br>
+                        </div>
                         </p>
                     </div>
                 </div>
@@ -195,10 +204,11 @@
                     <p style="font-size:25px;text-align: center;">Favourite Pet(s)</p>
                     <div style="text-align: center;">
                         <p id="favpets_description">
-                            <div class="input-field mx-auto">
-                                <textarea id="bio" placeholder="Enter your favourite pet(s)" v-model="pets" maxlength="200">Current fav pets</textarea>
-                                <label for="bio"></label><br>
-                            </div>
+                        <div class="input-field mx-auto">
+                            <textarea id="bio" placeholder="Enter your favourite pet(s)" v-model="pets"
+                                maxlength="200">Current fav pets</textarea>
+                            <label for="bio"></label><br>
+                        </div>
                         </p>
                     </div>
                 </div>
@@ -216,42 +226,49 @@
 
     <!-- bottom info -->
     <hr>
-        <div class="bottomInfo">
-            <div class="row">
+    <div class="bottomInfo">
+        <div class="row">
 
-                <!-- social media -->
-                <div class="col social">
-                    <p>CONTACT US</p>
-                    <span class="fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x icon-background"></i>
-                        <i class="fa fa-facebook-f fa-stack-1x"></i>
-                    </span>   
-                    <span class="fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x icon-background"></i>
-                        <i class="fa fa-instagram fa-stack-1x"></i>
-                    </span>   
-                    <span class="fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x icon-background"></i>
-                        <i class="fa fa-envelope fa-stack-1x"></i>
-                    </span>
-                </div>
-
-                <!-- Subscribe Newsletter -->
-                <!-- make the form look less weird on com big screen? -->
-                <div class="col">
-                    <p>SUBSCRIBE TO OUR NEWSLETTER</p>
-                    <form>
-                        <input type="text" placeholder="Email Address"><br>
-                        <a href="" class="btn button" style="margin-top:15px;">SUBMIT</a>
-                    </form>
-                </div>
+            <!-- social media -->
+            <div class="col social">
+                <p>CONTACT US</p>
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x icon-background"></i>
+                    <i class="fa fa-facebook-f fa-stack-1x"></i>
+                </span>
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x icon-background"></i>
+                    <i class="fa fa-instagram fa-stack-1x"></i>
+                </span>
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x icon-background"></i>
+                    <i class="fa fa-envelope fa-stack-1x"></i>
+                </span>
             </div>
-            
-            <!-- copyright -->
-            <div class="row copyright">
-                <h8>&copy; 2022 PET BAGUETTE</h8>
+
+            <!-- Subscribe Newsletter -->
+            <!-- make the form look less weird on com big screen? -->
+            <div class="col text-center">
+                <p>SUBSCRIBE TO OUR NEWSLETTER</p>
+                <div class="row">
+                    <div class="col-sm-12 col-lg-7 mb-3 text-lg-end">
+                        <input type="text" placeholder="Email Address"
+                            style="height: 38.5px; border-color: darkslategrey;">
+                    </div>
+
+                    <div class="col-sm-12 col-lg-5 text-lg-start">
+                        <button type="submit" class="btn button">Submit</button>
+                    </div>
+                </div>
+
             </div>
         </div>
+
+        <!-- copyright -->
+        <div class="row copyright">
+            <h8>&copy; 2022 PET BAGUETTE</h8>
+        </div>
+    </div>
     </div>
 
     <script>
@@ -261,16 +278,19 @@
             if (file) {
                 blah.src = URL.createObjectURL(file)
             }
-        }        
+        }
 
     </script>
-    
+
     <!-- Javascript functions -->
     <script src="newProfileEdit.js"></script>
 
     <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
 
 </body>
+
 </html>
