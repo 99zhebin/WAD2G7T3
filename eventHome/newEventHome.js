@@ -68,7 +68,6 @@ const app = Vue.createApp({
 
             volunteer: "Volunteering",
 
-            hid: [],
         }
     },
 
