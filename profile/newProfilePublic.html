@@ -113,7 +113,7 @@
                 <div class="profile" style="height:95%;margin-bottom:5%;">
                     <!-- profile pic -->
                     <div class="row" style="align-items:center;">
-                        <img class="profilePic" :src="pic" style="width: 30%;">
+                        <img class="profilePic" :src="pic" style="width: 30%;border-radius:50%">
                     </div>
 
                     <!-- name -->
@@ -123,23 +123,24 @@
 
                     <!-- details -->
                     <div class="row" style="justify-content:center;">
-                        <table class="details" style="width:50%;">
+                        <table class="details" style="width:80%;">
                             <tr>
-                                <td><i class="fa fa-user"></i></td>
+                                <td><i class="fa fa-user icon"></i></td>
                                 <td>{{username}}</td>
                             </tr>
                             <tr>
-                                <td><i class="fa fa-envelope"></i></td>
+                                <td><i class="fa fa-envelope icon"></i></td>
                                 <td>{{email}}</td>
                             </tr>
                             <tr>
-                                <td><i class="fa fa-map-marker"></i></td>
+                                <td><i class="fa fa-map-marker icon"></i></td>
                                 <td>{{region}}</td>
                             </tr>
                         </table>
                     </div>
                 </div>
             </div>
+
 
             <!-- bio and favourite pets -->
             <div class="col-lg-6 col-xl-6">
