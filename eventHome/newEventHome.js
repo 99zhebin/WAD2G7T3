@@ -138,6 +138,8 @@ const app = Vue.createApp({
 
             curclass = disheart.getAttribute('class');
 
+
+            //Checking if the current liked postid is inside the user profile alr, if yes it wont add if not it adds to firebase
             var ref = database.ref('profile/' + curemail);
             ref.once("value", function(snapshot){
                 ulikes = snapshot.val().likes
@@ -152,10 +154,7 @@ const app = Vue.createApp({
                 }
             })
 
-            // console.log(this.email);
-
-            // console.log(instance.pid);
-            
+            //Changing heart icon to red or not
             if(curclass.includes('liked')) {
                 disheart.innerHTML='<i class="fa fa-heart-o" aria-hidden="true"></i>';
                 disheart.setAttribute('class', 'heart'); 
@@ -182,6 +181,7 @@ const app = Vue.createApp({
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 this.email = user.email
+                //Trying to Populate this.userlikes
                 console.log(this.email)
                         // Bryans code
                 database = firebase.database();
