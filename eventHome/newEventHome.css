@@ -53,9 +53,11 @@
 }
 
 .card-img-top {
-    border-radius: 25px;
-    padding-bottom: 20px;
+    border-radius:15px;
+    margin-bottom: 10px;
+    aspect-ratio : 1 / 1;
 }
+
 
 /* like button */
 .fa-heart-o {
