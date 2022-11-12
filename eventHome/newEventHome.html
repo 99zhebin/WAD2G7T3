@@ -166,6 +166,11 @@
                 <button class="btn button newEvent" v-on:click="checklogin()">New Event Listing</button>
             </div> 
 
+            <div style="margin-bottom:15px;margin-left:25px;">
+                <input type="text" v-model="query">
+                <button class="btn button newEvent" v-on:click="search()">Search</button>
+            </div> 
+
         </div>
 
         <!-- events -->

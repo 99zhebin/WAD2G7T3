@@ -76,6 +76,10 @@ const app = Vue.createApp({
 
             pageLimit: 1,
 
+            query: '',
+
+            currentfilter: [],
+
         }
     },
 
@@ -83,6 +87,7 @@ const app = Vue.createApp({
         filter(criteria){
             console.log("--- Start Filter ---")
             console.log(criteria)
+            this.currentfilter = []
             this.filtered = []
             for (key in this.events){
                 if (this.events[key].category == criteria){
@@ -108,6 +113,22 @@ const app = Vue.createApp({
             else if (criteria == 'Volunteering'){
                 this.volunteerFilter = true
             }
+        },
+
+        search(){
+            if (this.currentfilter.length == 0){
+                this.currentfilter = this.filtered
+            }
+            this.filtered = []
+            for (instance of this.currentfilter){
+                if (this.query != '' && instance.eventname.match(this.query)){
+                    this.filtered.push(instance)
+                } 
+            }
+            if (this.filtered.length == 0){
+                this.filtered = 'not found'
+            }
+            console.log(this.filtered)
         },
 
         url(email,eventName){
