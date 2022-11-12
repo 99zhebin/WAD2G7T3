@@ -20,7 +20,7 @@ function loadDisplay() {
           // User is signed in, see docs for a list of available properties
           // https://firebase.google.com/docs/reference/js/firebase.User
           let url = "../profile/newProfile.html?email=" + user.email
-          document.getElementById("login").innerText = user.email
+          document.getElementById("login").innerText = "Profile"
           document.getElementById("login").setAttribute("href", url)
           let ul = document.getElementById("navbar")
           let li = document.createElement("li")
