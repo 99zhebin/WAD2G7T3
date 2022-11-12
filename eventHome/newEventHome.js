@@ -190,15 +190,16 @@ const app = Vue.createApp({
                 curemail = curemail.replace("@",'-');
                 curemail = curemail.replaceAll(".",'-');
                 var ref = database.ref('profile/' + curemail);
+                var likelist = []
                 ref.once("value", function(snapshot){
                     ulikes = snapshot.val().likes
-                    likelist = [];
+                    console.log(ulikes)
                     for(key in ulikes){
                         likelist.push(ulikes[key]);
                     }
-                    this.userlikes = likelist;
-                    console.log(this.userlikes);
                 })
+                this.userlikes = likelist;
+                console.log(this.userlikes);
             }
             else {
                 
