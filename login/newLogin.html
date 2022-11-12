@@ -105,6 +105,10 @@
                         <input type="password" id="password" v-model="password" placeholder="Enter your Password">
                         <label for="password"></label><br>
                         <span v-if="passwordError != ''" class="mx-auto" style="text-align:center; width: 230px; display:block;">{{passwordError}}<br></span>
+                    <div class="input-field mx-auto justify-content-center mx-3">
+                        <input type="password" id="password" v-model="password" placeholder="Enter your Password">
+                        <label for="password"></label><br>
+                        <span v-if="passwordError != ''" style="text-align:center; display:flex; max-width: 260px;">{{passwordError}}<br></span>
                     </div>
 
                     <div class="forgotPassword d-flex justify-content-end pe-3" >
