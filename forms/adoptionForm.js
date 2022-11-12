@@ -149,12 +149,13 @@ const app = Vue.createApp({
                                     username: this.email,
                                     name: this.name,
                                     birthday: this.birthday,
-                                    description: this.personality,
+                                    personality: this.personality,
                                     vaccinated: this.vaccinationStatus,
                                     HDB: this.hdbApproved,
                                     health: this.health,
                                     pics: this.pics,
-                                    species: this.species
+                                    species: this.species,
+                                    description: this.description
 
                                 })
                                 var adoption = firebase.database().ref().child('adoption/' + this.name)
@@ -163,12 +164,13 @@ const app = Vue.createApp({
                                     username: this.email,
                                     name: this.name,
                                     birthday: this.birthday,
-                                    description: this.personality,
+                                    personality: this.personality,
                                     vaccinated: this.vaccinationStatus,
                                     HDB: this.hdbApproved,
                                     health: this.health,
                                     pics: this.pics,
-                                    species: this.species
+                                    species: this.species,
+                                    description: this.description
                                 })
                             }
                             if (this.pics.length == files.length) {

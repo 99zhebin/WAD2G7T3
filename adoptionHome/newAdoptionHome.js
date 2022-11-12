@@ -74,7 +74,7 @@ const app = Vue.createApp({
                 if (this.vaccination == 'vaccinated' && this.pets[key].vaccinated != 'vaccinated'){
                     correct = false
                 }
-                if (this.health == 'none' && this.pets[key].health != 'NIL'){
+                if (this.health == 'none' && this.pets[key].health != 'no'){
                     correct = false
                 }
                 if(this.species.includes(this.pets[key].species) == false){
