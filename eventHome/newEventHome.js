@@ -253,6 +253,7 @@ const app = Vue.createApp({
                 this.filtered = "not found"
             }
             console.log(this.filtered)
+            
             // pagination
             var pageSize = 1;
             console.log(this.filtered.length)
@@ -265,6 +266,7 @@ const app = Vue.createApp({
 
             $("#pagin li").first().find("a").addClass("current")
             showPage = function(page) {
+                console.log(this.filtered)
                 this.filtered.hide();
                 this.filtered.each(function(n) {
                 if (n >= pageSize * (page - 1) && n < pageSize * page)
