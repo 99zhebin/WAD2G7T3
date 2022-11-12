@@ -101,6 +101,11 @@
                         <span v-if="emailError != ''" style="text-align:center">{{emailError}}<br></span>
                     </div>
 
+                    
+                    <div class="input-field mx-auto justify-content-center mx-3">
+                        <input type="password" id="password" v-model="password" placeholder="Enter your Password">
+                        <label for="password"></label><br>
+                        <span v-if="passwordError != ''" style="text-align:center; display:flex; max-width: 260px;">{{passwordError}}<br></span>
                     <div class="input-field mx-auto text-center mb-3">
                         <input type="password" id="password" v-model="password" placeholder="Enter your Password">
                         <label for="password"></label><br>
