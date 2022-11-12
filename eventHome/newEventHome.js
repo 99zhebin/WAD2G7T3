@@ -137,46 +137,20 @@ const app = Vue.createApp({
             let disheart = document.getElementById(hid.currentTarget.id);
 
             curclass = disheart.getAttribute('class');
-            // var curemail = this.email
-            // curemail = curemail.replace("@",'-');
-            // curemail = curemail.replaceAll(".",'-');
 
-            // database = firebase.database();
-            // var ref = database.ref('profile/' + curemail);
-            // ref.once("value", function(snapshot){
-            //     ulikes = snapshot.val().likes
-            //     likelist = [];
-            //     for(key in ulikes){
-            //         likelist.push(ulikes[key]);
-            //     }
-            //     this.userlikes = likelist;
-            //     console.log(this.userlikes[0]);
-            //     // console.log(ulikes);
-            //     valid = true;
-            //     for(key in ulikes){
-            //         if(ulikes[key] == instance.pid){
-            //             valid = false;
-            //         }
-            //     }
-            //     if(valid == true) {
-            //         ref.child('likes').push(instance.pid);
-            //     }
-                // console.log(snapshot.val().email)
-                // this.userlikes = snapshot.val().likes;
-                // console.log(this.userlikes.push(instance.pid))
-                // var data = snapshot.val();
-                // for(dat in data){
-                //     // console.log(dat)
-                //     // console.log(data[dat].likes);
-                //     // console.log(curemail)
-                //     if(data[dat].email == curemail) {
-                //         data[dat].likes.set(instance.pid);
-                //         console.log(data[dat].likes);
-                //         // data[dat].likes.push(this.pid);
-                //         // console.log(instance.pid)
-                //     }
-                // }
-            // })
+            var ref = database.ref('profile/' + curemail);
+            ref.once("value", function(snapshot){
+                ulikes = snapshot.val().likes
+                valid = true;
+                for(key in ulikes){
+                    if(ulikes[key] == instance.pid){
+                        valid = false;
+                    }
+                }
+                if(valid == true) {
+                    ref.child('likes').push(instance.pid);
+                }
+            })
 
             // console.log(this.email);
 
