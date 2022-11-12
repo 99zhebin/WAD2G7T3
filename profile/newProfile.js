@@ -68,7 +68,9 @@ const app = Vue.createApp({
 
       posts: '',
 
-      likes: ''
+      likes: '',
+
+      listings: '',
     }
   },
 
@@ -87,6 +89,11 @@ const app = Vue.createApp({
       var eventurl = '../eventInfo/newEventInfo.html?name=' + this.email + '-' + eventname
       return eventurl
     },
+
+    peturl(petname) {
+      var peturl = '../adoptionInfo/newAdoptionInfo.html?name=' + this.email + '-' + petname
+      return peturl
+    }
   },
 
   mounted() {
@@ -114,6 +121,12 @@ const app = Vue.createApp({
       posts.once('value').then((snapshot) => {
         if (snapshot.exists()) {
           this.posts = snapshot.val()
+        }
+      })
+      var listings = user.child('listings')
+      listings.once('value').then((snapshot) => {
+        if (snapshot.exists()) {
+          this.listings = snapshot.val()
         }
       })
     });
