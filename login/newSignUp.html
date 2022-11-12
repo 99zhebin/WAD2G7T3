@@ -104,14 +104,14 @@
                         <span v-if="emailError != ''" style="text-align:center">{{emailError}}<br></span>
                     </div>
 
-                    <div class="input-field">
+                    <div class="input-field text-center">
                         <input type="password" id="password" v-model="password" placeholder="Enter your Password">
                         <label for="password"></label>
                         <br>
-                        <span v-if="passwordError != ''" style="text-align:center">{{passwordError}}<br></span>
+                        <span v-if="passwordError != ''">{{passwordError}}<br></span>
                     </div>
 
-                    <div class="input-field">
+                    <div class="input-field text-center">
                         <input type="password" id="confirmPassword" v-model="password2" placeholder="Enter your Password Again">
                         <label for="confirmPassword"></label>
                         <br>

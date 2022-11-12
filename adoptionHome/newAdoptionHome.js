@@ -59,6 +59,10 @@ const app = Vue.createApp({
             species: [],
 
             health: [],
+
+            pageCount: 1,
+
+            pageLimit: 2,
         }
     },
 
@@ -117,7 +121,15 @@ const app = Vue.createApp({
                     window.location.href='../login/newLogin.html?page=../forms/adoptionForm.html'
                 }
             })
-        }
+        },
+
+        prevPage(){
+            this.pageCount -= 1
+        },
+
+        nextPage(){
+            this.pageCount += 1
+        },
     },
 
     mounted() {

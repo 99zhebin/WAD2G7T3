@@ -72,6 +72,10 @@ const app = Vue.createApp({
 
             userlikes: [],
 
+            pageCount: 1,
+
+            pageLimit: 1,
+
         }
     },
 
@@ -197,7 +201,15 @@ const app = Vue.createApp({
                 console.log(likelist);
                 this.userlikes = likelist;
             })
-        }
+        },
+
+        prevPage(){
+            this.pageCount -= 1
+        },
+
+        nextPage(){
+            this.pageCount += 1
+        },
         
 
     },
