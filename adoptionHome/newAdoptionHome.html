@@ -161,6 +161,8 @@
                     <input type="checkbox" id="others" value="others" v-model="species" checked>
                     <label for="others">Others</label><br>
 
+                    <input type="text" v-model="query">
+
                     <!-- filter button -->
                     <div style="text-align:right; margin-top:10px;">
                     <button class="btn button" v-on:click="filter()">Search</button>

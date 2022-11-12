@@ -63,6 +63,8 @@ const app = Vue.createApp({
             pageCount: 1,
 
             pageLimit: 2,
+
+            query: '',
         }
     },
 
@@ -72,6 +74,7 @@ const app = Vue.createApp({
             this.filtered = []
             for (key in this.pets){
                 correct = true
+                console.log(this.pets[key].name.match(this.query))
                 if (this.hdb == 'eligible' && this.pets[key].HDB != 'eligible'){
                     correct = false
                 }
@@ -82,6 +85,9 @@ const app = Vue.createApp({
                     correct = false
                 }
                 if(this.species.length != 0 && this.species.includes(this.pets[key].species) == false){
+                    correct = false
+                }
+                if(this.query != '' && this.pets[key].name.toLowerCase().match(this.query.toLowerCase()) == null){
                     correct = false
                 }
                 if (correct == true){
