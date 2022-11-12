@@ -123,6 +123,7 @@ const app = Vue.createApp({
             this.vaccinated = this.vaccinated.charAt(0).toUpperCase() + this.vaccinated.slice(1)
             console.log(this.vaccinated)
 
+
             }
             else{
                 console.log("Not Found")
