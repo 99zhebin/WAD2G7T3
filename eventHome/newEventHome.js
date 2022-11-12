@@ -191,18 +191,6 @@ const app = Vue.createApp({
                 disheart.setAttribute('class', 'heart liked'); 
             }
         },
-        userlikesload(){
-            database = firebase.database();
-            ref.once("value", function(snapshot){
-                ulikes = snapshot.val().likes
-                likelist = [];
-                for(key in ulikes){
-                    likelist.push(ulikes[key]);
-                }
-                console.log(likelist);
-                this.userlikes = likelist;
-            })
-        },
 
         prevPage(){
             this.pageCount -= 1
