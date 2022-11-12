@@ -192,6 +192,12 @@
             </div>
             <h1 v-else style="text-align:center">Not Found</h1>
 
+            <div class="d-flex justify-content-center pt-3 pb-5">
+                <button v-if="pageCount > 1" type="btn" class="btn button" @click="prevPage">Prev</button>
+                <span class="d-flex align-items-center px-3">Page {{ pageCount }}</span>
+                <button v-if="pageCount < pageLimit" v-type="btn" class="btn button" @click="nextPage">Next</button>
+            </div>
+
         <!-- bottom info -->
         <hr>
         <div class="bottomInfo">

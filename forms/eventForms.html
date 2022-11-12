@@ -166,8 +166,7 @@
                     </div>
                     <div class="col-6 col-md-8 m-0 p-0">
                         <div class="input-field">
-                            <textarea id="description" rows="3" placeholder="Enter event description"
-                                v-model="eventDescription"></textarea>
+                            <textarea id="description" rows="3" placeholder="Enter event description (Up to 100 characters)" v-model="eventDescription" maxlength="100"></textarea>
                         </div>
                     </div>
                 </div>
