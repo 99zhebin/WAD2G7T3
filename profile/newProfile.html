@@ -171,7 +171,7 @@
 
         <!-- posts -->
         <div class="row">
-            <p style="font-size:25px;text-align: center;">Posts</p>
+            <p style="font-size:25px;text-align: center;">Posted Events</p>
 
             <div class="row">
 
@@ -193,50 +193,32 @@
                 <div style="text-align: center; padding-bottom:20px;margin-top:15px;">
                     <a href="../forms/eventForms.html" class="btn button">ADD EVENT LISTING</a>
                 </div>
+            </div> 
+        </div>
 
-                <!-- <div class="col-lg-3 col-md-6 col-sm-12">
-                    <a>
-                        <div class="card">
-                            <img src="images/event2.jpg" class="card-img-top">
-                            <div class="card-body p-0">
-                                <div class="row p-0 m-0">
-                                    <div class="col m-0 p-0">
-                                        <h8 class="card-title" >Event Name</h8>
-                                    </div>
-                                    <div class="col m-0 p-0 px-3" style="text-align:right;">
-                                        <span><i class=" fas fa-regular fa-trash"></i></span>
-                                    </div>
-                                </div>
-                                <p class="card-text" >Location<br>Date,Time</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <a>
-                        <div class="card">
-                            <img src="images/event1.png" class="card-img-top">
-                            <div class="card-body p-0">
-                                <h8 class="card-title" >Event Name</h8>
-                                <p class="card-text" >Location<br>Date,Time</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-        
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <a>
-                        <div class="card">
-                            <img src="images/event2.jpg" class="card-img-top">
-                            <div class="card-body p-0">
-                                <h8 class="card-title" >Event Name</h8>
-                                <p class="card-text" >Location<br>Date,Time</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>-->
+        <div class="row">
+            <p style="font-size:25px;text-align: center;">Posted Adoptions</p>
 
+            <div class="row">
+
+                <div class="col-lg-3 col-md-6 col-sm-12" v-for="key in listings">
+                    <div class="card">
+                        <a v-bind:href="peturl(key.animalname)">
+                            <img :src="key.pics[0]" class="card-img-top">
+                        </a>
+                        <div class="card-body p-0">
+                            <h8 class="card-title" >{{key.animalname}}</h8>
+                            <p class="card-text" >{{key.species}}<br>{{key.personality}}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center" v-if="posts.length == 0"><span>No Posts Made, Make a Post Now!</span></div>
+
+                <!-- shortcut event button -->
+                <div style="text-align: center; padding-bottom:20px;margin-top:15px;">
+                    <a href="../forms/adoptionForm.html" class="btn button">ADD ADOPTION LISTING</a>
+                </div>
             </div> 
         </div>
 

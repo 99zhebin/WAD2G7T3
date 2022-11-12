@@ -52,7 +52,7 @@ const app = Vue.createApp({
 
             filtered: [],
 
-            emergencyFilter: true,
+            emergencyFilter: false,
 
             driveFilter: false,
 
@@ -80,12 +80,16 @@ const app = Vue.createApp({
 
             currentfilter: [],
 
+            valid: false,
+
         }
     },
 
     methods: {
         filter(criteria){
             console.log("--- Start Filter ---")
+            this.valid = true;
+            console.log(this.valid);
             console.log(criteria)
             this.currentfilter = []
             this.filtered = []
@@ -121,7 +125,7 @@ const app = Vue.createApp({
             }
             this.filtered = []
             for (instance of this.currentfilter){
-                if (this.query != '' && instance.eventname.match(this.query) != null){
+                if ((this.query.length != 0 && instance.eventname.match(this.query) != null) || this.query.length == 0){
                     this.filtered.push(instance)
                 } 
             }
@@ -223,7 +227,7 @@ const app = Vue.createApp({
                 curemail = curemail.replace("@",'-');
                 curemail = curemail.replaceAll(".",'-');
                 var ref = database.ref('profile/' + curemail);
-                var likelist = []
+                var likelist = [];
                 ref.once("value", function(snapshot){
                     ulikes = snapshot.val().likes
                     console.log(ulikes)
@@ -231,6 +235,7 @@ const app = Vue.createApp({
                         likelist.push(ulikes[key]);
                     }
                 })
+                console.log(this.userlikes);
                 this.userlikes = likelist;
                 console.log(this.userlikes);
             }
@@ -254,11 +259,12 @@ const app = Vue.createApp({
             }
             console.log(this.filtered)
             
-            // pagination
+            pagination
             var pageSize = 1;
             console.log(this.filtered.length)
             var pageCount = this.filtered.length / pageSize;
             console.log(pageCount)
+            var temp = this.filtered
 
             for(var i = 0 ; i<pageCount;i++){
                 $("#pagin").append('<li><a href="#">'+(i+1)+'</a></li> ');
@@ -266,9 +272,10 @@ const app = Vue.createApp({
 
             $("#pagin li").first().find("a").addClass("current")
             showPage = function(page) {
-                console.log(this.filtered)
-                this.filtered.hide();
-                this.filtered.each(function(n) {
+                console.log(temp);
+        
+                temp.hide();
+                temp.each(function(n) {
                 if (n >= pageSize * (page - 1) && n < pageSize * page)
                     $(this).show();
                 });        
