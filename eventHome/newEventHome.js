@@ -133,33 +133,34 @@ const app = Vue.createApp({
             })
         },
         checkheart(hid, instance) {
+            console.log(this.userlikes)
             let disheart = document.getElementById(hid.currentTarget.id);
 
             curclass = disheart.getAttribute('class');
-            var curemail = this.email
-            curemail = curemail.replace("@",'-');
-            curemail = curemail.replaceAll(".",'-');
+            // var curemail = this.email
+            // curemail = curemail.replace("@",'-');
+            // curemail = curemail.replaceAll(".",'-');
 
-            database = firebase.database();
-            var ref = database.ref('profile/' + curemail);
-            ref.once("value", function(snapshot){
-                ulikes = snapshot.val().likes
-                likelist = [];
-                for(key in ulikes){
-                    likelist.push(ulikes[key]);
-                }
-                this.userlikes = likelist;
-                console.log(this.userlikes[0]);
-                // console.log(ulikes);
-                valid = true;
-                for(key in ulikes){
-                    if(ulikes[key] == instance.pid){
-                        valid = false;
-                    }
-                }
-                if(valid == true) {
-                    ref.child('likes').push(instance.pid);
-                }
+            // database = firebase.database();
+            // var ref = database.ref('profile/' + curemail);
+            // ref.once("value", function(snapshot){
+            //     ulikes = snapshot.val().likes
+            //     likelist = [];
+            //     for(key in ulikes){
+            //         likelist.push(ulikes[key]);
+            //     }
+            //     this.userlikes = likelist;
+            //     console.log(this.userlikes[0]);
+            //     // console.log(ulikes);
+            //     valid = true;
+            //     for(key in ulikes){
+            //         if(ulikes[key] == instance.pid){
+            //             valid = false;
+            //         }
+            //     }
+            //     if(valid == true) {
+            //         ref.child('likes').push(instance.pid);
+            //     }
                 // console.log(snapshot.val().email)
                 // this.userlikes = snapshot.val().likes;
                 // console.log(this.userlikes.push(instance.pid))
@@ -175,7 +176,7 @@ const app = Vue.createApp({
                 //         // console.log(instance.pid)
                 //     }
                 // }
-            })
+            // })
 
             // console.log(this.email);
 
@@ -219,6 +220,23 @@ const app = Vue.createApp({
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 this.email = user.email
+                console.log(this.email)
+                        // Bryans code
+                database = firebase.database();
+                curemail = this.email
+                console.log(curemail);
+                curemail = curemail.replace("@",'-');
+                curemail = curemail.replaceAll(".",'-');
+                var ref = database.ref('profile/' + curemail);
+                ref.once("value", function(snapshot){
+                    ulikes = snapshot.val().likes
+                    likelist = [];
+                    for(key in ulikes){
+                        likelist.push(ulikes[key]);
+                    }
+                    this.userlikes = likelist;
+                    console.log(this.userlikes);
+                })
             }
             else {
                 
@@ -244,23 +262,7 @@ const app = Vue.createApp({
         }
         });
 
-
-
-        // console.log(document.readyState);
-        //Setting specific hearts for each post
-        
-        // for(heart of hearts){
-        //     heart.setAttribute('id',`heart${count}`);
-        //     count += 1;
-        // }
-
     },
-    // updated() {
-    //     if (document.readyState == "complete") {
-    //         console.log('Page completed with image and files!')
-    //         // fetch to next page or some code
-    //     }
-    // }
 })
 
 const vm2 = app.mount("#container")
