@@ -15,6 +15,10 @@ hr{
 }
 
 /* NavBar */
+#navbarNavDropdown{
+    margin-right:35px;
+    justify-content: end;
+}
 .navbar{
     background-color:#fcf2e6;
 }
