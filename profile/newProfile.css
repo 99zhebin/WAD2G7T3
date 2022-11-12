@@ -55,6 +55,7 @@
     padding: 10px;
     border-width: 0px;
     width: 90%;
+    border-radius: 15px;
 }
 
 select{

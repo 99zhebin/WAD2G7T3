@@ -159,18 +159,17 @@
             </div>
         </div>
         
-        <div class="row">
-
+        <div class="row" >
             <!-- new event listing -->
-            <div style="margin-bottom:15px;margin-left:25px;">
+            <div>
                 <button class="btn button newEvent" v-on:click="checklogin()">New Event Listing</button>
-            </div> 
+            </div>
 
-            <div style="margin-bottom:15px;margin-left:25px;">
-                <input type="text" v-model="query">
-                <button class="btn button newEvent" v-on:click="search()">Search</button>
-            </div> 
-
+            <!-- search -->
+            <div class="input-field">
+                <input type="search" v-model="query" placeholder="Search">
+                <button class="btn button" v-on:click="search()"><i class="fa fa-search"></i></button>
+            </div>
         </div>
 
         <!-- events -->
@@ -196,6 +195,7 @@
                 </div>
             </div>
             <h1 v-else style="text-align:center">No Listings Found</h1>
+        </div>
 
         <!-- pagination -->
         <div class="row">

@@ -130,7 +130,7 @@
             <!-- <a v-bind:class="{ active: emergencyFilter }" id="hdb" v-on:click="filter(hdb)" href="#"> -->
             <!-- dropdown for filter -->
             <div class="dropdown" style="margin-left:25px;">
-                <button onclick="myFunction()" class="btn button dropbtn">Filter</button>
+                <button onclick="myFunction()" class="btn button dropbtn"><i class="fa fa-sliders"></i>&ensp; Filter</button>
                 <div id="myDropdown" class="dropdown-content">
                     
                     <strong>HDB Eligiblity</strong> <br>
@@ -186,94 +186,81 @@
                         </p>
                     </div>
                 </div>
-
             </div>
-
-            <!-- <div class="col-lg-3 col-md-6 col-sm-12">
-                <a>
-                    <div class="card h-100">
-                        <img src="images/animal2.jpg" class="card-img-top">
-                        <div class="card-body p-0">
-                            <h8 class="card-title">Name</h8>
-                            <p class="card-text">Species
-                                <br>Personality
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div> -->
-
         </div>
+
+
         <div class="d-flex justify-content-center pt-3 pb-5">
             <button v-if="pageCount > 1" type="btn" class="btn button" @click="prevPage">Prev</button>
             <span class="d-flex align-items-center px-3">Page {{ pageCount }}</span>
             <button v-if="pageCount < pageLimit" v-type="btn" class="btn button" @click="nextPage">Next</button>
         </div>
 
+    </div>
 
-        <!-- bottom info -->
-        <hr>
-        <div class="bottomInfo">
-            <div class="row">
+    <!-- bottom info -->
+    <hr>
+    <div class="bottomInfo">
+        <div class="row">
 
-                <!-- social media -->
-                <div class="col social">
-                    <p>CONTACT US</p>
-                    <span class="fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x icon-background"></i>
-                        <i class="fa fa-facebook-f fa-stack-1x"></i>
-                    </span>
-                    <span class="fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x icon-background"></i>
-                        <i class="fa fa-instagram fa-stack-1x"></i>
-                    </span>
-                    <span class="fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x icon-background"></i>
-                        <i class="fa fa-envelope fa-stack-1x"></i>
-                    </span>
-                </div>
-
-                <!-- Subscribe Newsletter -->
-                <!-- make the form look less weird on com big screen? -->
-                <div class="col text-center">
-                    <p>SUBSCRIBE TO OUR NEWSLETTER</p>
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-7 mb-3 text-lg-end">
-                            <input type="text" placeholder="Email Address" style="height: 38.5px; border-color: darkslategrey;">
-                        </div>
-    
-                        <div class="col-sm-12 col-lg-5 text-lg-start">
-                            <button type="submit" class="btn button">Submit</button>
-                        </div>
-                    </div>
-                    
-                </div>
+            <!-- social media -->
+            <div class="col social">
+                <p>CONTACT US</p>
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x icon-background"></i>
+                    <i class="fa fa-facebook-f fa-stack-1x"></i>
+                </span>
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x icon-background"></i>
+                    <i class="fa fa-instagram fa-stack-1x"></i>
+                </span>
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x icon-background"></i>
+                    <i class="fa fa-envelope fa-stack-1x"></i>
+                </span>
             </div>
-            
 
-            <!-- copyright -->
-            <div class="row copyright">
-                <h8>&copy; 2022 PET BAGUETTE</h8>
+            <!-- Subscribe Newsletter -->
+            <!-- make the form look less weird on com big screen? -->
+            <div class="col text-center">
+                <p>SUBSCRIBE TO OUR NEWSLETTER</p>
+                <div class="row">
+                    <div class="col-sm-12 col-lg-7 mb-3 text-lg-end">
+                        <input type="text" placeholder="Email Address" style="height: 38.5px; border-color: darkslategrey;">
+                    </div>
+
+                    <div class="col-sm-12 col-lg-5 text-lg-start">
+                        <button type="submit" class="btn button">Submit</button>
+                    </div>
+                </div>
+                
             </div>
         </div>
+        
 
-        <!-- Bootstrap Bundle with Popper -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
+        <!-- copyright -->
+        <div class="row copyright">
+            <h8>&copy; 2022 PET BAGUETTE</h8>
+        </div>
+    </div>
 
-        <!-- Javascript functions -->
-        <script src="newAdoptionHome.js"></script>
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
 
-        <script>
-            /* When the user clicks on the button,
-            toggle between hiding and showing the dropdown content */
-            function myFunction() {
-                document.getElementById("myDropdown").classList.toggle("show");
-            }
+    <!-- Javascript functions -->
+    <script src="newAdoptionHome.js"></script>
 
-        </script>
+    <script>
+        /* When the user clicks on the button,
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+    </script>
 
 </body>
 

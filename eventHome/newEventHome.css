@@ -20,6 +20,18 @@
     font-size: 75%;
 }
 
+/* search */
+.input-field input{
+    background-color: rgb(241, 241, 241);
+    margin: 10px;
+    margin-left:0;
+    padding: 10px;
+    border-width: 0px;
+    border-radius: 15px;
+    /* width: 180px; */
+    width:200px;
+}
+
 /* events */
 .event{
     /* margin:30px; */
