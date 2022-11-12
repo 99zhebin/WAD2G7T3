@@ -127,10 +127,10 @@
             <div class="col-12 col-lg-7" style="text-align:center;">
                 <!-- Pet name -->
                 <div class="row">
-                    <div class="col-6 col-md-4 m-0 p-0">
+                    <div class="col-12 col-md-4 m-0 p-0">
                         Animal Name
                     </div>
-                    <div class="col-6 col-md-8 m-0 p-0">
+                    <div class="col-12 col-md-8 m-0 p-0">
                         <div class="input-field">
                             <input type="text" id="name" placeholder="Enter animal's name" v-model="name" required>
                         </div>
@@ -198,7 +198,7 @@
                     </div>
                     <div class="col-12 col-md-8 m-0 p-0">
                         <div class="input-field">
-                           <textarea name="description" id="description" cols="30" rows="4" placeholder="Write something interesting! (Up to 250 characters)" v-model="description"></textarea>
+                           <textarea name="description" id="description" cols="30" rows="4" placeholder="Write something interesting! (Up to 100 characters)" v-model="description" maxlength="150"></textarea>
                         </div>
                     </div>
                 </div>
@@ -250,6 +250,22 @@
                         </div>
                     </div>
                 </div>
+
+                <!--type of illness-->
+                <div v-if="health =='yes'" class="row">
+                    
+                    <div class="col-12 col-md-4 m-0 p-0">
+                        
+                    </div>
+                    <div class="col-12 col-md-8 m-0 p-0">
+                        <div class="input-field">
+                            <div class="input-field">
+                                <input type="text" id="illness" placeholder="Enter existing illness separated by ' , '" v-model="illness">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
                 <!-- upload image -->
                 <div class="row">

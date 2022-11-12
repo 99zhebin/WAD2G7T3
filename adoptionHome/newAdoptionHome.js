@@ -59,6 +59,10 @@ const app = Vue.createApp({
             species: [],
 
             health: [],
+
+            pageCount: 1,
+
+            pageLimit: 2,
         }
     },
 
@@ -74,10 +78,10 @@ const app = Vue.createApp({
                 if (this.vaccination == 'vaccinated' && this.pets[key].vaccinated != 'vaccinated'){
                     correct = false
                 }
-                if (this.health == 'none' && this.pets[key].health != 'NIL'){
+                if (this.health == 'none' && this.pets[key].health != 'no'){
                     correct = false
                 }
-                if(this.species.includes(this.pets[key].species) == false){
+                if(this.species.length != 0 && this.species.includes(this.pets[key].species) == false){
                     correct = false
                 }
                 if (correct == true){
@@ -117,7 +121,15 @@ const app = Vue.createApp({
                     window.location.href='../login/newLogin.html?page=../forms/adoptionForm.html'
                 }
             })
-        }
+        },
+
+        prevPage(){
+            this.pageCount -= 1
+        },
+
+        nextPage(){
+            this.pageCount += 1
+        },
     },
 
     mounted() {

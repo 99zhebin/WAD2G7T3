@@ -72,6 +72,10 @@ const app = Vue.createApp({
 
             userlikes: [],
 
+            pageCount: 1,
+
+            pageLimit: 1,
+
         }
     },
 
@@ -186,6 +190,26 @@ const app = Vue.createApp({
                 disheart.innerHTML='<i class="fa fa-heart" aria-hidden="true"></i>';
                 disheart.setAttribute('class', 'heart liked'); 
             }
+        },
+        userlikesload(){
+            database = firebase.database();
+            ref.once("value", function(snapshot){
+                ulikes = snapshot.val().likes
+                likelist = [];
+                for(key in ulikes){
+                    likelist.push(ulikes[key]);
+                }
+                console.log(likelist);
+                this.userlikes = likelist;
+            })
+        },
+
+        prevPage(){
+            this.pageCount -= 1
+        },
+
+        nextPage(){
+            this.pageCount += 1
         },
         
 
