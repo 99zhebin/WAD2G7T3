@@ -139,29 +139,41 @@ const app = Vue.createApp({
             curclass = disheart.getAttribute('class');
 
 
-            //Checking if the current liked postid is inside the user profile alr, if yes it wont add if not it adds to firebase
-            var ref = database.ref('profile/' + curemail);
-            ref.once("value", function(snapshot){
-                ulikes = snapshot.val().likes
-                valid = true;
-                for(key in ulikes){
-                    if(ulikes[key] == instance.pid){
-                        valid = false;
-                    }
-                }
-                if(valid == true) {
-                    ref.child('likes').push(instance.pid);
-                }
-            })
+
 
             //Changing heart icon to red or not
             if(curclass.includes('liked')) {
                 disheart.innerHTML='<i class="fa fa-heart-o" aria-hidden="true"></i>';
-                disheart.setAttribute('class', 'heart'); 
+                disheart.setAttribute('class', 'heart');
+                //Checking if the current liked postid is inside the user profile alr, if yes it wont add if not it adds to firebase
+                var ref = database.ref('profile/' + curemail);
+                ref.once("value", function(snapshot){
+                    ulikes = snapshot.val().likes
+                    for(key in ulikes){
+                        if(ulikes[key] == instance.pid){
+                            ref.child('likes').child(key).remove();
+                        }
+                    }
+
+                })
             }
             else{
                 disheart.innerHTML='<i class="fa fa-heart" aria-hidden="true"></i>';
                 disheart.setAttribute('class', 'heart liked'); 
+                //Checking if the current liked postid is inside the user profile alr, if yes it wont add if not it adds to firebase
+                var ref = database.ref('profile/' + curemail);
+                ref.once("value", function(snapshot){
+                    ulikes = snapshot.val().likes
+                    valid = true;
+                    for(key in ulikes){
+                        if(ulikes[key] == instance.pid){
+                            valid = false;
+                        }
+                    }
+                    if(valid == true) {
+                        ref.child('likes').push(instance.pid);
+                    }
+                })
             }
         },
 
@@ -190,15 +202,16 @@ const app = Vue.createApp({
                 curemail = curemail.replace("@",'-');
                 curemail = curemail.replaceAll(".",'-');
                 var ref = database.ref('profile/' + curemail);
+                var likelist = []
                 ref.once("value", function(snapshot){
                     ulikes = snapshot.val().likes
-                    likelist = [];
+                    console.log(ulikes)
                     for(key in ulikes){
                         likelist.push(ulikes[key]);
                     }
-                    this.userlikes = likelist;
-                    console.log(this.userlikes);
                 })
+                this.userlikes = likelist;
+                console.log(this.userlikes);
             }
             else {
                 
