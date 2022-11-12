@@ -259,35 +259,35 @@ const app = Vue.createApp({
             }
             console.log(this.filtered)
             
-            // pagination
-            // var pageSize = 1;
-            // console.log(this.filtered.length)
-            // var pageCount = this.filtered.length / pageSize;
-            // console.log(pageCount)
-            // var temp = this.filtered
+            pagination
+            var pageSize = 1;
+            console.log(this.filtered.length)
+            var pageCount = this.filtered.length / pageSize;
+            console.log(pageCount)
+            var temp = this.filtered
 
-            // for(var i = 0 ; i<pageCount;i++){
-            //     $("#pagin").append('<li><a href="#">'+(i+1)+'</a></li> ');
-            // }
+            for(var i = 0 ; i<pageCount;i++){
+                $("#pagin").append('<li><a href="#">'+(i+1)+'</a></li> ');
+            }
 
-            // $("#pagin li").first().find("a").addClass("current")
-            // showPage = function(page) {
-            //     console.log(temp);
+            $("#pagin li").first().find("a").addClass("current")
+            showPage = function(page) {
+                console.log(temp);
         
-            //     temp.hide();
-            //     temp.each(function(n) {
-            //     if (n >= pageSize * (page - 1) && n < pageSize * page)
-            //         $(this).show();
-            //     });        
-            // }
+                temp.hide();
+                temp.each(function(n) {
+                if (n >= pageSize * (page - 1) && n < pageSize * page)
+                    $(this).show();
+                });        
+            }
 
-            // showPage(1);
+            showPage(1);
 
-            // $("#pagin li a").click(function() {
-            //     $("#pagin li a").removeClass("current");
-            //     $(this).addClass("current");
-            //     showPage(parseInt($(this).text())) 
-            // });
+            $("#pagin li a").click(function() {
+                $("#pagin li a").removeClass("current");
+                $(this).addClass("current");
+                showPage(parseInt($(this).text())) 
+            });
             }
         else {
             console.log("Not Found")
