@@ -197,12 +197,13 @@
                     </div>
                 </div>
             </div>
-            <h1 v-else style="text-align:center">No Listings Found</h1>
+            <h1 v-else-if="filtered == 'not found' && valid == true" style="text-align:center">No Listings Found</h1>
+            <h1 v-else style="text-align:center">Click a Category!</h1>
         </div>
 
         <!-- pagination -->
         <div class="row">
-            <ul id="pagin">
+            <ul id="pagin li">
             </ul>
         </div>
 
