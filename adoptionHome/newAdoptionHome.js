@@ -77,7 +77,7 @@ const app = Vue.createApp({
                 if (this.health == 'none' && this.pets[key].health != 'no'){
                     correct = false
                 }
-                if(this.species.includes(this.pets[key].species) == false){
+                if(this.species.length != 0 && this.species.includes(this.pets[key].species) == false){
                     correct = false
                 }
                 if (correct == true){
