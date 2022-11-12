@@ -125,7 +125,7 @@ const app = Vue.createApp({
             }
             this.filtered = []
             for (instance of this.currentfilter){
-                if (this.query != '' && instance.eventname.match(this.query) != null){
+                if ((this.query.length != 0 && instance.eventname.match(this.query) != null) || this.query.length == 0){
                     this.filtered.push(instance)
                 } 
             }
