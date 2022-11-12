@@ -137,51 +137,24 @@ const app = Vue.createApp({
             let disheart = document.getElementById(hid.currentTarget.id);
 
             curclass = disheart.getAttribute('class');
-            // var curemail = this.email
-            // curemail = curemail.replace("@",'-');
-            // curemail = curemail.replaceAll(".",'-');
 
-            // database = firebase.database();
-            // var ref = database.ref('profile/' + curemail);
-            // ref.once("value", function(snapshot){
-            //     ulikes = snapshot.val().likes
-            //     likelist = [];
-            //     for(key in ulikes){
-            //         likelist.push(ulikes[key]);
-            //     }
-            //     this.userlikes = likelist;
-            //     console.log(this.userlikes[0]);
-            //     // console.log(ulikes);
-            //     valid = true;
-            //     for(key in ulikes){
-            //         if(ulikes[key] == instance.pid){
-            //             valid = false;
-            //         }
-            //     }
-            //     if(valid == true) {
-            //         ref.child('likes').push(instance.pid);
-            //     }
-                // console.log(snapshot.val().email)
-                // this.userlikes = snapshot.val().likes;
-                // console.log(this.userlikes.push(instance.pid))
-                // var data = snapshot.val();
-                // for(dat in data){
-                //     // console.log(dat)
-                //     // console.log(data[dat].likes);
-                //     // console.log(curemail)
-                //     if(data[dat].email == curemail) {
-                //         data[dat].likes.set(instance.pid);
-                //         console.log(data[dat].likes);
-                //         // data[dat].likes.push(this.pid);
-                //         // console.log(instance.pid)
-                //     }
-                // }
-            // })
 
-            // console.log(this.email);
+            //Checking if the current liked postid is inside the user profile alr, if yes it wont add if not it adds to firebase
+            var ref = database.ref('profile/' + curemail);
+            ref.once("value", function(snapshot){
+                ulikes = snapshot.val().likes
+                valid = true;
+                for(key in ulikes){
+                    if(ulikes[key] == instance.pid){
+                        valid = false;
+                    }
+                }
+                if(valid == true) {
+                    ref.child('likes').push(instance.pid);
+                }
+            })
 
-            // console.log(instance.pid);
-            
+            //Changing heart icon to red or not
             if(curclass.includes('liked')) {
                 disheart.innerHTML='<i class="fa fa-heart-o" aria-hidden="true"></i>';
                 disheart.setAttribute('class', 'heart'); 
@@ -190,18 +163,6 @@ const app = Vue.createApp({
                 disheart.innerHTML='<i class="fa fa-heart" aria-hidden="true"></i>';
                 disheart.setAttribute('class', 'heart liked'); 
             }
-        },
-        userlikesload(){
-            database = firebase.database();
-            ref.once("value", function(snapshot){
-                ulikes = snapshot.val().likes
-                likelist = [];
-                for(key in ulikes){
-                    likelist.push(ulikes[key]);
-                }
-                console.log(likelist);
-                this.userlikes = likelist;
-            })
         },
 
         prevPage(){
@@ -220,6 +181,7 @@ const app = Vue.createApp({
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 this.email = user.email
+                //Trying to Populate this.userlikes
                 console.log(this.email)
                         // Bryans code
                 database = firebase.database();
