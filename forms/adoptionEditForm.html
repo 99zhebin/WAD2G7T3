@@ -131,9 +131,7 @@
                         Animal Name
                     </div>
                     <div class="col-12 col-md-8 m-0 p-0">
-                        <div class="input-field">
-                            <input type="text" id="name" placeholder="Enter animal's name" v-model="name" required>
-                        </div>
+                        {{name}}
                     </div>
                 </div>
 
@@ -298,7 +296,7 @@
                 <!-- submit button -->
                 <div class="row justify-content-end">
                     <div class="col-12 col-md-8">
-                        <button class="btn button " style="width:150px;" @click="validate()">POST</button>
+                        <button class="btn button " style="width:150px;" @click="validate()">UPDATE</button>
                     </div>
                 </div>
             </div>

@@ -68,7 +68,15 @@ const app = Vue.createApp({
 
         posts: '',
 
-        likes: ''
+        likes: '',
+
+        listings: [],
+
+        likeslist: [],
+
+        events: [],
+
+        eventslist: []
       }
   },
 
@@ -106,14 +114,41 @@ const app = Vue.createApp({
           this.pets = this.profile.pets
           this.posts = this.profile.posts
           this.likes = this.profile.likes
+          var posts = user.child('posts')
+          posts.once('value').then((snapshot) => {
+            if(snapshot.exists()){
+              this.posts = snapshot.val()
+            }
+          })
+          listings.once('value').then((snapshot) => {
+            if (snapshot.exists()) {
+              this.listings = snapshot.val()
+            }
+          })
+          var likes = user.child('likes')
+          likes.once('value').then((snapshot) => {
+            if (snapshot.exists()) {
+              this.likes = snapshot.val()
+              console.log(this.likes)
+              let events = firebase.database().ref('events').orderByChild("pid")
+                events.once('value').then((snapshot) => {
+                  if (snapshot.exists()) {
+                    this.events = snapshot.val()
+                    console.log(this.events)
+                    for (key in this.events){
+                      for (like in this.likes){
+                        if (parseInt(this.likes[like]) == parseInt(this.events[key]['pid'])){
+                          this.likeslist.push(this.events[key])
+                        }  
+                      }         
+                    }
+                  }
+                })
+            }
+          })
         }
       });
-      var posts = user.child('posts')
-      posts.once('value').then((snapshot) => {
-        if(snapshot.exists()){
-          this.posts = snapshot.val()
-        }
-      })
+      
       }
 })
 
