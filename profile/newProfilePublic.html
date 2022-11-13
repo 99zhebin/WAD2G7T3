@@ -147,7 +147,7 @@
                 <div class="profile" style="height:45%;margin-bottom:0;">
                     <p style="font-size:25px;text-align: center;">Bio</p>
                     <div style="text-align: center;">
-                        <p id="bio_description">{{bio}}</p>
+                        <p id="bio_description" style="word-break: break-all; font-size: 12px;">{{bio}}</p>
                     </div>
                 </div>
 
@@ -180,7 +180,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
+
+                <div class="text-center" v-if="posts.length == 0"><span>No Posts Made</span></div>
         
         </div>
 
@@ -201,7 +202,7 @@
                     </div>
                 </div>
 
-                <div class="text-center" v-if="posts.length == 0"><span>No Posts Made, Make a Post Now!</span></div>
+                <div class="text-center" v-if="posts.length == 0"><span>No Posts Made</span></div>
             </div> 
         </div>
 

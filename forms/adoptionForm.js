@@ -77,6 +77,8 @@ const app = Vue.createApp({
 
             species: '',
 
+            gender: '',
+
             personality: '',
 
             hdbApproved: '',
@@ -93,6 +95,8 @@ const app = Vue.createApp({
 
             illness: '',
 
+            gender: '',
+
         }
     },
 
@@ -108,13 +112,14 @@ const app = Vue.createApp({
             var vaccinated = this.vaccinationStatus 
             var health = this.health
             var description = this.description
+            var gender = this.gender
             
-            if(!name || !birthday || !species || !personality || !hdbApproved || !vaccinated || !health || !description){
-                console.log(name,birthday,species,personality,hdbApproved,vaccinated,health)
+            if(!name || !birthday || !species || !personality || !hdbApproved || !vaccinated || !health || !description || !gender){
+                console.log(name,birthday,species,personality,hdbApproved,vaccinated,health,gender)
                 alert("Please fill up ALL fields\n" + "Do not leave any blanks")
             }
             else{
-                if(description.length > 250){
+                if(description.length > 100){
                     alert("You have overshot the character limit!\nPlease shorten your message!")
                 }
                 else{
@@ -151,6 +156,7 @@ const app = Vue.createApp({
                                     username: this.email,
                                     name: this.name,
                                     birthday: this.birthday,
+                                    gender: this.gender,
                                     personality: this.personality,
                                     vaccinated: this.vaccinationStatus,
                                     HDB: this.hdbApproved,
@@ -159,7 +165,8 @@ const app = Vue.createApp({
                                     species: this.species,
                                     description: this.description,
                                     postid: uid,
-                                    illness: this.illness
+                                    illness: this.illness,
+                                    gender: this.gender
 
                                 })
                                 var adoption = firebase.database().ref().child('adoption/' + this.name)
@@ -168,6 +175,7 @@ const app = Vue.createApp({
                                     username: this.email,
                                     name: this.name,
                                     birthday: this.birthday,
+                                    gender: this.gender,
                                     personality: this.personality,
                                     vaccinated: this.vaccinationStatus,
                                     HDB: this.hdbApproved,
@@ -175,7 +183,8 @@ const app = Vue.createApp({
                                     pics: this.pics,
                                     species: this.species,
                                     description: this.description,
-                                    illness: this.illness
+                                    illness: this.illness,
+                                    gender: this.gender
                                 })
                             }
                             if (this.pics.length == files.length) {

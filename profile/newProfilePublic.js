@@ -89,6 +89,11 @@ const app = Vue.createApp({
     eventurl(eventname){
       var eventurl = '../eventInfo/newEventInfo.html?name=' + this.email + '-' + eventname
       return eventurl
+    },
+
+    peturl(petname){
+      var peturl = '../adoptionInfo/newAdoptionInfo.html?name=' + this.email + '-' + petname
+      return peturl
     }
   },
 
@@ -114,12 +119,14 @@ const app = Vue.createApp({
           this.pets = this.profile.pets
           this.posts = this.profile.posts
           this.likes = this.profile.likes
+          this.listings = this.profile.listings
           var posts = user.child('posts')
           posts.once('value').then((snapshot) => {
             if(snapshot.exists()){
               this.posts = snapshot.val()
             }
           })
+          var listings = user.child('listings')
           listings.once('value').then((snapshot) => {
             if (snapshot.exists()) {
               this.listings = snapshot.val()
