@@ -92,7 +92,7 @@ const app = Vue.createApp({
     },
 
     eventurl(eventname) {
-      var eventurl = '../eventInfo/newEventInfo.html?name=' + this.email + '-' + eventname
+      var eventurl = '../forms/eventEditForms.html?name=' + eventname
       return eventurl
     },
 
