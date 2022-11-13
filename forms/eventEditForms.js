@@ -86,7 +86,7 @@ function logout() {
     firebase.auth().signOut().then(() => {
         // Sign-out successful.
         alert("Signed out")
-        window.location.href="../homepage/newHomepage.html"
+        window.location.href="../index.html"
         }).catch((error) => {
         // An error happened.
         });
