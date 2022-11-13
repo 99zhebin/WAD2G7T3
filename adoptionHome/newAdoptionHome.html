@@ -185,7 +185,10 @@
                         <img :src="pet.pics" class="card-img-top">
                     </a>
                     <div class="card-body p-0">
-                       
+                        <h8 class="card-title">{{ capitalise(pet.name) }} </h8>
+                        <p class="card-text">{{ capitalise(pet.species) }}
+                            <br>{{ capitalise(pet.personality) }}
+                        </p>
                     </div>
                 </div>
             </div>
