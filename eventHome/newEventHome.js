@@ -145,7 +145,7 @@ const app = Vue.createApp({
         addcounter() {
             newid = 'heart'+ this.count;
             this.count += 1;
-            console.log(newid);
+            // console.log(newid);
             return newid;
         },
 
