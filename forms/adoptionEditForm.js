@@ -98,6 +98,8 @@ const app = Vue.createApp({
 
             illness: '',
 
+            oldname: '',
+
         }
     },
 
@@ -130,7 +132,6 @@ const app = Vue.createApp({
 
 
         post() {
-            //creation of unique id based on date(millisecond precision)
             console.log(this.email)
             this.email = this.email.replace("?email=", '');
             this.key = this.email.replace("@", '-');
@@ -142,28 +143,38 @@ const app = Vue.createApp({
                     files = document.getElementById('pic').files
                     if (files.length == 0){
                         var user = firebase.database().ref().child('profile/' + this.key + '/listings').orderByChild('postid').equalTo(this.uid)
+                        user.once('value').then((snapshot) => {
+                            for (key in snapshot.val()){
+                                user = firebase.database().ref().child('profile/' + this.key + '/listings/' + key)
+                                user.child('name').set(this.name)
+                                user.child('birthday').set(this.birthday)
+                                user.child('personality').set(this.personality)
+                                user.child('vaccinated').set(this.vaccinationStatus)
+                                user.child('HDB').set(this.hdbApproved)
+                                user.child('health').set(this.health)
+                                user.child('pics').set(this.pics)
+                                user.child('species').set(this.species)
+                                user.child('illness').set(this.illness)
+                                user.child('description').set(this.description)
+                            }
+                        })
                         var adoption = firebase.database().ref().child('adoption').orderByChild('postid').equalTo(this.uid)
-                        user.child('name').set(this.name)
-                        user.child('birthday').set(this.birthday)
-                        user.child('personality').set(this.personality)
-                        user.child('vaccinated').set(this.vaccinationStatus)
-                        user.child('HDB').set(this.hdbApproved)
-                        user.child('health').set(this.health)
-                        user.child('pics').set(this.pics)
-                        user.child('species').set(this.species)
-                        user.child('illness').set(this.illness)
-                        user.child('description').set(this.description)
-                        adoption.child('name').set(this.name)
-                        adoption.child('birthday').set(this.birthday)
-                        adoption.child('personality').set(this.personality)
-                        adoption.child('vaccinated').set(this.vaccinationStatus)
-                        adoption.child('HDB').set(this.hdbApproved)
-                        adoption.child('health').set(this.health)
-                        adoption.child('pics').set(this.pics)
-                        adoption.child('species').set(this.species)
-                        adoption.child('illness').set(this.illness)
-                        adoption.child('description').set(this.description)
-                        window.location.href = "../adoptionInfo/newAdoptionInfo.html?name=" + this.email + '-' + this.uid
+                        adoption.once('value').then((snapshot) => {
+                            for (key in snapshot.val()){
+                                adoption = firebase.database().ref().child('adoption/' + key)
+                                adoption.child('name').set(this.name)
+                                adoption.child('birthday').set(this.birthday)
+                                adoption.child('personality').set(this.personality)
+                                adoption.child('vaccinated').set(this.vaccinationStatus)
+                                adoption.child('HDB').set(this.hdbApproved)
+                                adoption.child('health').set(this.health)
+                                adoption.child('pics').set(this.pics)
+                                adoption.child('species').set(this.species)
+                                adoption.child('illness').set(this.illness)
+                                adoption.child('description').set(this.description)
+                                window.location.href = "../adoptionInfo/newAdoptionInfo.html?name=" + this.email + '-' + this.name
+                            }
+                        })
                     }
                     else {
                         this.pics = []
@@ -179,30 +190,38 @@ const app = Vue.createApp({
                                         this.pics.push(url)
                                         if (this.pics.length == files.length){
                                             var user = firebase.database().ref().child('profile/' + this.key + '/listings').orderByChild('postid').equalTo(this.uid)
+                                            user.once('value').then((snapshot) => {
+                                                for (key in snapshot.val()){
+                                                    user = firebase.database().ref().child('profile/' + this.key + '/listings/' + key)
+                                                    user.child('name').set(this.name)
+                                                    user.child('birthday').set(this.birthday)
+                                                    user.child('personality').set(this.personality)
+                                                    user.child('vaccinated').set(this.vaccinationStatus)
+                                                    user.child('HDB').set(this.hdbApproved)
+                                                    user.child('health').set(this.health)
+                                                    user.child('pics').set(this.pics)
+                                                    user.child('species').set(this.species)
+                                                    user.child('illness').set(this.illness)
+                                                    user.child('description').set(this.description)
+                                                }
+                                            })
                                             var adoption = firebase.database().ref().child('adoption').orderByChild('postid').equalTo(this.uid)
-                                            user.child('name').set(this.name)
-                                            user.child('birthday').set(this.birthday)
-                                            user.child('personality').set(this.personality)
-                                            user.child('vaccinated').set(this.vaccinationStatus)
-                                            user.child('HDB').set(this.hdbApproved)
-                                            user.child('health').set(this.health)
-                                            user.child('pics').set(this.pics)
-                                            user.child('species').set(this.species)
-                                            user.child('illness').set(this.illness)
-                                            user.child('description').set(this.description)
-                                            adoption.child('name').set(this.name)
-                                            adoption.child('birthday').set(this.birthday)
-                                            adoption.child('personality').set(this.personality)
-                                            adoption.child('vaccinated').set(this.vaccinationStatus)
-                                            adoption.child('HDB').set(this.hdbApproved)
-                                            adoption.child('health').set(this.health)
-                                            adoption.child('pics').set(this.pics)
-                                            adoption.child('species').set(this.species)
-                                            adoption.child('illness').set(this.illness)
-                                            adoption.child('description').set(this.description)
-                                        }
-                                        if (this.pics.length == files.length) {
-                                            window.location.href = "../adoptionInfo/newAdoptionInfo.html?name=" + this.email + '-' + this.uid
+                                            adoption.once('value').then((snapshot) => {
+                                                for (key in snapshot.val()){
+                                                    adoption = firebase.database().ref().child('adoption/' + key)
+                                                    adoption.child('name').set(this.name)
+                                                    adoption.child('birthday').set(this.birthday)
+                                                    adoption.child('personality').set(this.personality)
+                                                    adoption.child('vaccinated').set(this.vaccinationStatus)
+                                                    adoption.child('HDB').set(this.hdbApproved)
+                                                    adoption.child('health').set(this.health)
+                                                    adoption.child('pics').set(this.pics)
+                                                    adoption.child('species').set(this.species)
+                                                    adoption.child('illness').set(this.illness)
+                                                    adoption.child('description').set(this.description)
+                                                    window.location.href = "../adoptionInfo/newAdoptionInfo.html?name=" + this.email + '-' + this.name
+                                                }
+                                            })
                                         }
                                     })
                                 }
@@ -239,6 +258,7 @@ const app = Vue.createApp({
                         this.pics = this.pet.pics
                         this.uid = this.pet.postid
                         this.illness = this.pet.illness
+                        this.oldname = this.name
                     }
                     else {
                         console.log("Not Found")
