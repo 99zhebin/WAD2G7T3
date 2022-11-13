@@ -200,10 +200,10 @@
             <p style="font-size:25px;text-align: center;">Posted Adoptions</p>
 
             <div class="row">
-
+                
                 <div class="col-lg-3 col-md-6 col-sm-12" v-for="key in listings">
                     <div class="card">
-                        <a v-bind:href="peturl(key.animalname)">
+                        <a v-bind:href="peturl(key.name)">
                             <img :src="key.pics[0]" class="card-img-top">
                         </a>
                         <div class="card-body p-0">
@@ -231,12 +231,14 @@
                     <a v-bind:href="eventurl(key['eventname'])">
                         <div class="card">
                             <img v-bind:src="key['pics'][0]" class="card-img-top">
-                        </a>
-                            <div class="card-body p-0">
-                                <h8 class="card-title" >{{key['eventname']}}</h8>
-                                <p class="card-text" >{{key['location']}}<br>{{key['eventdate']}},{{key['time']}}</p>
-                            </div>
+                    </a>
+                        <div class="card-body p-0">
+                            <h8 class="card-title" >{{key['eventname']}}</h8>
+                            <p class="card-text" >{{key['location']}}<br>{{key['eventdate']}},{{key['time']}}</p>
                         </div>
+                    </div>
+
+                    <div class="text-center" v-if="likeslist.length == 0"><span>No liked posts</span></div>
                 </div>
 
             </div>

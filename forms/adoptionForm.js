@@ -89,7 +89,9 @@ const app = Vue.createApp({
 
             pics: [],
 
-            description: ""
+            description: "",
+
+            illness: '',
 
         }
     },
@@ -155,7 +157,9 @@ const app = Vue.createApp({
                                     health: this.health,
                                     pics: this.pics,
                                     species: this.species,
-                                    description: this.description
+                                    description: this.description,
+                                    postid: uid,
+                                    illness: this.illness
 
                                 })
                                 var adoption = firebase.database().ref().child('adoption/' + this.name)
@@ -170,7 +174,8 @@ const app = Vue.createApp({
                                     health: this.health,
                                     pics: this.pics,
                                     species: this.species,
-                                    description: this.description
+                                    description: this.description,
+                                    illness: this.illness
                                 })
                             }
                             if (this.pics.length == files.length) {
