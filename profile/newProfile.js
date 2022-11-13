@@ -97,7 +97,7 @@ const app = Vue.createApp({
     },
 
     peturl(petname) {
-      var peturl = '../adoptionInfo/newAdoptionInfo.html?name=' + this.email + '-' + petname
+      var peturl = '../forms/adoptionEditForm.html?name=' + petname
       return peturl
     }
   },
