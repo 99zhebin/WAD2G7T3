@@ -115,11 +115,7 @@ const app = Vue.createApp({
             var gender = this.gender
             
             if(!name || !birthday || !species || !personality || !hdbApproved || !vaccinated || !health || !description || !gender){
-<<<<<<< HEAD
-                console.log(name,birthday,species,personality,hdbApproved,vaccinated,health)
-=======
                 console.log(name,birthday,species,personality,hdbApproved,vaccinated,health,gender)
->>>>>>> origin/New
                 alert("Please fill up ALL fields\n" + "Do not leave any blanks")
             }
             else{
