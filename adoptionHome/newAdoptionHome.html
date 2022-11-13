@@ -179,13 +179,14 @@
 
             <!-- cards -->
 
-            <div class="col-lg-3 col-md-6 col-sm-12 mb-3" v-for="pet in filtered">
+            <div class="col-lg-3 col-md-6 col-sm-12" v-for="pet in filtered">
                 <div class="card">
-                    <a v-bind:href="url(pet.username,pet.name)" style="text-decoration:none;color:black">
-                        <img :src="pet.pics" class="card-img-top">
+                    <a v-bind:href="peturl(pet.name)">
+                        <img :src="key.pics[0]" class="card-img-top">
                     </a>
                     <div class="card-body p-0">
-                       
+                        <h8 class="card-title" >{{pet.name}}</h8>
+                        <p class="card-text" >{{pet.species}}<br>{{pet.gender}}</p>
                     </div>
                 </div>
             </div>
