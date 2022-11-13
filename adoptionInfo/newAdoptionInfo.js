@@ -65,15 +65,7 @@ const app = Vue.createApp({
 
             name:"",
 
-            address: "",
-
-            api: "",
-
-            locationDetails: "",
-
-            apiLink: "",
-
-            latitude: "",
+            personality:"",
 
             longitude: "",
 
@@ -123,6 +115,10 @@ const app = Vue.createApp({
             this.vaccinated = animalArray.vaccinated.toLowerCase()
             this.vaccinated = this.vaccinated.charAt(0).toUpperCase() + this.vaccinated.slice(1)
             console.log(this.vaccinated)
+
+            this.personality = animalArray.personality.toLowerCase()
+            this.personality = this.personality.charAt(0).toUpperCase() + this.personality.slice(1)
+            console.log(this.personality)
 
 
             }
