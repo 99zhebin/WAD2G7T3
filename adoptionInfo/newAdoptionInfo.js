@@ -127,8 +127,6 @@ const app = Vue.createApp({
                 console.log(this.personality)
 
 
-
-
             }
             else {
                 console.log("Not Found")
