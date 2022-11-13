@@ -112,6 +112,7 @@ const app = Vue.createApp({
                 console.log(animalArray)
                 this.animal = animalArray
                 this.images = animalArray.pics
+                this.gender = animalArray.gender
 
                 //capitalising first letter
                 if (animalArray.vaccinated == "notVaccinated") {
