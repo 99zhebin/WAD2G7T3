@@ -97,11 +97,11 @@
                         Sign Up
                     </h1>
 
-                    <div class="input-field mx-auto">
+                    <div class="input-field text-center mx-auto">
                         <input type="text" id="email" v-model="email" placeholder="Enter your Email">
                         <label for="email"></label>
                         <br>
-                        <span v-if="emailError != ''" style="text-align:center">{{emailError}}<br></span>
+                        <span v-if="emailError != ''">{{emailError}}<br></span>
                     </div>
 
                     <div class="input-field text-center">

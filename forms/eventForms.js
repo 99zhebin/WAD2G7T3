@@ -9,8 +9,53 @@ const firebaseConfig = {
     };
 
 firebase.initializeApp(firebaseConfig);
-
-eventDate.min = new Date().toISOString().split("T")[0]
+// console.log(new Date().toISOString().split("T")[0].split("-"))
+month = Number(new Date().toISOString().split("T")[0].split("-")[1]);
+day = Number(new Date().toISOString().split("T")[0].split("-")[2]);
+year = Number(new Date().toISOString().split("T")[0].split("-")[0]);
+monthswith31days = [01,03,05,07,08,10,12];
+monthswith30days = [04,06,09,11];
+if(monthswith31days.includes(month)){
+  if(day + 1 <= 31) {
+    day += 1; 
+    eventDate.min = year + '-' + month + '-' + day
+  }
+  else if(month != 12) {
+    month += 1;
+    day = 01;
+    eventDate.min = year + '-' + month + '-' + day
+  }
+  else{
+    year += 1
+    month = 01;
+    day = 01;
+    eventDate.min = year + '-' + month + '-' + day
+  }
+}
+else if(monthswith30days.includes(month)){
+  if(day+1 <= 30){
+    day += 1; 
+    eventDate.min = year + '-' + month + '-' + day
+  }
+  else{
+    month += 1;
+    day = 01;
+    eventDate.min = year + '-' + month + '-' + day
+  }
+}
+else {
+  if(day + 1 <= 28){
+    day += 1; 
+    eventDate.min = year + '-' + month + '-' + day;
+  }
+  else {
+    month += 1;
+    day = 01;
+    eventDate.min = year + '-' + month + '-' + day
+  }
+}
+// eventDate.min = new Date().toISOString().split("T")[0]
+console.log(eventDate.min);
 
 function loadDisplay() {
     console.log("--- loadDisplay() start ---")
