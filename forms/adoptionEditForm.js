@@ -247,19 +247,19 @@ const app = Vue.createApp({
                     console.log(adoptlist[key].postid)
                     if(adoptlist[key].postid == thepostid){
                         adoptionlist.child('listings').child(key).remove();
-                        console.log('inside')
+                        // console.log('inside')
                     }
                 }
             })
             var petname = this.name
-            var adoptionlist2 = firebase.database().ref().child('adoption/').child(this.name);
+            var adoptionlist2 = firebase.database().ref().child('adoption/');
             adoptionlist2.once("value", function(snapshot){
-                apostpid = snapshot.val().postid
-                console.log(apostpid)
-                if(apostpid == thepostid){
-                    // console.log(adoptionlist2.child(petname))
-                    adoptionlist2.remove();
-                    console.log('inside')
+                alist2 = snapshot.val()
+                for(item in alist2) {
+                    console.log(alist2[item].postid);
+                    if(alist2[item].postid == thepostid){
+                        adoptionlist2.child(item).remove();
+                    }
                 }
             })
             this.url = this.url + this.email;
