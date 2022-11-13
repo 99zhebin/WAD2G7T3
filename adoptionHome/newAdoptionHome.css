@@ -38,6 +38,19 @@
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
 
+/* search */
+.input-field input{
+    background-color: white;
+    margin: 10px;
+    margin-left:0;
+    padding: 10px;
+    border-width: 0px;
+    border-radius: 15px;
+    /* width: 180px; */
+    width:200px;
+    border: 1px solid black;
+
+}
 
 /* cards */
 .card-text {
