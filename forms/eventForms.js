@@ -199,7 +199,8 @@ const app = Vue.createApp({
                       location: this.eventLocation,
                       url: this.url,
                       pics: this.pics,
-                      description: this.eventDescription
+                      description: this.eventDescription,
+                      pid: uid
                 })
                     var event = firebase.database().ref().child('events/' + this.eventName)
                     event.set({

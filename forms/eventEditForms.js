@@ -143,6 +143,8 @@ const app = Vue.createApp({
         eventLocation: '',
 
         url: '',
+
+        pid: ''
       }
   },
 
@@ -157,10 +159,9 @@ const app = Vue.createApp({
       var startTime = this.startTime
       var endTime = this.endTime 
       var location = this.eventLocation
-      files = document.getElementById('pic').files
       
-      if(!name || !category || !description || !date || !startTime || !endTime || !location || files.length == 0){
-          console.log(name, category, description, date, startTime, endTime, location, files)
+      if(!category || !description || !date || !startTime || !endTime || !location){
+          console.log(name, category, description, date, startTime, endTime, location)
           alert("Please fill up ALL fields\n" + "Do not leave any blanks")
       }
       else{
@@ -174,53 +175,86 @@ const app = Vue.createApp({
         this.email = this.email.replace("?email=", '');
         this.key = this.email.replace("@", '-');
         this.key = this.key.replace(".", '-');
-        console.log(this.key)
-        var user = firebase.database().ref().child('profile/' + this.key).child('posts')
-        var postref = user.push()
-        files = document.getElementById('pic').files
-          for (file of files){
-            if(typeof file != 'undefined'){
-              var storage = firebase.storage().ref()
-              var thisRef = storage.child(file.name)
-              thisRef.put(file).then(function(snapshot) {
-                console.log('Image updated');
-            })
-              firebase.storage().ref(file.name).getDownloadURL()
-              .then((url) => {
-                this.pics.push(url)
-                if (this.pics.length == files.length){
-                  postref.set({
-                      type : 'event',
-                      username: this.email,
-                      eventname: this.eventName,
-                      eventdate: this.eventDate,
-                      category: this.category,
-                      time: this.startTime + ' - ' + this.endTime,
-                      location: this.eventLocation,
-                      url: this.url,
-                      pics: this.pics,
-                      description: this.eventDescription
-                })
-                    var event = firebase.database().ref().child('events/' + this.eventName)
-                    event.set({
-                      pid: uid,
-                    username: this.email,
-                      eventname: this.eventName,
-                    eventdate: this.eventDate,
-                    category: this.category,
-                    time: this.startTime + ' - ' + this.endTime,
-                    location: this.eventLocation,
-                    url: this.url,
-                    pics: this.pics,
-                    description: this.eventDescription
-              })
-                }
-                if(this.pics.length == files.length){
-                  window.location.href= "../eventInfo/newEventInfo.html?name=" + this.email + '-' + this.eventName
-                }
-              })
-            }
+        var user = firebase.database().ref().child('profile/' + this.key + '/posts').orderByChild('pid').equalTo(this.pid)
+        user.once('value').then((snapshot) => {
+          if (snapshot.exists()){
+              files = document.getElementById('pic').files
+              if (files.length == 0){
+                  var user = firebase.database().ref().child('profile/' + this.key + '/posts').orderByChild('pid').equalTo(this.pid)
+                  user.once('value').then((snapshot) => {
+                      for (key in snapshot.val()){
+                          user = firebase.database().ref().child('profile/' + this.key + '/posts/' + key)
+                          user.child('category').set(this.category)
+                          user.child('pics').set(this.pics)
+                          user.child('eventDescription').set(this.eventDescription)
+                          user.child('eventDate').set(this.eventDate)
+                          user.child('time').set(this.startTime + ' - ' + this.endTime)
+                          user.child('location').set(this.eventLocation)
+                          user.child('url').set(this.url)
+                      }
+                  })
+                  var eventInstance = firebase.database().ref().child('events').orderByChild('pid').equalTo(this.pid)
+                  eventInstance.once('value').then((snapshot) => {
+                      for (key in snapshot.val()){
+                        eventInstance = firebase.database().ref().child('events/' + key)
+                        eventInstance.child('category').set(this.category)
+                        eventInstance.child('pics').set(this.pics)
+                        eventInstance.child('eventDescription').set(this.eventDescription)
+                        eventInstance.child('eventDate').set(this.eventDate)
+                        eventInstance.child('time').set(this.startTime + ' - ' + this.endTime)
+                        eventInstance.child('location').set(this.eventLocation)
+                        eventInstance.child('url').set(this.url)
+                      }
+                      window.location.href = "../eventInfo/newEventInfo.html?name=" + this.email + '-' + this.name
+                  })
+              }
+              else {
+                  this.pics = []
+                  for (file of files) {
+                      if (typeof file != 'undefined') {
+                          var storage = firebase.storage().ref()
+                          var thisRef = storage.child(file.name)
+                          thisRef.put(file).then(function (snapshot) {
+                              console.log('Image updated');
+                          })
+                          firebase.storage().ref(file.name).getDownloadURL()
+                              .then((url) => {
+                                  this.pics.push(url)
+                                  if (this.pics.length == files.length){
+                                    var user = firebase.database().ref().child('profile/' + this.key + '/posts').orderByChild('pid').equalTo(this.pid)
+                                    user.once('value').then((snapshot) => {
+                                        for (key in snapshot.val()){
+                                            user = firebase.database().ref().child('profile/' + this.key + '/posts/' + key)
+                                            user.child('category').set(this.category)
+                                            user.child('pics').set(this.pics)
+                                            user.child('eventDescription').set(this.eventDescription)
+                                            user.child('eventDate').set(this.eventDate)
+                                            user.child('time').set(this.startTime + ' - ' + this.endTime)
+                                            user.child('location').set(this.eventLocation)
+                                            user.child('url').set(this.url)
+                                        }
+                                    })
+                                    var eventInstance = firebase.database().ref().child('events').orderByChild('pid').equalTo(this.pid)
+                                    eventInstance.once('value').then((snapshot) => {
+                                        for (key in snapshot.val()){
+                                          eventInstance = firebase.database().ref().child('profile/' + this.key + '/posts/' + key)
+                                          eventInstance.child('category').set(this.category)
+                                          eventInstance.child('pics').set(this.pics)
+                                          eventInstance.child('eventDescription').set(this.eventDescription)
+                                          eventInstance.child('eventDate').set(this.eventDate)
+                                          eventInstance.child('time').set(this.startTime + ' - ' + this.endTime)
+                                          eventInstance.child('location').set(this.eventLocation)
+                                          eventInstance.child('url').set(this.url)
+                                        }
+                                        window.location.href = "../eventInfo/newEventInfo.html?name=" + this.email + '-' + this.name
+                                    })
+                                  }
+                              })
+                          }
+                      }
+                  }
           }
+      })
   },
 },
 
@@ -240,6 +274,7 @@ const app = Vue.createApp({
             if (snapshot.exists()) {
               console.log('Found')
               this.event = snapshot.val()
+              console.log(this.event)
               this.pics = this.event.pics
               this.eventDescription = this.event.description
               this.eventDate = this.event.eventdate
@@ -249,6 +284,8 @@ const app = Vue.createApp({
               this.endTime = time[1]
               this.eventLocation = this.event.location
               this.url = this.event.url
+              this.category = this.event.category
+              this.pid = this.event.pid
             }
           })
         }})

@@ -176,8 +176,8 @@ const app = Vue.createApp({
                                 adoption.child('species').set(this.species)
                                 adoption.child('illness').set(this.illness)
                                 adoption.child('description').set(this.description)
-                                window.location.href = "../adoptionInfo/newAdoptionInfo.html?name=" + this.email + '-' + this.name
                             }
+                            window.location.href = "../adoptionInfo/newAdoptionInfo.html?name=" + this.email + '-' + this.name
                         })
                     }
                     else {
@@ -223,8 +223,8 @@ const app = Vue.createApp({
                                                     adoption.child('species').set(this.species)
                                                     adoption.child('illness').set(this.illness)
                                                     adoption.child('description').set(this.description)
-                                                    window.location.href = "../adoptionInfo/newAdoptionInfo.html?name=" + this.email + '-' + this.name
                                                 }
+                                                window.location.href = "../adoptionInfo/newAdoptionInfo.html?name=" + this.email + '-' + this.name
                                             })
                                         }
                                     })
