@@ -78,8 +78,6 @@ const app = Vue.createApp({
 
             birthday: '',
 
-            gender: '',
-
             species: '',
 
             personality: '',
@@ -106,6 +104,8 @@ const app = Vue.createApp({
 
             url: '/profile/newProfile.html?email=',
 
+            gender: '',
+
         }
     },
 
@@ -121,9 +121,8 @@ const app = Vue.createApp({
             var vaccinated = this.vaccinationStatus 
             var health = this.health
             var description = this.description
-            var gender = this.gender
             
-            if(!name || !birthday || !species || !personality || !hdbApproved || !vaccinated || !health || !description || !gender){
+            if(!name || !birthday || !species || !personality || !hdbApproved || !vaccinated || !health || !description){
                 console.log(name,birthday,species,personality,hdbApproved,vaccinated,health)
                 alert("Please fill up ALL fields\n" + "Do not leave any blanks")
             }
@@ -156,7 +155,6 @@ const app = Vue.createApp({
                                 user.child('name').set(this.name)
                                 user.child('birthday').set(this.birthday)
                                 user.child('personality').set(this.personality)
-                                user.child('gender').set(this.gender)
                                 user.child('vaccinated').set(this.vaccinationStatus)
                                 user.child('HDB').set(this.hdbApproved)
                                 user.child('health').set(this.health)
@@ -164,6 +162,7 @@ const app = Vue.createApp({
                                 user.child('species').set(this.species)
                                 user.child('illness').set(this.illness)
                                 user.child('description').set(this.description)
+                                user.child('gender').set(this.gender)
                             }
                         })
                         var adoption = firebase.database().ref().child('adoption').orderByChild('postid').equalTo(this.uid)
@@ -173,7 +172,6 @@ const app = Vue.createApp({
                                 adoption.child('name').set(this.name)
                                 adoption.child('birthday').set(this.birthday)
                                 adoption.child('personality').set(this.personality)
-                                user.child('gender').set(this.gender)
                                 adoption.child('vaccinated').set(this.vaccinationStatus)
                                 adoption.child('HDB').set(this.hdbApproved)
                                 adoption.child('health').set(this.health)
@@ -181,6 +179,7 @@ const app = Vue.createApp({
                                 adoption.child('species').set(this.species)
                                 adoption.child('illness').set(this.illness)
                                 adoption.child('description').set(this.description)
+                                user.child('gender').set(this.gender)
                             }
                             window.location.href = "../adoptionInfo/newAdoptionInfo.html?name=" + this.email + '-' + this.name
                         })
@@ -212,6 +211,7 @@ const app = Vue.createApp({
                                                     user.child('species').set(this.species)
                                                     user.child('illness').set(this.illness)
                                                     user.child('description').set(this.description)
+                                                    user.child('gender').set(this.gender)
                                                 }
                                             })
                                             var adoption = firebase.database().ref().child('adoption').orderByChild('postid').equalTo(this.uid)
@@ -228,6 +228,7 @@ const app = Vue.createApp({
                                                     adoption.child('species').set(this.species)
                                                     adoption.child('illness').set(this.illness)
                                                     adoption.child('description').set(this.description)
+                                                    user.child('gender').set(this.gender)
                                                 }
                                                 window.location.href = "../adoptionInfo/newAdoptionInfo.html?name=" + this.email + '-' + this.name
                                             })
@@ -301,6 +302,7 @@ const app = Vue.createApp({
                         this.illness = this.pet.illness
                         this.oldname = this.name
                         this.postid = this.pet.postid;
+                        this.gender = this.pet.gender
                     }
                     else {
                         console.log("Not Found")

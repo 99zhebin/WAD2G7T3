@@ -95,6 +95,8 @@ const app = Vue.createApp({
 
             illness: '',
 
+            gender: '',
+
         }
     },
 
@@ -113,7 +115,11 @@ const app = Vue.createApp({
             var gender = this.gender
             
             if(!name || !birthday || !species || !personality || !hdbApproved || !vaccinated || !health || !description || !gender){
+<<<<<<< HEAD
                 console.log(name,birthday,species,personality,hdbApproved,vaccinated,health)
+=======
+                console.log(name,birthday,species,personality,hdbApproved,vaccinated,health,gender)
+>>>>>>> origin/New
                 alert("Please fill up ALL fields\n" + "Do not leave any blanks")
             }
             else{
@@ -163,7 +169,8 @@ const app = Vue.createApp({
                                     species: this.species,
                                     description: this.description,
                                     postid: uid,
-                                    illness: this.illness
+                                    illness: this.illness,
+                                    gender: this.gender
 
                                 })
                                 var adoption = firebase.database().ref().child('adoption/' + this.name)
@@ -180,7 +187,8 @@ const app = Vue.createApp({
                                     pics: this.pics,
                                     species: this.species,
                                     description: this.description,
-                                    illness: this.illness
+                                    illness: this.illness,
+                                    gender: this.gender
                                 })
                             }
                             if (this.pics.length == files.length) {

@@ -130,6 +130,18 @@
                 <button onclick="myFunction()" class="btn button dropbtn"><i class="fa fa-sliders"></i>&ensp; Filter</button>
                 <div id="myDropdown" class="dropdown-content">
                     
+                    <!-- search -->
+                    <div class="input-field">
+                        <input type="text" v-model="query" placeholder="Search">
+                    </div><br>
+
+                    <!-- filters -->
+                    <strong>Gender</strong><br>
+                    <input type="checkbox" id="male" value="male" v-model="gender" checked style="margin-right: 10px;">
+                    <label for="dog">Male</label><br>
+                    <input type="checkbox" id="female" value="female" v-model="gender" checked style="margin-right: 10px;">
+                    <label for="cat">Female</label><br><br>
+
                     <strong>HDB Eligiblity</strong> <br>
                     <input type="radio" id="eligible" value='eligible' v-model="hdb" style="margin-right: 10px;">
                     <label for="eligible" >Eligible Only</label><br>
@@ -158,15 +170,11 @@
                     <input type="checkbox" id="others" value="others" v-model="species" checked style="margin-right: 10px;">
                     <label for="others">Others</label><br>
 
-                    <input type="text" v-model="query">
-
-                    <!-- filter button -->
                     <div style="text-align:right; margin-top:10px;">
-                    <button class="btn button" v-on:click="filter()">Search</button>
+                        <button class="btn button" v-on:click="filter()">Search</button>
                     </div>
-                </div>
-                </span>
 
+                </div>
             </div>
 
             <!-- cards -->
