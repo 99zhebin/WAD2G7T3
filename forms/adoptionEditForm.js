@@ -100,6 +100,10 @@ const app = Vue.createApp({
 
             oldname: '',
 
+            postid: '',
+
+            url: '/profile/newProfile.html?email=',
+
         }
     },
 
@@ -230,6 +234,38 @@ const app = Vue.createApp({
                 }
             })
         },
+        deletepost() {
+            this.email = this.email.replace("?email=", '');
+            this.key = this.email.replace("@", '-');
+            this.key = this.key.replace(".", '-');
+            var adoptionlist = firebase.database().ref().child('profile/' + this.key)
+            var thepostid = this.postid
+            adoptionlist.once("value", function(snapshot){
+                adoptlist = snapshot.val().listings
+
+                for(key in adoptlist){
+                    console.log(adoptlist[key].postid)
+                    if(adoptlist[key].postid == thepostid){
+                        adoptionlist.child('listings').child(key).remove();
+                        // console.log('inside')
+                    }
+                }
+            })
+            var petname = this.name
+            var adoptionlist2 = firebase.database().ref().child('adoption/');
+            adoptionlist2.once("value", function(snapshot){
+                alist2 = snapshot.val()
+                for(item in alist2) {
+                    console.log(alist2[item].postid);
+                    if(alist2[item].postid == thepostid){
+                        adoptionlist2.child(item).remove();
+                    }
+                }
+            })
+            this.url = this.url + this.email;
+            window.location.href=this.url
+            
+        },
     },
 
     mounted() {
@@ -259,6 +295,7 @@ const app = Vue.createApp({
                         this.uid = this.pet.postid
                         this.illness = this.pet.illness
                         this.oldname = this.name
+                        this.postid = this.pet.postid;
                     }
                     else {
                         console.log("Not Found")
