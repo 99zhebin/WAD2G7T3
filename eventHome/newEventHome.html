@@ -161,16 +161,19 @@
 
             </div>
         </div>
+        
         <div class="row" >
             <!-- new event listing -->
-            <div>
+            <div class="col-12 col-sm-6">
                 <button class="btn button newEvent" v-on:click="checklogin()">New Event Listing</button>
             </div>
 
             <!-- search -->
-            <div class="input-field">
-                <input type="search" v-model="query" placeholder="Search">
-                <button class="btn button" v-on:click="search()"><i class="fa fa-search"></i></button>
+            <div class="col-12 col-sm-6">
+                <div class="input-field">
+                    <input type="search" v-model="query" placeholder="Search">
+                    <button class="btn button" v-on:click="search()"><i class="fa fa-search"></i></button>
+                </div>
             </div>
         </div>
 
