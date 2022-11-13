@@ -65,6 +65,8 @@ const app = Vue.createApp({
             pageLimit: 2,
 
             query: '',
+
+            gender: []
         }
     },
 
@@ -88,6 +90,9 @@ const app = Vue.createApp({
                     correct = false
                 }
                 if(this.query != '' && this.pets[key].name.toLowerCase().match(this.query.toLowerCase()) == null){
+                    correct = false
+                }
+                if(this.gender.length != 0 && this.gender.includes(this.pets[key].gender) == false){
                     correct = false
                 }
                 if (correct == true){
