@@ -146,6 +146,7 @@ const app = Vue.createApp({
             console.log("Found")
             console.log(snapshot.val())
             this.pets = snapshot.val()
+            // console.log(this.pets)
             this.filtered = this.pets
             
             // here onwards idk whats goin on 
@@ -154,6 +155,7 @@ const app = Vue.createApp({
             //         this.filtered.push(instance)
             //     }
             // }
+
         }
         else {
             console.log("Not Found")

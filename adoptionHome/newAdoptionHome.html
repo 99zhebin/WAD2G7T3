@@ -134,31 +134,31 @@
                 <div id="myDropdown" class="dropdown-content">
                     
                     <strong>HDB Eligiblity</strong> <br>
-                    <input type="radio" id="eligible" value='eligible' v-model="hdb">
-                    <label for="eligible">Eligible Only</label><br>
-                    <input type="radio" id="notEligible" value="any" v-model="hdb" checked>
+                    <input type="radio" id="eligible" value='eligible' v-model="hdb" style="margin-right: 10px;">
+                    <label for="eligible" >Eligible Only</label><br>
+                    <input type="radio" id="notEligible" value="any" v-model="hdb" checked style="margin-right: 10px;">
                     <label for="notEligible">Any</label><br><br>
 
                     <strong>Vaccination Status</strong><br>
-                    <input type="radio" id="vaccinated" value="vaccinated" v-model="vaccination">
+                    <input type="radio" id="vaccinated" value="vaccinated" v-model="vaccination" style="margin-right: 10px;">
                     <label for="vaccinated">Vaccinated Only</label><br>
-                    <input type="radio" id="notVaccinated" value="any" v-model="vaccination" checked>
+                    <input type="radio" id="notVaccinated" value="any" v-model="vaccination" checked style="margin-right: 10px;">
                     <label for="notVaccinated">Any</label><br><br>
 
                     <strong>Health Issues</strong><br>
-                    <input type="radio" id="none" value="none" v-model="health">
+                    <input type="radio" id="none" value="none" v-model="health" style="margin-right: 10px;">
                     <label for="none">No Health Issues</label><br>
-                    <input type="radio" id="serious" value="any" v-model="health" checked>
+                    <input type="radio" id="serious" value="any" v-model="health" checked style="margin-right: 10px;">
                     <label for="serious">Any</label><br><br>
 
                     <strong>Species</strong><br>
-                    <input type="checkbox" id="dog" value="dog" v-model="species" checked>
+                    <input type="checkbox" id="dog" value="dog" v-model="species" checked style="margin-right: 10px;">
                     <label for="dog">Dog</label><br>
-                    <input type="checkbox" id="cat" value="cat" v-model="species" checked>
+                    <input type="checkbox" id="cat" value="cat" v-model="species" checked style="margin-right: 10px;">
                     <label for="cat">Cat</label><br>
-                    <input type="checkbox" id="rabbit" value="rabbit" v-model="species" checked>
+                    <input type="checkbox" id="rabbit" value="rabbit" v-model="species" checked style="margin-right: 10px;">
                     <label for="rabbit">Rabbit</label><br>
-                    <input type="checkbox" id="others" value="others" v-model="species" checked>
+                    <input type="checkbox" id="others" value="others" v-model="species" checked style="margin-right: 10px;">
                     <label for="others">Others</label><br>
 
                     <input type="text" v-model="query">

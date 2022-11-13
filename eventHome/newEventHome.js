@@ -259,7 +259,7 @@ const app = Vue.createApp({
             }
             console.log(this.filtered)
             
-            pagination
+            //pagination
             var pageSize = 1;
             console.log(this.filtered.length)
             var pageCount = this.filtered.length / pageSize;
