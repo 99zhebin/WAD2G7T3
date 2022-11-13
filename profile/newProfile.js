@@ -129,6 +129,16 @@ const app = Vue.createApp({
           this.listings = snapshot.val()
         }
       })
+      var likes = user.child('likes')
+      likes.once('value').then((snapshot) => {
+        if (snapshot.exists()) {
+          this.likes = snapshot.val()
+        }
+      })
+      console.log(this.likes)
+      for (key in this.likes){
+
+      }
     });
   }
 })
