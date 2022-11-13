@@ -141,6 +141,13 @@ const app = Vue.createApp({
         nextPage(){
             this.pageCount += 1
         },
+
+        capitalise(word) {
+            var lowerCase = word.toLowerCase()
+            var uppercase = lowerCase.charAt(0).toUpperCase() + lowerCase.slice(1)
+
+            return uppercase
+        }
     },
 
     mounted() {
@@ -151,15 +158,12 @@ const app = Vue.createApp({
             console.log("Found")
             console.log(snapshot.val())
             this.pets = snapshot.val()
+            // this.personality = animalArray.personality.toLowerCase()
+            // this.personality = this.personality.charAt(0).toUpperCase() + this.personality.slice(1)
+            // console.log(this.personality)
             // console.log(this.pets)
-            this.filtered = this.pets
-            
-            // here onwards idk whats goin on 
-            // for(instance of this.pets){
-            //     if (instance.category == "Emergency"){
-            //         this.filtered.push(instance)
-            //     }
-            // }
+            this.filtered = this.pets            
+        
 
         }
         else {
