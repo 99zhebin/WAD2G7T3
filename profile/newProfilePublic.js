@@ -52,8 +52,6 @@ const app = Vue.createApp({
 
         profile: [],
 
-        posts: [],
-
         pic: '',
 
         name: '',
