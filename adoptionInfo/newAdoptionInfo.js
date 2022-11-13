@@ -130,12 +130,11 @@ const app = Vue.createApp({
                 console.log("Not Found")
             }
         })
+        var tempusername = '';
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-              // User is signed in, see docs for a list of available properties
-              // https://firebase.google.com/docs/reference/js/firebase.User
+
                 //Trying to Populate this.userlikes
-                console.log(this.email)
                         // Bryans code
                 database = firebase.database();
                 curemail = this.email
@@ -143,18 +142,22 @@ const app = Vue.createApp({
                 curemail = curemail.replace("@",'-');
                 curemail = curemail.replaceAll(".",'-');
                 var ref = database.ref('profile/' + curemail);
-                var tempusername = [];
+                var tempuname = '';
                 ref.once("value", function(snapshot){
-                    uname = snapshot.val().username
-                    tempusername.push(uname);
+                    ulikes = snapshot.val().username
+                    tempuname = ulikes
+                    console.log(ulikes)
                 })
-                this.userwhoposted=tempusername
-                console.log(this.userwhoposted)
-            } 
-            else {
-
+                console.log(this.userwhoposted);
+                this.userwhoposted = tempuname;
+                console.log(this.userwhoposted);
             }
-          });
+            else {
+                
+            }
+            console.log(tempusername)
+            console.log(this.userwhoposted)
+        })
 
         // petArray.once('value').then((snapshot) => {
         // if(snapshot.exists()) {
