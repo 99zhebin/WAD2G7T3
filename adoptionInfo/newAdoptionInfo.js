@@ -72,6 +72,8 @@ const app = Vue.createApp({
             username: "",
 
             userwhoposted: "",
+
+            gender: '',
         }
     },
 
