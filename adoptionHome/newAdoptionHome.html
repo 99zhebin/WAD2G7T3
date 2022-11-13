@@ -181,7 +181,7 @@
 
             <div class="col-lg-3 col-md-6 col-sm-12" v-for="pet in filtered">
                 <div class="card">
-                    <a v-bind:href="peturl(pet.name)">
+                    <a v-bind:href="url(pet.username,pet.name)">
                         <img :src="key.pics[0]" class="card-img-top">
                     </a>
                     <div class="card-body p-0">
