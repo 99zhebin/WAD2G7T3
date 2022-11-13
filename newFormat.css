@@ -70,38 +70,18 @@ hr{
 .icon-background {
     color:lavender;
 }
-.submitEmail{
-    background-color:lemonchiffon;
-    border:1px solid goldenrod;
-    border-radius: 10px;
-    text-align: middle;
-    vertical-align: middle;
-    padding: 10px;
-    font-weight: bold;
-    margin-top: 20px;
-}
 .copyright{
     padding-top:30px;
 }
-
-.card-text {
-    font-family: 'Montserrat';
-    font-weight: normal; 
+.bottomInfo button{
+    background:white;
+}
+/* buttons */
+.button{
+    border:2px solid black;
     font-size: 15px;
 }
-
-.card-title {
-    font-family: 'Montserrat';
-    font-weight: bold; 
-    font-size: 15px;
+.button:hover, .button:focus {
+    background-color: bisque;
 }
 
-.card {
-    border:0;
-    margin: 20px;
-}
-
-.card-img-top {
-    border-radius: 25px;
-    padding-bottom: 20px;
-}
