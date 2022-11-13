@@ -180,6 +180,8 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="text-center" v-if="posts.length == 0"><span>No Posts Made</span></div>
         
         </div>
 
@@ -200,7 +202,7 @@
                     </div>
                 </div>
 
-                <div class="text-center" v-if="posts.length == 0"><span>No Posts Made, Make a Post Now!</span></div>
+                <div class="text-center" v-if="posts.length == 0"><span>No Posts Made</span></div>
             </div> 
         </div>
 
