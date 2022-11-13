@@ -77,6 +77,8 @@ const app = Vue.createApp({
 
             species: '',
 
+            gender: '',
+
             personality: '',
 
             hdbApproved: '',
@@ -114,7 +116,7 @@ const app = Vue.createApp({
                 alert("Please fill up ALL fields\n" + "Do not leave any blanks")
             }
             else{
-                if(description.length > 250){
+                if(description.length > 100){
                     alert("You have overshot the character limit!\nPlease shorten your message!")
                 }
                 else{
@@ -151,6 +153,7 @@ const app = Vue.createApp({
                                     username: this.email,
                                     name: this.name,
                                     birthday: this.birthday,
+                                    gender: this.gender,
                                     personality: this.personality,
                                     vaccinated: this.vaccinationStatus,
                                     HDB: this.hdbApproved,
@@ -168,6 +171,7 @@ const app = Vue.createApp({
                                     username: this.email,
                                     name: this.name,
                                     birthday: this.birthday,
+                                    gender: this.gender,
                                     personality: this.personality,
                                     vaccinated: this.vaccinationStatus,
                                     HDB: this.hdbApproved,
