@@ -121,10 +121,9 @@ const app = Vue.createApp({
             var vaccinated = this.vaccinationStatus 
             var health = this.health
             var description = this.description
-            var gender = this.gender
             
-            if(!name || !birthday || !species || !personality || !hdbApproved || !vaccinated || !health || !description || !gender){
-                console.log(name,birthday,species,personality,hdbApproved,vaccinated,health,gender)
+            if(!name || !birthday || !species || !personality || !hdbApproved || !vaccinated || !health || !description){
+                console.log(name,birthday,species,personality,hdbApproved,vaccinated,health)
                 alert("Please fill up ALL fields\n" + "Do not leave any blanks")
             }
             else{
