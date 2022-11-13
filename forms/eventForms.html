@@ -129,12 +129,13 @@
 
             <!-- form -->
             <div class="col-12 col-lg-7 " style="text-align:center">
+
                 <!-- event name -->
                 <div class="row">
-                    <div class="col-6 col-md-4 m-0 p-0">
+                    <div class="col-12 col-md-4 m-0 p-0">
                         Event Name
                     </div>
-                    <div class="col-6 col-md-8 m-0 p-0">
+                    <div class="col-12 col-md-8 m-0 p-0">
                         <div class="input-field">
                             <input type="text" id="eventName" placeholder="Enter event name" v-model="eventName">
                         </div>
@@ -143,10 +144,10 @@
 
                 <!-- event category -->
                 <div class="row">
-                    <div class="col-6 col-md-4 m-0 p-0">
+                    <div class="col-12 col-md-4 m-0 p-0">
                         Event Category
                     </div>
-                    <div class="col-6 col-md-8 m-0 p-0">
+                    <div class="col-12 col-md-8 m-0 p-0">
                         <div class="input-field">
                             <select id="category" v-model="category">
                                 <option disabled selected value>Select an option</option>
@@ -161,10 +162,10 @@
 
                 <!-- event description -->
                 <div class="row">
-                    <div class="col-6 col-md-4 m-0 p-0">
+                    <div class="col-12 col-md-4 m-0 p-0">
                         Event Description
                     </div>
-                    <div class="col-6 col-md-8 m-0 p-0">
+                    <div class="col-12 col-md-8 m-0 p-0">
                         <div class="input-field">
                             <textarea id="description" rows="3" placeholder="Enter event description (Up to 100 characters)" v-model="eventDescription" maxlength="100"></textarea>
                         </div>
@@ -173,10 +174,10 @@
 
                 <!-- date -->
                 <div class="row">
-                    <div class="col-6 col-md-4 m-0 p-0">
+                    <div class="col-12 col-md-4 m-0 p-0">
                         Event Date
                     </div>
-                    <div class="col-6 col-md-8 m-0 p-0">
+                    <div class="col-12 col-md-8 m-0 p-0">
                         <div class="input-field">
                             <input type="date" id="eventDate" placeholder="Enter event date" v-model="eventDate">
                         </div>
@@ -186,10 +187,10 @@
 
                 <!-- start time -->
                 <div class="row">
-                    <div class="col-6 col-md-4 m-0 p-0">
+                    <div class="col-12 col-md-4 m-0 p-0">
                         Event Start Time
                     </div>
-                    <div class="col-6 col-md-8 m-0 p-0">
+                    <div class="col-12 col-md-8 m-0 p-0">
                         <div class="input-field">
                             <input type="time" id="eventStart" v-model="startTime">
                         </div>
@@ -198,10 +199,10 @@
 
                 <!-- end time -->
                 <div class="row">
-                    <div class="col-6 col-md-4 m-0 p-0">
+                    <div class="col-12 col-md-4 m-0 p-0">
                         Event End Time
                     </div>
-                    <div class="col-6 col-md-8 m-0 p-0">
+                    <div class="col-12 col-md-8 m-0 p-0">
                         <div class="input-field">
                             <input type="time" id="eventEnd" v-model="endTime">
                         </div>
@@ -210,10 +211,10 @@
 
                 <!-- Location -->
                 <div class="row">
-                    <div class="col-6 col-md-4 m-0 p-0">
+                    <div class="col-12 col-md-4 m-0 p-0">
                         Event Location
                     </div>
-                    <div class="col-6 col-md-8  m-0 p-0">
+                    <div class="col-12 col-md-8  m-0 p-0">
                         <div class="input-field">
                             <input type="text" id="eventLocation" placeholder="Enter event location"
                                 v-model="eventLocation">
@@ -223,10 +224,10 @@
 
                 <!-- upload image -->
                 <div class="row">
-                    <div class="col-6 col-md-4 m-0 p-0">
+                    <div class="col-12 col-md-4 m-0 p-0">
                         Event Images
                     </div>
-                    <div class="col-6 col-md-8 m-0 p-0">
+                    <div class="col-12 col-md-8 m-0 p-0">
                         <div class="upload text-left">
                             <label for="pic">
                                 <p>Upload up to 6 Images </p>
@@ -241,10 +242,10 @@
 
                 <!-- url -->
                 <div class="row">
-                    <div class="col-6 col-md-4 m-0 p-0">
+                    <div class="col-12 col-md-4 m-0 p-0">
                         Event Website
                     </div>
-                    <div class="col-6 col-md-8 m-0 p-0">
+                    <div class="col-12 col-md-8 m-0 p-0">
                         <div class="input-field">
                             <input type="text" id="eventWebsite" placeholder="Enter event website" v-model="url">
                         </div>
@@ -253,7 +254,7 @@
 
                 <!-- post button -->
                 <div class="row justify-content-end">
-                    <div class="col-6 col-md-8">
+                    <div class="col-12 col-md-8">
                         <button class="btn button " style="width:150px;" @click="validate()">POST</button>
                     </div>
                 </div>
