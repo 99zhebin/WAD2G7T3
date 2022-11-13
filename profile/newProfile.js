@@ -71,6 +71,12 @@ const app = Vue.createApp({
       likes: '',
 
       listings: '',
+
+      likeslist: [],
+
+      events: [],
+
+      eventslist: [],
     }
   },
 
@@ -133,12 +139,23 @@ const app = Vue.createApp({
       likes.once('value').then((snapshot) => {
         if (snapshot.exists()) {
           this.likes = snapshot.val()
+          console.log(this.likes)
+          let events = firebase.database().ref('events').orderByChild("pid")
+            events.once('value').then((snapshot) => {
+              if (snapshot.exists()) {
+                this.events = snapshot.val()
+                console.log(this.events)
+                for (key in this.events){
+                  for (like in this.likes){
+                    if (parseInt(this.likes[like]) == parseInt(this.events[key]['pid'])){
+                      this.likeslist.push(this.events[key])
+                    }  
+                  }         
+                }
+              }
+            })
         }
       })
-      console.log(this.likes)
-      for (key in this.likes){
-
-      }
     });
   }
 })
