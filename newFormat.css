@@ -15,8 +15,12 @@ hr{
 }
 
 /* NavBar */
+#navbarNavDropdown{
+    margin-right:35px;
+    justify-content: end;
+}
 .navbar{
-    background-color:white;
+    background-color:#fcf2e6;
 }
 /* Website Name */
 .navbar-brand{
@@ -38,14 +42,17 @@ hr{
     text-align: center;
 }
 .navbar-nav a:hover{
-    background-color:rgb(245, 171, 144);
+    background-color:bisque;
+}
+.nav-item{
+    float:right;
 }
 
 /* bottom */
 .bottomInfo{
     text-align:center;
     padding:20px 50px;
-    background-color:white;
+    background-color:#fcf2e6;
 }
 .bottomInfo p{
     font-size: large;

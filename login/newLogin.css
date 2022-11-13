@@ -1,0 +1,21 @@
+/* forms */
+.input-field input{
+    background-color: rgb(241, 241, 241);
+    margin: 10px;
+    padding: 10px;
+    border-width: 0px;
+    border-radius: 15px;
+    width: 250px;
+}
+
+.forgotPassword {
+    font-size: 13px;
+    text-decoration: underline;
+}
+
+.createAccount {
+    font-size: 13px;
+    text-align: center;
+}
+
+

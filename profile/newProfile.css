@@ -1,0 +1,95 @@
+.profile{
+    background-color:bisque;
+    border-radius:15px;
+    margin:20px;
+    padding:15px;
+}
+.profilePic, #uploadPic{
+    border-radius:50%;
+    width:180px;
+    margin:auto;
+}
+.name{
+    text-align:center; 
+    font-size:25px;
+}
+
+/* cards */
+.card-text {
+    font-family: 'Montserrat';
+    font-weight: normal; 
+    font-size: 15px;
+}
+
+.card-title {
+    font-family: 'Montserrat';
+    font-weight: bold; 
+    font-size: 15px;
+}
+
+.card {
+    border:0;
+    margin: 20px;
+}
+
+.card-img-top {
+    border-radius: 15px;
+    margin-bottom: 10px;
+    aspect-ratio: 1/1;
+}
+
+/* forms */
+.input-field input{
+    background-color: rgb(241, 241, 241);
+    margin: 10px;
+    padding: 10px;
+    border-width: 0px;
+    border-radius: 15px;
+    /* width: 180px; */
+    width: 95%;
+}
+
+.input-field textarea{
+    background-color: rgb(241, 241, 241);
+    margin: 10px;
+    padding: 10px;
+    border-width: 0px;
+    width: 90%;
+    border-radius: 15px;
+}
+
+select{
+    background-color: rgb(241, 241, 241);
+    margin: 10px;
+    padding: 10px;
+    border-width: 0px;
+    /* width: 180px; */
+    width: 95%;
+    border-radius: 15px;
+}
+
+/* edit profile pic */
+/* upload */
+.upload{
+    text-align:center;
+    padding:20px;
+    background-color: rgb(241, 241, 241);
+    border-radius: 15px;
+    width:180px;
+    margin:auto;
+}
+#pic{
+    display: none;
+}
+.upload label{
+    cursor: pointer;
+}
+#imageName{
+    color:black;
+    margin-top:10px;
+}
+
+/* image chosen */
+#uploadPic{
+    width:50px;
+}
