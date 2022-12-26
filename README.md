@@ -1,5 +1,5 @@
 # WAD2G7T3
-Group Project - Animal Adoption Site
+Group Project - Animal Adoption Site for SMU IS216 for Academic Year 2022/2023 Semester 1 under Professor Kyong Jin Shim
 
 Index.html is the homepage. It and all other files and folders here will be in the root folder
 
