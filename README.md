@@ -13,7 +13,7 @@ Email: 99zhebin@gmail.com
 Password: password
 
 Done by:
-Lim Zhe Bin
-Clara Aw
-Bryan Low
+Lim Zhe Bin,
+Clara Aw,
+Bryan Low,
 Tian Wan Lin
